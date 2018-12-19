@@ -9,12 +9,11 @@ export class BrowserView extends Component {
       <View style={styles.container}>
         <WebView
           originWhitelist={['*']}
-          source={{
-            uri: 'https://www.fidelity.co.uk/home'
-          }}
+          source={{uri: 'https://status.im/'}} 
+          injectedJavaScript={'window.onload = { alert("Swag") }'}
         />
       </View>
-    );
+    )
   }
 }
 

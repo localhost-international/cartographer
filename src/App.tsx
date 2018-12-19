@@ -6,11 +6,26 @@
  */
 
 import React, { Component } from 'react'
-import { Platform, StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { 
+  ViewPropTypes,
+  Platform, 
+  StyleSheet, 
+  Text, 
+  View, 
+  SafeAreaView, 
+  TextInput
+} from 'react-native'
+
+import 'react-native-vector-icons'
 
 import { BrowserView } from './views/BrowserView'
+import { URISearchInput } from './components/URISearchInput'
 
-const platform = Platform.select({ios: `iOS`, android: `Android`})
+// TODO - Fix me
+//import { SearchBar } from 'react-native-elements'
+
+//const platform = Platform.select({ios: `iOS`, android: `Android`})
+
 
 interface Props {}
 export default class App extends Component<Props> {
@@ -18,8 +33,8 @@ export default class App extends Component<Props> {
     return (
       <SafeAreaView style={{flex: 1}}>
         <View style={styles.container}>
-          <Text style={styles.welcome}>Carta</Text>
           <BrowserView />
+          <URISearchInput />
         </View>
       </SafeAreaView>
     )
@@ -29,9 +44,5 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
   },
 })
