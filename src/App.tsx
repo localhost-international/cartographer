@@ -1,48 +1,63 @@
 /**
- * https://github.com/facebook/react-native
- * https://github.com/emin93/react-native-template-typescript
- * 
- * @format
+ * Carta - A decentralised web browser
  */
 
+
 import React, { Component } from 'react'
-import { 
-  ViewPropTypes,
-  Platform, 
-  StyleSheet, 
-  Text, 
-  View, 
-  SafeAreaView, 
-  TextInput
+import {
+  Platform,
+  SafeAreaView,
+  KeyboardAvoidingView,
+  View,
+  StyleSheet,
 } from 'react-native'
 
-import 'react-native-vector-icons'
 
 import { BrowserView } from './views/BrowserView'
-import { URISearchInput } from './components/URISearchInput'
-
-// TODO - Fix me
-//import { SearchBar } from 'react-native-elements'
-
-//const platform = Platform.select({ios: `iOS`, android: `Android`})
+import { ComboInput } from './components/ComboInput'
 
 
-interface Props {}
+const INITIAL_URI = 'http://duckduckgo.com/'
+
+
+type Props = {
+  uri: string
+}
 export default class App extends Component<Props> {
+
+  componentDidMount() {
+  }
+
+  componentWillUnmount() {
+
+  }
+
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <View style={styles.container}>
-          <BrowserView />
-          <URISearchInput />
-        </View>
-      </SafeAreaView>
+      <KeyboardAvoidingView
+        style={styles.keyboardAvoidingView}
+        behavior='padding'
+      >
+        <SafeAreaView style={styles.safeArea}>
+          <View style={styles.view}>
+            <BrowserView uri={INITIAL_URI} />
+            <ComboInput uri={INITIAL_URI} />
+          </View>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
+    flex: 1,
+    //backgroundColor: 'rgba(255,255,255,1)',
+  },
+  keyboardAvoidingView: {
+    flex: 1,
+  },
+  view: {
     flex: 1,
   },
 })

@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "dev": "react-native run-ios",
+    "deploy": "react-native run-ios --device='Carta'",
     "test": "jest"
   },
   "dependencies": {
     "react": "16.6.1",
     "react-native": "0.57.7",
-    "react-native-elements": "^1.0.0-beta7",
-    "react-native-vector-icons": "^6.1.0",
-    "react-native-webview": "^2.14.0"
+    "react-native-webview": "^2.14.0",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
