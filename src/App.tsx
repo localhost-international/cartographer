@@ -36,6 +36,7 @@ export default class App extends Component<Props> {
     return (
       <KeyboardAvoidingView
         style={styles.keyboardAvoidingView}
+        enabled={true}
         behavior='padding'
       >
         <SafeAreaView style={styles.safeArea}>
