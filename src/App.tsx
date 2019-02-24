@@ -1,64 +1,62 @@
 /**
- * Carta - A decentralised web browser
+ * Carta - A decentralised web browser/OS
+ * @format
  */
 
-
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   Platform,
+  StyleSheet,
+  View,
   SafeAreaView,
   KeyboardAvoidingView,
-  View,
-  StyleSheet,
-} from 'react-native'
+} from 'react-native';
 
 
-import { BrowserView } from './views/BrowserView'
-import { ComboInput } from './components/ComboInput'
+import { BrowserView } from './views/BrowserView';
+import { ComboInput } from './components/ComboInput';
 
 
-const INITIAL_URI = 'http://duckduckgo.com/'
+const INITIAL_URI = 'http://duck.com/'; //'http://status.im/';
 
 
-type Props = {
-  uri: string
-}
+interface Props { }
 export default class App extends Component<Props> {
-
-  componentDidMount() {
-  }
-
-  componentWillUnmount() {
-
-  }
-
   render() {
     return (
-      <KeyboardAvoidingView
-        style={styles.keyboardAvoidingView}
-        enabled={true}
-        behavior='padding'
-      >
-        <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea}>
+
+        <KeyboardAvoidingView
+          style={styles.keyboardContainer}
+          behavior="padding"
+          enabled
+          /*keyboardVerticalOffset={
+            Platform.select({
+              ios: () => 0,
+              android: () => 12
+            })()
+          }*/
+        >
           <View style={styles.view}>
             <BrowserView uri={INITIAL_URI} />
             <ComboInput uri={INITIAL_URI} />
           </View>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    )
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    );
   }
 }
+
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    //backgroundColor: 'rgba(255,255,255,1)',
+    backgroundColor: 'rgba(255,255,255,1)',
   },
-  keyboardAvoidingView: {
+  keyboardContainer: {
     flex: 1,
   },
   view: {
     flex: 1,
   },
-})
+});

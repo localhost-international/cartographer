@@ -16,7 +16,7 @@ export class BrowserView extends Component<Props> {
       <View style={styles.container}>
         <WebView
           style={styles.webView}
-          useWebKit={false} 
+          useWebKit={true} 
           originWhitelist={['*']}
           source={{uri: this.props.uri }} 
           onNavigationStateChange={ this.onNavigationStateChange }
