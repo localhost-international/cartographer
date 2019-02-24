@@ -1,6 +1,10 @@
 # Carta
 _A decentralised web browser_
 
+## Create
+* `react-native init Carta --template='typescript' --package='com.works.Carta'`
+
+
 ## Deploy
 
 * `react-native run-ios --device 'Carta'`
@@ -8,5 +12,11 @@ _A decentralised web browser_
 
 
 ## Notes
+
+**How to re-cover when things don't run**
+
+1. `rm -Rfv ios/* && rm -Rfv android/*`
+2. `react-native upgrade` (answer "no")
+3. Re-add packages, re-link and run :-)
 
 * Keep `"name": "Carta"` in packgae.json until further notice. 
