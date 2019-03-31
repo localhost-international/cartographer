@@ -8,10 +8,8 @@ import {
 } from 'react-native'
 
 
-type Props = {
-  uri: string
-}
-export class ComboInput extends Component<Props> {
+// type Props = { uri: string }
+export class ComboInput extends Component {
 
   onSubmitEditing() {
     console.log('Do that thang')
@@ -61,4 +59,5 @@ const styles = StyleSheet.create({
     //borderWidth: 1,
     //borderColor: 'rgba(0,0,0,.25)',
   },
-})
+});
+

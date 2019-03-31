@@ -8,20 +8,25 @@ import {
   Platform,
   StyleSheet,
   View,
+  Text,
   SafeAreaView,
   KeyboardAvoidingView,
 } from 'react-native';
 
 
-import { BrowserView } from './views/BrowserView';
-import { ComboInput } from './components/ComboInput';
-
-
 const INITIAL_URI = 'http://duck.com/'; //'http://status.im/';
 
 
-interface Props { }
-export default class App extends Component<Props> {
+
+import { ComboInput } from '../src/components/ComboInput';
+import { BrowserView } from '../src/views/BrowserView';
+
+
+
+//type Props = {};
+// TODO - Re-add React's "native" <Props>"types"
+
+export default class App extends Component {
   render() {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -60,3 +65,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+

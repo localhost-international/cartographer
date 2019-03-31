@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { 
+  View, 
+  StyleSheet,
+  //WebView,
+} from 'react-native'
 import { WebView } from 'react-native-webview'
 
-type Props = {
-  uri: string
-}
-export class BrowserView extends Component<Props> {
+
+export class BrowserView extends Component {
 
   onNavigationStateChange() {
     console.log('onNavigationStateChange')
