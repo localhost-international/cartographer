@@ -1,13 +1,21 @@
-import React, { Component } from 'react'
-import { 
-  View, 
+import React, { Component } from 'react';
+import {
+  View,
   StyleSheet,
-  //WebView,
-} from 'react-native'
-import { WebView } from 'react-native-webview'
+} from 'react-native';
+import { WebView } from 'react-native-webview';
+
+import { Consumer } from '../utils/context';
 
 
 export class BrowserView extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      url: '',
+    };
+  };
 
   onNavigationStateChange() {
     console.log('onNavigationStateChange')
@@ -15,22 +23,29 @@ export class BrowserView extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <WebView
-          style={styles.webView}
-          useWebKit={true} 
-          originWhitelist={['*']}
-          source={{uri: this.props.uri }} 
-          onNavigationStateChange={ this.onNavigationStateChange }
-        />
-      </View>
+      <Consumer>
+        {({ urlCurrent, urlUpdate }) => {
+
+          return (
+            <View style={styles.container}>
+              <WebView
+                style={styles.webView}
+                useWebKit={true}
+                originWhitelist={['*']}
+                source={{ uri: urlCurrent }}
+                onNavigationStateChange={this.onNavigationStateChange}
+              />
+            </View>
+          )
+        }}
+      </Consumer>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
     //backgroundColor: '#F5FCFF', 
   },
   webView: {

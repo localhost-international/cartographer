@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
-import { 
-  AppRegistry, 
-  View, 
-  TextInput, 
+import {
+  View,
+  TextInput,
   StyleSheet,
-  Button,
+  TouchableHighlight,
+  Text,
 } from 'react-native'
 
+import { Consumer } from '../utils/context';
 
-// type Props = { uri: string }
+
 export class ComboInput extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      url: '',
+    };
+  };
 
   onSubmitEditing() {
     console.log('Do that thang')
@@ -20,20 +28,49 @@ export class ComboInput extends Component {
 
   render() {
     return (
-      <View style={styles.view}>
-        <TextInput 
-          style={styles.textInput} 
-          placeholder={this.props.uri}
-          //onChangeText={(text) => this.setState({ text })}
-          autoCapitalize='none' 
-          onChange={this.onChangeText}
-          returnKeyType='search'
-          autoFocus={false}
-          onSubmitEditing={this.onSubmitEditing}
-          //clearButtonMode='while-editing'
-          selectionColor='rgba(0,0,255,.85)'
-        />
-      </View>
+      <Consumer>
+        {({ urlCurrent, urlUpdate }) => {
+
+          return (
+            <View style={styles.view}>
+              <TextInput
+                style={styles.textInput}
+                placeholder={ this.state.url }
+                value={ this.state.url } 
+                placeholder={ urlCurrent }
+                spellCheck={false}
+                autoCapitalize="none"
+                // onChange={ this.onChangeText }
+                returnKeyType="search"
+                autoCorrect={ false } 
+                autoFocus={false}
+                onSubmitEditing={
+                  (evt) => {
+                    let value = evt.nativeEvent.text;
+                    console.log('onSubmitEditing', value);
+                    urlUpdate(value);
+                  }
+                }
+                selectionColor='rgba(0,0,255,.85)'
+                onChangeText={
+                  (address) => {
+                    console.log('onChangeText', address);
+                    this.setState({ url: address });
+                  }
+                }
+
+                // onEndEditing={}
+              />
+
+              {/* <TouchableHighlight onPress={this.onSubmitEdit}>
+                <Text>Go</Text>
+              </TouchableHighlight> */}
+
+            </View>
+          )
+
+        }}
+      </Consumer>
     )
   }
 }
