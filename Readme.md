@@ -15,7 +15,7 @@ _A decentralised web browser_
 
 **How to re-cover when things don't run**
 
-1. `rm -Rfv ios/* && rm -Rfv android/*`
+1. `rm -Rfv ios/ && rm -Rfv android/`
 2. `react-native eject`
 3. Re-add packages, re-link and run :-)
 

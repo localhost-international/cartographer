@@ -8,6 +8,7 @@ const urls = [
 
 const Context = createContext({
   urlCurrent: '',
+  urlNew: '',
   urlUpdate: () => { },
 });
 

@@ -27,13 +27,13 @@ export class BrowserView extends Component {
         {({ urlCurrent, urlUpdate }) => {
 
           return (
-            <View style={styles.container}>
+            <View style={ styles.container }>
               <WebView
-                style={styles.webView}
-                useWebKit={true}
-                originWhitelist={['*']}
+                style={ styles.webView }
+                useWebKit={ true }
+                originWhitelist={ ['*'] }
                 source={{ uri: urlCurrent }}
-                onNavigationStateChange={this.onNavigationStateChange}
+                onNavigationStateChange={ this.onNavigationStateChange }
               />
             </View>
           )

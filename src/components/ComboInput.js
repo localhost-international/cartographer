@@ -29,17 +29,16 @@ export class ComboInput extends Component {
   render() {
     return (
       <Consumer>
-        {({ urlCurrent, urlUpdate }) => {
+        {({ urlCurrent, urlNew, urlUpdate }) => {
 
           return (
-            <View style={styles.view}>
+            <View style={ styles.view }>
               <TextInput
-                style={styles.textInput}
-                placeholder={ this.state.url }
-                value={ this.state.url } 
+                style={ styles.textInput }
+                value={ urlNew } 
                 placeholder={ urlCurrent }
                 spellCheck={false}
-                autoCapitalize="none"
+                autoCapitalize="none" 
                 // onChange={ this.onChangeText }
                 returnKeyType="search"
                 autoCorrect={ false } 
@@ -47,18 +46,22 @@ export class ComboInput extends Component {
                 onSubmitEditing={
                   (evt) => {
                     let value = evt.nativeEvent.text;
-                    console.log('onSubmitEditing', value);
+                    console.log('%conSubmitEditing', 'background: dodgerblue; color: white;');
+                    console.log(
+                      'value: ', value,
+                      'urlCurrent: ', urlCurrent,
+                      'urlNew', urlNew,
+                    );
                     urlUpdate(value);
                   }
                 }
                 selectionColor='rgba(0,0,255,.85)'
                 onChangeText={
-                  (address) => {
-                    console.log('onChangeText', address);
-                    this.setState({ url: address });
+                  (value) => {
+                    console.log('onChangeText', value);
+                    // urlUpdate(value);
                   }
                 }
-
                 // onEndEditing={}
               />
 
