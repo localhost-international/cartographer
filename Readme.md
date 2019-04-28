@@ -49,6 +49,21 @@ keyboardVerticalOffset={
 }
 ```
 
+### Folders and Paths
+
+##### Absolute Paths
+
+Metro Bundler simplifies a lot of this by allowing the creation of small `package.json` files in folders you'd like to alias. I've only aliased `src` as so:
+
+* In the `/src` folder of the project, create a file named `package.json` with the contents of:
+
+```json
+{
+	"name": "src"
+}
+```
+
+
 
 
 ## Other
