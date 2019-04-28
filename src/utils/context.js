@@ -1,23 +1,23 @@
 import React, { Component, createContext } from 'react';
 
 const urls = [
-  'https://status.hauntedthemes.com',
+  'https://status.im',
   'https://dontsharethis.b-ndstore.com/',
   'http://duck.com/',
 ];
 
 const Context = createContext({
-  urlCurrent: '',
+  urlSource: '',
   urlNew: '',
   urlUpdate: () => { },
 });
 
 export class Provider extends Component {
   urlUpdate = urlNew => {
-    this.setState({ urlCurrent: urlNew })
+    this.setState({ urlSource: urlNew }); 
   };
   state = {
-    urlCurrent: urls[0],
+    urlSource: urls[0],
     urlUpdate: this.urlUpdate,
   };
   render() {

@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import {
   View,
+  Text,
   StyleSheet,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 
-import { Consumer } from '../utils/context';
+import { Consumer } from 'src/utils/context';
 
 
 export class BrowserView extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      url: '',
-    };
-  };
 
   onNavigationStateChange() {
     console.log('onNavigationStateChange')
@@ -24,7 +18,7 @@ export class BrowserView extends Component {
   render() {
     return (
       <Consumer>
-        {({ urlCurrent, urlUpdate }) => {
+        {({ urlSource, urlUpdate }) => {
 
           return (
             <View style={ styles.container }>
@@ -32,8 +26,22 @@ export class BrowserView extends Component {
                 style={ styles.webView }
                 useWebKit={ true }
                 originWhitelist={ ['*'] }
-                source={{ uri: urlCurrent }}
+                // source={{ uri: urlSource }}
+                source={{ 
+                  uri: urlSource, 
+                  //html: '' // Note: `html` overrides uri
+                }}
+                onLoad={ 
+                  (evt) => {
+                    console.log(`%cWebView - onLoad`, `background: dodgerblue; color: white;`);
+                    console.log(evt);
+                  }
+                }
                 onNavigationStateChange={ this.onNavigationStateChange }
+                onError={ (err) => {
+                  console.log('Error Loading Page', err, this);
+                  //urlUpdate('http://leslieoa.com/')
+                }}
               />
             </View>
           )

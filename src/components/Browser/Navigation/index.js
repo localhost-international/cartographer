@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import {
+  Platform,
   View,
   TextInput,
   StyleSheet,
   TouchableHighlight,
   Text,
+  ProgressViewIOS,
+  ProgressBarAndroid,
 } from 'react-native'
 
-import { Consumer } from '../utils/context';
+import { Consumer } from 'src/utils/context';
 
 
 export class ComboInput extends Component {
@@ -29,17 +32,21 @@ export class ComboInput extends Component {
   render() {
     return (
       <Consumer>
-        {({ urlCurrent, urlNew, urlUpdate }) => {
+        {({ urlSource, urlNew, urlUpdate }) => {
 
           return (
             <View style={ styles.view }>
+              {
+                (Platform.OS === 'ios') ?
+                ( <ProgressViewIOS progress={ 50 } /> ) : 
+                ( <ProgressBarAndroid styleAttr="horizontal" progress={ 50 } indeterminate={ false } /> )
+              }
               <TextInput
                 style={ styles.textInput }
                 value={ urlNew } 
-                placeholder={ urlCurrent }
+                placeholder={ urlSource }
                 spellCheck={false}
                 autoCapitalize="none" 
-                // onChange={ this.onChangeText }
                 returnKeyType="search"
                 autoCorrect={ false } 
                 autoFocus={false}
@@ -49,7 +56,7 @@ export class ComboInput extends Component {
                     console.log('%conSubmitEditing', 'background: dodgerblue; color: white;');
                     console.log(
                       'value: ', value,
-                      'urlCurrent: ', urlCurrent,
+                      'urlSource: ', urlSource,
                       'urlNew', urlNew,
                     );
                     urlUpdate(value);
@@ -62,12 +69,12 @@ export class ComboInput extends Component {
                     // urlUpdate(value);
                   }
                 }
-                // onEndEditing={}
               />
 
               {/* <TouchableHighlight onPress={this.onSubmitEdit}>
                 <Text>Go</Text>
               </TouchableHighlight> */}
+
 
             </View>
           )

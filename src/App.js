@@ -18,8 +18,8 @@ import {
 
 
 
-import { ComboInput } from './components/ComboInput';
-import { BrowserView } from './views/BrowserView';
+import { ComboInput } from 'src/components/Browser/Navigation';
+import { BrowserView } from 'src/views/BrowserView';
 
 
 export default class App extends Component {
