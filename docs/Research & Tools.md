@@ -14,6 +14,11 @@
 * [MetaMask Mobile - LocationBar component](https://github.com/petejkim/metamask-mobile/blob/master/src/components/LocationBar.tsx)
 
 
+##### State 
+
+* [Sharing State Using React Context API](https://dev.to/sunnysingh/sharing-state-using-reacts-context-api-3623)
+* [5 Ways to Convert React Class Components to Functional Components with React Hooks](https://scotch.io/tutorials/5-ways-to-convert-react-class-components-to-functional-components-w-react-hooks)
+
 ##### CSS in JS
 
 * [react-native-styling-cheat-sheet](https://github.com/vhpoet/react-native-styling-cheat-sheet)
