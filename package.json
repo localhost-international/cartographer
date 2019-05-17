@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "dev:ios": "react-native run-ios",
-    "deploy:ios": "yarn bundle:ios && react-native run-ios --device='Carta'",
+    "dev:ios": "react-native run-ios --simulator=\"iPhone X\"",
+    "deploy:ios": "yarn bundle:ios && react-native run-ios --device=\"Carta\"",
     "bundle:ios": "react-native bundle --platform='ios' --entry-file='index.js' --bundle-output='./ios/Carta/main.jsbundle' --assets-dest='./ios' --dev=false",
     "log:ios": "react-native log-ios",
     "log:android": "react-native log-android",
