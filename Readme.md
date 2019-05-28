@@ -1,13 +1,13 @@
-# Carta
+# Cartographer
 _A decentralised web browser_
 
 ### Create
-* `react-native init Carta --template='typescript' --package='com.works.Carta'`
+* `react-native init Cartographer --template='typescript' --package='com.works.Cartographer'`
 
 
 ### Deploy
 
-* `react-native run-ios --device 'Carta'`
+* `react-native run-ios --device 'Cartographer'`
 * [`react-native init MyAwesomeProject --template typescript`](https://facebook.github.io/react-native/blog/2018/05/07/using-typescript-with-react-native)
 
 
@@ -28,7 +28,11 @@ _A decentralised web browser_
 ### Debugging and Logging
 
 **`log-*`**  
-Haven't yet had much luck with `react-native log-ios` and ``react-native log-android`. 
+Haven't yet had much luck with `react-native log-ios` and `react-native log-android`. 
+
+**Launch + Deploy**
+Updated `deploy:ios`  with `react-native run-ios --configuration=release --device="Waypoint"`
+
 
 **Remote Debugger**  
 `Command+D` allows enabling "Remote JS Debugging" which is great.  
@@ -69,3 +73,5 @@ Metro Bundler simplifies a lot of this by allowing the creation of small `packag
 ## Other
 
 * [Etheruem Foundation - Apply for a Grant](https://ethunicorns.typeform.com/to/XhZlnp)
+
+
