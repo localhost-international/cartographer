@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 
@@ -11,8 +12,22 @@ import { Consumer } from 'src/utils/context';
 
 export class BrowserView extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      activityIndicatorVisible: false,
+    }
+  }
+
   onNavigationStateChange() {
     console.log('onNavigationStateChange')
+  }
+
+  hideActivityIndicator() {
+    this.setState({ activityIndicatorVisible: false });
+  }
+  showActivityIndicator() {
+    this.setState({ activityIndicatorVisible: true });
   }
 
   render() {
@@ -21,24 +36,26 @@ export class BrowserView extends Component {
         {({ urlSource, urlUpdate }) => {
 
           return (
-            <View style={ styles.container }>
+            <View style={styles.container}>
               <WebView
-                style={ styles.webView }
-                useWebKit={ true }
-                originWhitelist={ ['*'] }
+                style={styles.webView}
+                useWebKit={true}
+                originWhitelist={['*']}
+                renderLoading={() => <ActivityIndicator className={styles.activityIndicator} size="small" color="rgba(0,0,0,.25)" />}
+                // startInLoadingState={true}
                 // source={{ uri: urlSource }}
-                source={{ 
-                  uri: urlSource, 
+                source={{
+                  uri: urlSource,
                   //html: '' // Note: `html` overrides uri
                 }}
-                onLoad={ 
+                onLoad={
                   (evt) => {
                     console.log(`%cWebView - onLoad`, `background: dodgerblue; color: white;`);
                     console.log(evt);
                   }
                 }
-                onNavigationStateChange={ this.onNavigationStateChange }
-                onError={ (err) => {
+                onNavigationStateChange={this.onNavigationStateChange}
+                onError={(err) => {
                   console.log('Error Loading Page', err, this);
                   // urlUpdate('http://leslieoa.com/')
                 }}
@@ -58,5 +75,15 @@ const styles = StyleSheet.create({
   },
   webView: {
     flex: 1,
+  },
+  activityIndicator: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center'
+
   }
 })

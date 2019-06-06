@@ -27,4 +27,5 @@ Cartography is a [Benevolent Dictatorship](https://en.wikipedia.org/wiki/Benevol
 
 ### Misc
 
-[Avoid using a web view to build a web browser](https://developer.apple.com/design/human-interface-guidelines/ios/views/web-views/)
+* [Avoid using a web view to build a web browser](https://developer.apple.com/design/human-interface-guidelines/ios/views/web-views/)
+* [Blockchain 50: Billion Dollar Babies](https://www.forbes.com/sites/michaeldelcastillo/2019/04/16/blockchain-50-billion-dollar-babies/#46632be457cc)

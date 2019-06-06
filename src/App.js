@@ -5,62 +5,14 @@
 
 import React, { Component } from 'react';
 
-import { Provider } from './utils/context';
-
-import {
-  Platform,
-  StyleSheet,
-  View,
-  Text,
-  SafeAreaView,
-  KeyboardAvoidingView,
-} from 'react-native';
-
-
-
-import { ComboInput } from 'src/components/Browser/Navigation';
-import { BrowserView } from 'src/views/BrowserView';
+import AppNavigator from 'src/AppNavigator';
 
 
 export default class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
-      <Provider>
-        <SafeAreaView style={styles.safeArea}>
-          <KeyboardAvoidingView
-            style={styles.keyboardContainer}
-            behavior="padding"
-            enabled
-          >
-            <View style={styles.view}>
-              <BrowserView />
-              <ComboInput />
-            </View>
-          </KeyboardAvoidingView>
-        </SafeAreaView>
-      </Provider>
+      <AppNavigator />
     );
   }
-}
-
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: 'rgba(255,255,255,1)',
-  },
-  keyboardContainer: {
-    flex: 1,
-  },
-  view: {
-    flex: 1,
-  },
-});
-
+};
 

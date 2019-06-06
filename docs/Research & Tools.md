@@ -1,6 +1,7 @@
 # Research & Tools
 
 
+
 ### web3
 
 * [trust-web3-provider](https://github.com/TrustWallet/trust-web3-provider)
@@ -11,6 +12,8 @@
 
 ##### Code
 
+* [Creating an embedded browser with React-Native using react-native-webview](https://medium.com/lazy-engineering/creating-an-embedded-browser-with-react-native-aea42b54740)
+	* [...the code](https://github.com/liron-navon/react-native-simple-browser/blob/master/Browser.js)
 * [MetaMask Mobile - LocationBar component](https://github.com/petejkim/metamask-mobile/blob/master/src/components/LocationBar.tsx)
 
 
@@ -45,3 +48,7 @@
 **OT Updates**
 
 * [Publish React Native bundles over the air with the first Electrode-RN release](https://medium.com/walmartlabs/publish-react-native-bundles-over-the-air-with-the-first-electrode-rn-release-3780edb387ba)
+
+
+
+

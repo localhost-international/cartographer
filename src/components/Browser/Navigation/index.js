@@ -70,15 +70,11 @@ export class ComboInput extends Component {
                   }
                 }
               />
-
-              {/* <TouchableHighlight onPress={this.onSubmitEdit}>
-                <Text>Go</Text>
-              </TouchableHighlight> */}
-
-
+              <TouchableHighlight onPress={this.onSubmitEdit}>
+                <Text style={styles.button}>⚙️</Text>
+              </TouchableHighlight>
             </View>
           )
-
         }}
       </Consumer>
     )
@@ -106,5 +102,12 @@ const styles = StyleSheet.create({
     //borderWidth: 1,
     //borderColor: 'rgba(0,0,0,.25)',
   },
+  button: {
+    fontSize: 30,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    paddingRight: 10,
+    paddingLeft: 10,
+  }
 });
 
