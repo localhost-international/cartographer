@@ -8,12 +8,15 @@ import {
   Text,
   ProgressViewIOS,
   ProgressBarAndroid,
-} from 'react-native'
+} from 'react-native';
+
+import { withNavigation } from 'react-navigation';
 
 import { Consumer } from 'src/utils/context';
 
 
-export class ComboInput extends Component {
+// export class ComboInput extends Component {
+class ComboInput extends Component {
 
   constructor(props) {
     super(props);
@@ -30,25 +33,28 @@ export class ComboInput extends Component {
   }
 
   render() {
+
+    const { navigate } = this.props.navigation;
+
     return (
       <Consumer>
         {({ urlSource, urlNew, urlUpdate }) => {
 
           return (
-            <View style={ styles.view }>
+            <View style={styles.view}>
               {
                 (Platform.OS === 'ios') ?
-                ( <ProgressViewIOS progress={ 50 } /> ) : 
-                ( <ProgressBarAndroid styleAttr="horizontal" progress={ 50 } indeterminate={ false } /> )
+                  (<ProgressViewIOS progress={50} />) :
+                  (<ProgressBarAndroid styleAttr="horizontal" progress={50} indeterminate={false} />)
               }
               <TextInput
-                style={ styles.textInput }
-                value={ urlNew } 
-                placeholder={ urlSource }
+                style={styles.textInput}
+                value={urlNew}
+                placeholder={urlSource}
                 spellCheck={false}
-                autoCapitalize="none" 
+                autoCapitalize="none"
                 returnKeyType="search"
-                autoCorrect={ false } 
+                autoCorrect={false}
                 autoFocus={false}
                 onSubmitEditing={
                   (evt) => {
@@ -70,7 +76,14 @@ export class ComboInput extends Component {
                   }
                 }
               />
-              <TouchableHighlight onPress={this.onSubmitEdit}>
+              <TouchableHighlight
+                onPress={
+                  () => {
+                    console.log('Settings', this.props);
+                    navigate('Settings');
+                  }
+                }
+              >
                 <Text style={styles.button}>⚙️</Text>
               </TouchableHighlight>
             </View>
@@ -79,19 +92,12 @@ export class ComboInput extends Component {
       </Consumer>
     )
   }
-}
+};
 
-const styleVars = {
-  container: {
-    padding: 12
-  }
-}
 
 const styles = StyleSheet.create({
   view: {
     flexDirection: 'row',
-    //backgroundColor: 'rgba(255,255,255,.5)',
-    //borderTopColor: 'rgba(0,0,0,.05)',
   },
   textInput: {
     flex: 1,
@@ -99,8 +105,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     padding: 8,
     backgroundColor: 'rgba(223,228,231,1)',
-    //borderWidth: 1,
-    //borderColor: 'rgba(0,0,0,.25)',
   },
   button: {
     fontSize: 30,
@@ -110,4 +114,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   }
 });
+
+
+export default withNavigation(ComboInput);
+
+
+
 

@@ -10,7 +10,7 @@ import { WebView } from 'react-native-webview';
 import { Consumer } from 'src/utils/context';
 
 
-export class BrowserView extends Component {
+export class BrowserWebView extends Component {
 
   constructor(props) {
     super(props);

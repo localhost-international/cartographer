@@ -1,6 +1,6 @@
 {
   "name": "Cartographer",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -9,37 +9,26 @@
     "bundle:ios": "react-native bundle --platform='ios' --entry-file='index.js' --bundle-output='./ios/Carta/main.jsbundle' --assets-dest='./ios' --dev=false",
     "log:ios": "react-native log-ios",
     "log:android": "react-native log-android",
-    "test": "jest",
-    "lint": "eslint ."
+    "test": "jest"
   },
   "dependencies": {
-    "react": "^16.8.6",
-    "react-native": "^0.59.5",
+    "react": "16.8.3",
+    "react-native": "0.59.9",
     "react-native-gesture-handler": "^1.3.0",
-    "react-native-web3-webview": "^1.3.1",
-    "react-native-webview": "^5.7.1",
+    "react-native-webview": "^5.11.0",
     "react-navigation": "^3.11.0",
     "react-navigation-hooks": "^1.0.0-alpha.2",
-    "styled-components": "^4.2.0",
     "web3": "^1.0.0-beta.55"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
-    "@babel/runtime": "^7.4.2",
-    "@react-native-community/eslint-config": "^0.0.3",
-    "babel-jest": "^24.5.0",
-    "eslint": "^5.16.0",
-    "jest": "^24.5.0",
-    "metro-react-native-babel-preset": "^0.53.1",
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.54.1",
     "react-test-renderer": "16.8.3"
   },
   "jest": {
     "preset": "react-native"
-  },
-  "description": "_A decentralised web browser_",
-  "directories": {
-    "doc": "docs"
-  },
-  "author": "LeslieOA <leslie@blank.works>",
-  "license": "AGPL-3.0"
+  }
 }

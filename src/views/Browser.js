@@ -9,13 +9,13 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-import { Provider } from './utils/context';
+import { Provider } from 'src/utils/context';
 
-import { ComboInput } from 'src/components/Browser/Navigation';
-import { BrowserView } from 'src/views/BrowserView';
+import ComboInput from 'src/components/Browser/Navigation';
+import { BrowserWebView } from 'src/components/Browser/WebView';
 
 
-export default class BrowserScreen extends Component {
+export default class Browser extends Component {
 
   constructor(props) {
     super(props);
@@ -24,8 +24,6 @@ export default class BrowserScreen extends Component {
 
   render() {
     return (
-
-
       <Provider>
         <SafeAreaView style={styles.safeArea}>
           <KeyboardAvoidingView
@@ -34,7 +32,7 @@ export default class BrowserScreen extends Component {
             enabled
           >
             <View style={styles.view}>
-              <BrowserView />
+              <BrowserWebView />
               <ComboInput />
             </View>
           </KeyboardAvoidingView>

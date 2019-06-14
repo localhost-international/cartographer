@@ -7,8 +7,9 @@ import {
 } from 'react-native';
 
 
-export default class HomeScreen extends Component {
+export default class Intro extends Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Text>Welcome to Cartograpther</Text>
@@ -16,7 +17,8 @@ export default class HomeScreen extends Component {
           title="Start Browsing" 
           onPress={
             () => {
-              this.props.navigation.navigate('BrowserScreen')
+              console.log('Start Button');
+              navigate('Browser');
             }
           }
         />

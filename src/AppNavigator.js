@@ -5,17 +5,21 @@ import {
   createAppContainer, 
 } from 'react-navigation';
 
-import HomeScreen from 'src/HomeScreen';
-import BrowserScreen from 'src/BrowserScreen';
+import Intro from 'src/views/Intro';
+import Browser from 'src/views/Browser';
+import Settings from 'src/views/Settings';
+import About from 'src/views/About';
 
 
 const AppNavigator = createDrawerNavigator(
   {
-    HomeScreen: { screen: HomeScreen },
-    BrowserScreen: { screen: BrowserScreen },
+    Intro: { screen: Intro },
+    Browser: { screen: Browser },
+    Settings: { screen: Settings },
+    About: { screen: About },
   },
   { 
-    initialRouteName: 'HomeScreen' // 'BrowserScreen' 
+    initialRouteName: 'Browser' 
   },
 );
 
