@@ -57,7 +57,7 @@ export class BrowserWebView extends Component {
                 onNavigationStateChange={this.onNavigationStateChange}
                 onError={(err) => {
                   console.log('Error Loading Page', err, this);
-                  // urlUpdate('http://leslieoa.com/')
+                  urlUpdate('http://leslieoa.com/')
                 }}
               />
             </View>

@@ -15,8 +15,8 @@ const AppNavigator = createDrawerNavigator(
   {
     Intro: { screen: Intro },
     Browser: { screen: Browser },
-    Settings: { screen: Settings },
-    About: { screen: About },
+    Settings: { screen: Settings }, 
+    About: { screen: About }, 
   },
   { 
     initialRouteName: 'Browser' 
