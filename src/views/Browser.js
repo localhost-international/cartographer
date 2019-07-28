@@ -19,9 +19,13 @@ import { Provider } from 'src/utils/context';
 import { ProgressIndicator } from 'src/components/ProgressIndicator';
 
 
+// import hyperdrive from 'hyperdrive';
+
+
+
 let browserRef = null;
 
-const url = 'http://www.duck.com/';
+const url = 'https://start.duckduckgo.com/';
 
 const searchEngines = {
   'duck': (query) => `https://duckduckgo.com/?q=${query}`,
@@ -33,7 +37,7 @@ const upgradeURL = (uri, searchEngines = 'google') => {
   const isURL = uri.split(' ').length === 1 && uri.includes('.');
   if (isURL) {
     if (!uri.startsWith('http')) {
-      return `https://www.${uri}`;
+      return `https://${uri}`; // `https://www.${uri}`;
     }
     return uri;
   }
@@ -41,6 +45,8 @@ const upgradeURL = (uri, searchEngines = 'google') => {
   return searchEngines[searchEngine](encodedURI);
 };
 
+
+// console.log('Hyperdrive', hyperdrive)
 
 const injectedJavaScript = `
   window.ReactNativeWebView.postMessage('injected javascript works!');
@@ -55,6 +61,7 @@ class Browser extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      browserRef: React.createRef(),
       currentURL: url,
       urlText: url,
       title: '',

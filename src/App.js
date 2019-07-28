@@ -1,18 +1,24 @@
 /**
- * Carta - A decentralised web browser/OS
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
  * @format
+ * @flow
  */
 
-import React, { Component } from 'react';
-
+import React, { Component, Fragment } from 'react';
 import AppNavigator from 'src/AppNavigator';
 
+// Hide known warnings during development
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings([
+  'Warning: componentWillUpdate is deprecated',  
+]);
 
-export default class App extends Component {
-  render() {
-    return (
-      <AppNavigator />
-    );
-  }
+const App = () => {
+  return (
+    <AppNavigator />
+  );
 };
 
+export default App;

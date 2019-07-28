@@ -3,7 +3,7 @@ import React, { Component, createContext } from 'react';
 const urls = [
   'https://status.im',
   'https://dontsharethis.b-ndstore.com/',
-  'http://duck.com/',
+  'https://start.duckduckgo.com/',
 ];
 
 const Context = createContext({

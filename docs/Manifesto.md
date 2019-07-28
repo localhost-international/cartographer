@@ -1,4 +1,4 @@
-# Carta
+# Cartographer
 
 _A whitepaper/manisesto_
 

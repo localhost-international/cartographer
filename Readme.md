@@ -2,7 +2,7 @@
 _A decentralised web browser_
 
 ### Create
-* `react-native init Cartographer --template='typescript' --package='com.works.Cartographer'`
+* `react-native init Cartographer'`
 
 
 ### Deploy
@@ -16,10 +16,13 @@ _A decentralised web browser_
 **How to re-cover when things don't run**
 
 1. `rm -Rfv ios/ && rm -Rfv android/`
-2. `react-native eject`
-3. Re-add packages, re-link and run :-)
+2. `react-native upgrade --legacy` (previously `react-native eject`)
+3. 
+	a. `xed -b ios` 
+	b. `pod install`
+	c. ...(previously "Re-add packages, re-link and run")
 
-* Keep `"name": "Carta"` in package.json until further notice. 
+* Keep `"name": "Cartographer"` in package.json until further notice. 
 
 
 
