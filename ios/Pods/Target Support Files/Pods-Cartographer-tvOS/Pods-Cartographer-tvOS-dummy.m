@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_Cartographer_tvOS : NSObject
+@interface PodsDummy_Pods_cartographer_tvOS : NSObject
 @end
-@implementation PodsDummy_Pods_Cartographer_tvOS
+@implementation PodsDummy_Pods_cartographer_tvOS
 @end

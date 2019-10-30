@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* CartographerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CartographerTests.m */; };
+		00E356F31AD99517003FC87E /* cartographerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* cartographerTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1D7F8726653C4FF030B76930 /* libPods-CartographerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E4F324C2F9A59CB95D4D73 /* libPods-CartographerTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* CartographerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CartographerTests.m */; };
-		536329437A138D7CEA0CC027 /* libPods-Cartographer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E443D7B3894E2EA95AC90D63 /* libPods-Cartographer.a */; };
-		91E65531C877C14927F2901A /* libPods-Cartographer-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A8922D8CB3DD6955FD778F /* libPods-Cartographer-tvOSTests.a */; };
-		C5CA8180E035496CED285647 /* libPods-Cartographer-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 059E0904C5E62CA88A5E8C93 /* libPods-Cartographer-tvOS.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* cartographerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* cartographerTests.m */; };
+		6D2CE3CF0BB2E6929AEA2DB8 /* libPods-cartographer-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9877BCB1E63680BE06199515 /* libPods-cartographer-tvOSTests.a */; };
+		79ACD978EE0FA8A6CA04490E /* libPods-cartographer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D9F219AD7CAFCEB38DD97A /* libPods-cartographer.a */; };
+		958E93FEF559A20CD52476AB /* libPods-cartographer-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D37A6616F75852C100F54 /* libPods-cartographer-tvOS.a */; };
+		FFBF9E8C02415C6C13772049 /* libPods-cartographerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E1F8DC3DC0FF1CF5F66189 /* libPods-cartographerTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,45 +28,45 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = Cartographer;
+			remoteInfo = cartographer;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "Cartographer-tvOS";
+			remoteInfo = "cartographer-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		008E3F2F28F7A63A67A11AEF /* Pods-cartographer-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cartographer-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-cartographer-tvOSTests/Pods-cartographer-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* CartographerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartographerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* cartographerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cartographerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* CartographerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartographerTests.m; sourceTree = "<group>"; };
-		059E0904C5E62CA88A5E8C93 /* libPods-Cartographer-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cartographer-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* Cartographer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartographer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Cartographer/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Cartographer/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* cartographerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cartographerTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* cartographer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cartographer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = cartographer/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = cartographer/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Cartographer/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Cartographer/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Cartographer/main.m; sourceTree = "<group>"; };
-		16DAD39E6517E7A3211AAF65 /* Pods-Cartographer-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartographer-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Cartographer-tvOS/Pods-Cartographer-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		16E4F324C2F9A59CB95D4D73 /* libPods-CartographerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CartographerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		28F1CD4EC859A58C02627184 /* Pods-Cartographer-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartographer-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Cartographer-tvOSTests/Pods-Cartographer-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* Cartographer-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cartographer-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* Cartographer-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cartographer-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		611EAF357790F61A1332892C /* Pods-CartographerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CartographerTests.release.xcconfig"; path = "Target Support Files/Pods-CartographerTests/Pods-CartographerTests.release.xcconfig"; sourceTree = "<group>"; };
-		90A8922D8CB3DD6955FD778F /* libPods-Cartographer-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cartographer-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AC18C31297434D653FCD0A2 /* Pods-Cartographer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartographer.debug.xcconfig"; path = "Target Support Files/Pods-Cartographer/Pods-Cartographer.debug.xcconfig"; sourceTree = "<group>"; };
-		AD6FAEF04A037C6FBE69B6BD /* Pods-Cartographer-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartographer-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Cartographer-tvOS/Pods-Cartographer-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		BE7E3364D6F94B177E7F9CA4 /* Pods-Cartographer-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartographer-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Cartographer-tvOSTests/Pods-Cartographer-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C70401EF80BAAAAF52EB139A /* Pods-Cartographer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartographer.release.xcconfig"; path = "Target Support Files/Pods-Cartographer/Pods-Cartographer.release.xcconfig"; sourceTree = "<group>"; };
-		E443D7B3894E2EA95AC90D63 /* libPods-Cartographer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cartographer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = cartographer/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = cartographer/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = cartographer/main.m; sourceTree = "<group>"; };
+		16A95DC24CD32E946D17DF56 /* Pods-cartographerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cartographerTests.debug.xcconfig"; path = "Target Support Files/Pods-cartographerTests/Pods-cartographerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1F8C6AF775D2D36E4C3754CA /* Pods-cartographer-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cartographer-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-cartographer-tvOSTests/Pods-cartographer-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		24D9F219AD7CAFCEB38DD97A /* libPods-cartographer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cartographer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* cartographer-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cartographer-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* cartographer-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cartographer-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F9248BBA9EB864AAD156F3B /* Pods-cartographer-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cartographer-tvOS.release.xcconfig"; path = "Target Support Files/Pods-cartographer-tvOS/Pods-cartographer-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		5FE67432E7D40C57BF0076A8 /* Pods-cartographer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cartographer.release.xcconfig"; path = "Target Support Files/Pods-cartographer/Pods-cartographer.release.xcconfig"; sourceTree = "<group>"; };
+		7CB444F4B185C81E60ED388A /* Pods-cartographer-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cartographer-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-cartographer-tvOS/Pods-cartographer-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		83F536B81E781C2E939F3340 /* Pods-cartographer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cartographer.debug.xcconfig"; path = "Target Support Files/Pods-cartographer/Pods-cartographer.debug.xcconfig"; sourceTree = "<group>"; };
+		979E4C7B99B5AFABB97C3942 /* Pods-cartographerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cartographerTests.release.xcconfig"; path = "Target Support Files/Pods-cartographerTests/Pods-cartographerTests.release.xcconfig"; sourceTree = "<group>"; };
+		9877BCB1E63680BE06199515 /* libPods-cartographer-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cartographer-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B84D37A6616F75852C100F54 /* libPods-cartographer-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cartographer-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0E1F8DC3DC0FF1CF5F66189 /* libPods-cartographerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cartographerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F7C3416792BBA53C9DEC6894 /* Pods-CartographerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CartographerTests.debug.xcconfig"; path = "Target Support Files/Pods-CartographerTests/Pods-CartographerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D7F8726653C4FF030B76930 /* libPods-CartographerTests.a in Frameworks */,
+				FFBF9E8C02415C6C13772049 /* libPods-cartographerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				536329437A138D7CEA0CC027 /* libPods-Cartographer.a in Frameworks */,
+				79ACD978EE0FA8A6CA04490E /* libPods-cartographer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5CA8180E035496CED285647 /* libPods-Cartographer-tvOS.a in Frameworks */,
+				958E93FEF559A20CD52476AB /* libPods-cartographer-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +98,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91E65531C877C14927F2901A /* libPods-Cartographer-tvOSTests.a in Frameworks */,
+				6D2CE3CF0BB2E6929AEA2DB8 /* libPods-cartographer-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* CartographerTests */ = {
+		00E356EF1AD99517003FC87E /* cartographerTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* CartographerTests.m */,
+				00E356F21AD99517003FC87E /* cartographerTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = CartographerTests;
+			path = cartographerTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* Cartographer */ = {
+		13B07FAE1A68108700A75B9A /* cartographer */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +133,23 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = Cartographer;
+			name = cartographer;
+			sourceTree = "<group>";
+		};
+		17D8AA419C9320C5B76C69B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83F536B81E781C2E939F3340 /* Pods-cartographer.debug.xcconfig */,
+				5FE67432E7D40C57BF0076A8 /* Pods-cartographer.release.xcconfig */,
+				7CB444F4B185C81E60ED388A /* Pods-cartographer-tvOS.debug.xcconfig */,
+				5F9248BBA9EB864AAD156F3B /* Pods-cartographer-tvOS.release.xcconfig */,
+				1F8C6AF775D2D36E4C3754CA /* Pods-cartographer-tvOSTests.debug.xcconfig */,
+				008E3F2F28F7A63A67A11AEF /* Pods-cartographer-tvOSTests.release.xcconfig */,
+				16A95DC24CD32E946D17DF56 /* Pods-cartographerTests.debug.xcconfig */,
+				979E4C7B99B5AFABB97C3942 /* Pods-cartographerTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,10 +157,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				E443D7B3894E2EA95AC90D63 /* libPods-Cartographer.a */,
-				059E0904C5E62CA88A5E8C93 /* libPods-Cartographer-tvOS.a */,
-				90A8922D8CB3DD6955FD778F /* libPods-Cartographer-tvOSTests.a */,
-				16E4F324C2F9A59CB95D4D73 /* libPods-CartographerTests.a */,
+				24D9F219AD7CAFCEB38DD97A /* libPods-cartographer.a */,
+				B84D37A6616F75852C100F54 /* libPods-cartographer-tvOS.a */,
+				9877BCB1E63680BE06199515 /* libPods-cartographer-tvOSTests.a */,
+				E0E1F8DC3DC0FF1CF5F66189 /* libPods-cartographerTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,12 +175,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* Cartographer */,
+				13B07FAE1A68108700A75B9A /* cartographer */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* CartographerTests */,
+				00E356EF1AD99517003FC87E /* cartographerTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				96ABADF61BBE5E7EF58B9F8D /* Pods */,
+				17D8AA419C9320C5B76C69B1 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -174,37 +190,22 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Cartographer.app */,
-				00E356EE1AD99517003FC87E /* CartographerTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* Cartographer-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* Cartographer-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* cartographer.app */,
+				00E356EE1AD99517003FC87E /* cartographerTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* cartographer-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* cartographer-tvOSTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		96ABADF61BBE5E7EF58B9F8D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9AC18C31297434D653FCD0A2 /* Pods-Cartographer.debug.xcconfig */,
-				C70401EF80BAAAAF52EB139A /* Pods-Cartographer.release.xcconfig */,
-				AD6FAEF04A037C6FBE69B6BD /* Pods-Cartographer-tvOS.debug.xcconfig */,
-				16DAD39E6517E7A3211AAF65 /* Pods-Cartographer-tvOS.release.xcconfig */,
-				BE7E3364D6F94B177E7F9CA4 /* Pods-Cartographer-tvOSTests.debug.xcconfig */,
-				28F1CD4EC859A58C02627184 /* Pods-Cartographer-tvOSTests.release.xcconfig */,
-				F7C3416792BBA53C9DEC6894 /* Pods-CartographerTests.debug.xcconfig */,
-				611EAF357790F61A1332892C /* Pods-CartographerTests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* CartographerTests */ = {
+		00E356ED1AD99517003FC87E /* cartographerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CartographerTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "cartographerTests" */;
 			buildPhases = (
-				4EFD5998AECFE054534653EF /* [CP] Check Pods Manifest.lock */,
+				4C24F0863434A00553086217 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -214,16 +215,16 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = CartographerTests;
-			productName = CartographerTests;
-			productReference = 00E356EE1AD99517003FC87E /* CartographerTests.xctest */;
+			name = cartographerTests;
+			productName = cartographerTests;
+			productReference = 00E356EE1AD99517003FC87E /* cartographerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Cartographer */ = {
+		13B07F861A680F5B00A75B9A /* cartographer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Cartographer" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "cartographer" */;
 			buildPhases = (
-				2649B883E38B752132C99886 /* [CP] Check Pods Manifest.lock */,
+				6148DB4F1A9BBB17EABBAC3D /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -234,16 +235,16 @@
 			);
 			dependencies = (
 			);
-			name = Cartographer;
-			productName = Cartographer;
-			productReference = 13B07F961A680F5B00A75B9A /* Cartographer.app */;
+			name = cartographer;
+			productName = cartographer;
+			productReference = 13B07F961A680F5B00A75B9A /* cartographer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* Cartographer-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* cartographer-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Cartographer-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "cartographer-tvOS" */;
 			buildPhases = (
-				3C774C35589612196258A350 /* [CP] Check Pods Manifest.lock */,
+				9F221174771882A061A59D28 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -254,16 +255,16 @@
 			);
 			dependencies = (
 			);
-			name = "Cartographer-tvOS";
-			productName = "Cartographer-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* Cartographer-tvOS.app */;
+			name = "cartographer-tvOS";
+			productName = "cartographer-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* cartographer-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* Cartographer-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* cartographer-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Cartographer-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "cartographer-tvOSTests" */;
 			buildPhases = (
-				B9C28A966E2FF6D85C27D239 /* [CP] Check Pods Manifest.lock */,
+				8CF2799AB34FA59E9839DB82 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -273,9 +274,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "Cartographer-tvOSTests";
-			productName = "Cartographer-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* Cartographer-tvOSTests.xctest */;
+			name = "cartographer-tvOSTests";
+			productName = "cartographer-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* cartographer-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -291,9 +292,6 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
-					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 5Y4NB76UP6;
-					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -305,12 +303,11 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Cartographer" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "cartographer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -319,10 +316,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Cartographer */,
-				00E356ED1AD99517003FC87E /* CartographerTests */,
-				2D02E47A1E0B4A5D006451C7 /* Cartographer-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* Cartographer-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* cartographer */,
+				00E356ED1AD99517003FC87E /* cartographerTests */,
+				2D02E47A1E0B4A5D006451C7 /* cartographer-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* cartographer-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -376,28 +373,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		2649B883E38B752132C99886 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Cartographer-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,7 +387,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		3C774C35589612196258A350 /* [CP] Check Pods Manifest.lock */ = {
+		4C24F0863434A00553086217 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,14 +402,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Cartographer-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-cartographerTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4EFD5998AECFE054534653EF /* [CP] Check Pods Manifest.lock */ = {
+		6148DB4F1A9BBB17EABBAC3D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -449,14 +424,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CartographerTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-cartographer-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B9C28A966E2FF6D85C27D239 /* [CP] Check Pods Manifest.lock */ = {
+		8CF2799AB34FA59E9839DB82 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -471,7 +446,29 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Cartographer-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-cartographer-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F221174771882A061A59D28 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cartographer-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -523,7 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* CartographerTests.m in Sources */,
+				00E356F31AD99517003FC87E /* cartographerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* CartographerTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* cartographerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,12 +555,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Cartographer */;
+			target = 13B07F861A680F5B00A75B9A /* cartographer */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* Cartographer-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* cartographer-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -575,7 +572,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = Cartographer;
+			path = cartographer;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -583,14 +580,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7C3416792BBA53C9DEC6894 /* Pods-CartographerTests.debug.xcconfig */;
+			baseConfigurationReference = 16A95DC24CD32E946D17DF56 /* Pods-cartographerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CartographerTests/Info.plist;
+				INFOPLIST_FILE = cartographerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -600,17 +597,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cartographer.app/Cartographer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cartographer.app/cartographer";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 611EAF357790F61A1332892C /* Pods-CartographerTests.release.xcconfig */;
+			baseConfigurationReference = 979E4C7B99B5AFABB97C3942 /* Pods-cartographerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = CartographerTests/Info.plist;
+				INFOPLIST_FILE = cartographerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -620,19 +617,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cartographer.app/Cartographer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cartographer.app/cartographer";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9AC18C31297434D653FCD0A2 /* Pods-Cartographer.debug.xcconfig */;
+			baseConfigurationReference = 83F536B81E781C2E939F3340 /* Pods-cartographer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 5Y4NB76UP6;
-				INFOPLIST_FILE = Cartographer/Info.plist;
+				INFOPLIST_FILE = cartographer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -640,19 +636,18 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Cartographer;
+				PRODUCT_NAME = cartographer;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C70401EF80BAAAAF52EB139A /* Pods-Cartographer.release.xcconfig */;
+			baseConfigurationReference = 5FE67432E7D40C57BF0076A8 /* Pods-cartographer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5Y4NB76UP6;
-				INFOPLIST_FILE = Cartographer/Info.plist;
+				INFOPLIST_FILE = cartographer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -660,14 +655,14 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Cartographer;
+				PRODUCT_NAME = cartographer;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD6FAEF04A037C6FBE69B6BD /* Pods-Cartographer-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 7CB444F4B185C81E60ED388A /* Pods-cartographer-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -678,14 +673,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Cartographer-tvOS/Info.plist";
+				INFOPLIST_FILE = "cartographer-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Cartographer-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.cartographer-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -695,7 +690,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16DAD39E6517E7A3211AAF65 /* Pods-Cartographer-tvOS.release.xcconfig */;
+			baseConfigurationReference = 5F9248BBA9EB864AAD156F3B /* Pods-cartographer-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -706,14 +701,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Cartographer-tvOS/Info.plist";
+				INFOPLIST_FILE = "cartographer-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Cartographer-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.cartographer-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -723,7 +718,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE7E3364D6F94B177E7F9CA4 /* Pods-Cartographer-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 1F8C6AF775D2D36E4C3754CA /* Pods-cartographer-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -733,24 +728,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Cartographer-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "cartographer-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Cartographer-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.cartographer-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cartographer-tvOS.app/Cartographer-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cartographer-tvOS.app/cartographer-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28F1CD4EC859A58C02627184 /* Pods-Cartographer-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 008E3F2F28F7A63A67A11AEF /* Pods-cartographer-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -760,17 +755,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Cartographer-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "cartographer-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Cartographer-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.cartographer-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cartographer-tvOS.app/Cartographer-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cartographer-tvOS.app/cartographer-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -877,7 +872,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CartographerTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "cartographerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -886,7 +881,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Cartographer" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "cartographer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -895,7 +890,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Cartographer-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "cartographer-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -904,7 +899,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Cartographer-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "cartographer-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -913,7 +908,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Cartographer" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "cartographer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
