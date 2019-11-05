@@ -329,7 +329,8 @@ const styles = StyleSheet.create({
 	browserAddressTextInput: {
 		fontSize: 18,
 		textAlign: 'left',
-		padding: 8,
+    padding: 8,
+    color: 'black',
 	},
 	iconContainer: {
 		marginLeft: 16,
