@@ -17,24 +17,28 @@ interface IconProps {
   type: string
 }
 
+const iconSize = 32
 
 
 const View = styled.View`
+  /*border: 1px solid red;*/
   margin-left: 16px;
-  margin-right: 10px;
+  margin-right: 16px;
   padding-top: 8px;
   padding-bottom: 0px;
   flex-direction: row;
   justify-content: space-between;
 `
 const Icon = styled.TouchableOpacity`
-  width: 30px;
-  height: 30px;
-  margin-left: 2.5px;
-  margin-right: 2.5px;
-  ${({ type }: IconProps) => type === 'tabs' && `margin-top: 4px;`}
-  ${({ type }: IconProps) => type === 'reload' && `margin-top: 4px;`}
-  ${({ type }: IconProps) => type === 'options' && `margin-top: 4px;`}
+  /*border: 1px solid red;*/
+  height: ${iconSize}px;
+  padding-top: 0;
+  padding-right: 10px;
+  padding-bottom: 0;
+  padding-left: 10px;
+  ${({ type }: IconProps) => type === 'tabs' && ``}
+  ${({ type }: IconProps) => type === 'reload' && ``}
+  ${({ type }: IconProps) => type === 'options' && ``}
 `
 
 
@@ -57,19 +61,19 @@ export default function NavigationButtons() {
     <SafeAreaView>
       <View>
         <Icon type={`back`} onPress={webViewGoBack}>
-          <IconArrowLeft width={22} height={29} />
+          <IconArrowLeft height={iconSize} />
         </Icon>
         <Icon type={`forward`} onPress={webViewGoForward}>
-          <IconArrowRight width={22} height={29} />
+          <IconArrowRight height={iconSize} />
         </Icon>
         <Icon type={`tabs`}>
-          <IconTabs width={25} height={23} />
+          <IconTabs height={iconSize} />
         </Icon>
         <Icon type={`reload`} onPress={webViewReload}>
-          <IconRefresh width={28} height={24} />
+          <IconRefresh height={iconSize} />
         </Icon>
         <Icon type={`options`}>
-          <IconOptions width={24} height={24} onPress={viewSettings} />
+          <IconOptions height={iconSize} onPress={viewSettings} />
         </Icon>
       </View>
     </SafeAreaView>
