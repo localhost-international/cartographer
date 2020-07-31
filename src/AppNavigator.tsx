@@ -1,17 +1,23 @@
-import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import * as React from 'react'
 
-import Browser from './components/Browser';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
+import Browser from 'src/views/Browser'
 
-const AppNavigator = createDrawerNavigator(
-  {
-    Browser: { screen: Browser },
-  },
-  { 
-    initialRouteName: 'Browser' 
-  },
-);
+const Stack = createStackNavigator()
 
-
-export default createAppContainer(AppNavigator); 
+export default function AppNavigator() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Browser"
+        screenOptions={{}}
+        mode="card"
+        headerMode="none"
+      >
+        <Stack.Screen name="Browser" component={Browser} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}

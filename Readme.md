@@ -2,14 +2,12 @@
 _A decentralised web browser_
 
 ### Create
-* `react-native init Cartographer'`
+* `npx react-native init Cartographer --template react-native-template-typescript`
 
 
 ### Deploy
 
 * `react-native run-ios --device 'Cartographer'`
-* [`react-native init MyAwesomeProject --template typescript`](https://facebook.github.io/react-native/blog/2018/05/07/using-typescript-with-react-native)
-
 
 ### Running on a real device (untethered)
 
@@ -29,7 +27,7 @@ From [Running On Device](https://facebook.github.io/react-native/docs/running-on
 2. `react-native upgrade --legacy` (previously `react-native eject`)
 3. 
 	a. `xed -b ios` 
-	b. `pod install`
+	b. `npx pod-install ios`
 	c. ...(previously "Re-add packages, re-link and run")
 
 * Keep `"name": "Cartographer"` in package.json until further notice. 
@@ -54,8 +52,7 @@ Visit [the debugger](http://localhost:8081/debugger-ui/) in a new window so it h
 
 ### Keyboard
 
-Still having issues here. Will eventually look into it. 
-Minimal UI for now (padding/margin issues).  
+Still having issues here. Will eventually look into it. Minimal UI for now (padding/margin issues).  
 
 ```javascript
 keyboardVerticalOffset={
@@ -79,12 +76,5 @@ Metro Bundler simplifies a lot of this by allowing the creation of small `packag
 	"name": "src"
 }
 ```
-
-
-
-
-## Other
-
-* [Etheruem Foundation - Apply for a Grant](https://ethunicorns.typeform.com/to/XhZlnp)
 
 

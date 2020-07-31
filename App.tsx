@@ -1,44 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React from 'react'
 
-import React, { Component } from 'react';
-import { Text } from 'react-native';
-
-import AppNavigator from './src/AppNavigator';
+import { Provider } from 'react-redux'
+import store from 'src/store/index'
 
 
-export interface State {
-  fontLoaded: boolean  
-}
+import AppNavigator from 'src/AppNavigator'
 
-export default class App extends Component<{}, State> {
 
-  constructor(props) {
-		super(props);
-		this.state = {
-			fontLoaded: true, // false
-		}
-	}
+export default function App() {
 
-  async componentDidMount() {
-
-  }
-
-  render() {
-    return (
-      <>
-      {
-        this.state.fontLoaded ? (
-          <AppNavigator />
-        ) : null
-      }
-      </>
-    )
-  }
-
+  return (
+    <>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    </>
+  )
 }
