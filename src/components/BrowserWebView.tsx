@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { Text } from 'react-native'
 import { WebView } from 'react-native-webview'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
+import { WEBVIEW_REF } from 'src/store/navigation.actions'
 
 
 const WebViewContainer = styled(WebView)`
@@ -11,6 +13,12 @@ const WebViewContainer = styled(WebView)`
 
 
 export default function BrowserWebView() {
+
+  const webViewRef = useRef<WebView>(null)
+
+  useEffect(() => {
+    dispatch({ type: WEBVIEW_REF, webViewRef })
+  }, [])
 
   const navigation = useSelector((state: AppState) => state.navigation)
   const dispatch = useDispatch()
@@ -27,6 +35,7 @@ export default function BrowserWebView() {
 
   return (
     <WebView
+      ref={webViewRef}
       userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
       originWhitelist={['*']}
       source={{ uri: navigation.urlCurrent }}
@@ -35,7 +44,8 @@ export default function BrowserWebView() {
       domStorageEnabled={config.allowStorage}
       javaScriptEnabled={config.allowJavascript}
       decelerationRate={0.998}
-      allowsInlineMediaPlayback={true}
+      allowsInlineMediaPlayback
+      allowsBackForwardNavigationGestures
     />
-  );
-};
+  )
+}

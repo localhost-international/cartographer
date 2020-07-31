@@ -1,0 +1,19 @@
+{
+	"settings": [
+		{
+			"id": "1",
+			"name": "Setting 01",
+			"description": "A setting"
+		},
+		{
+			"id": "2",
+			"name": "Setting 02",
+			"description": "A setting"
+		},
+		{
+			"id": "3",
+			"name": "Setting 03",
+			"description": "A setting"
+		}
+	]
+}
