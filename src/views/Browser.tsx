@@ -6,7 +6,6 @@ import BrowserWebView from 'src/components/BrowserWebView'
 import Navigation from 'src/components/Navigation'
 
 
-
 const View = styled.View`
   flex: 1;
   background-color: ${props => props.theme.colors.debug};
