@@ -8,7 +8,7 @@ import Navigation from 'src/components/Navigation'
 
 const View = styled.View`
   flex: 1;
-  background-color: ${props => props.theme.colors.debug};
+  background-color: ${props => props.theme.ui.background};
 `
 const SafeAreaView = styled.SafeAreaView`
   flex: 1;

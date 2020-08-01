@@ -2,7 +2,9 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-import styled from 'styled-components/native'
+
+
+import styled, { withTheme } from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
 
@@ -12,6 +14,7 @@ import IconArrowRight from 'src/assets/icons/icon-arrow-right.svg'
 import IconOptions from 'src/assets/icons/icon-options.svg'
 import IconRefresh from 'src/assets/icons/icon-refresh.svg'
 import IconTabs from 'src/assets/icons/icon-tabs.svg'
+
 
 interface IconProps {
   type: string
@@ -42,7 +45,7 @@ const Icon = styled.TouchableOpacity`
 `
 
 
-export default function NavigationButtons() {
+const NavigationButtons = ({ theme }: any) => {
 
   const screenNavigation = useNavigation()
 
@@ -61,21 +64,24 @@ export default function NavigationButtons() {
     <SafeAreaView>
       <View>
         <Icon type={`back`} onPress={webViewGoBack}>
-          <IconArrowLeft height={iconSize} />
+          <IconArrowLeft height={iconSize} fill={theme.ui.icon} />
         </Icon>
         <Icon type={`forward`} onPress={webViewGoForward}>
-          <IconArrowRight height={iconSize} />
+          <IconArrowRight height={iconSize} fill={theme.ui.icon} />
         </Icon>
-        <Icon type={`tabs`}>
-          <IconTabs height={iconSize} />
+        <Icon type={`tabs`} onPress={() => { }}>
+          <IconTabs height={iconSize} fill={theme.ui.icon} />
         </Icon>
         <Icon type={`reload`} onPress={webViewReload}>
-          <IconRefresh height={iconSize} />
+          <IconRefresh height={iconSize} fill={theme.ui.icon} />
         </Icon>
-        <Icon type={`options`}>
-          <IconOptions height={iconSize} onPress={viewSettings} />
+        <Icon type={`options`} onPress={viewSettings}>
+          <IconOptions height={iconSize} fill={theme.ui.icon} />
         </Icon>
       </View>
     </SafeAreaView>
   )
 }
+
+
+export default withTheme(NavigationButtons)

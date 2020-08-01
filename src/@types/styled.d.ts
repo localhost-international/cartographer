@@ -6,6 +6,14 @@ declare module 'styled-components/native' {
       text: string
       background: string
       debug: string
+    },
+    ui: {
+      background: string
+      icon: string
+    },
+    addressBar: {
+      background: string
+      color: string
     }
   }
 }
