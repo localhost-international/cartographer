@@ -1,80 +1,106 @@
 # Cartographer
-_A decentralised web browser_
+_An experimental mobile web browser_
 
-### Create
-* `npx react-native init Cartographer --template react-native-template-typescript`
+> Note: Cartographer is a very early work in progress, so approach with caution.
+
+Cartographer is an experimental web browser, technology demo and user interface/experience playground.  
+It's focus will be on supporting decentralised and peer to peer technologies such as DAT/Hypercore and web3, but is mainly being built because: it's a fun R&D project.
+
+If you're looking for a mature/feature rich web browsers that support these technologies:
+
+**DAT/Hypercore**
+
+* [Beaker Browser](https://beakerbrowser.com/) - A peer-to-peer browser for Web hackers (desktop)
+* [Gateway Browser](https://twitter.com/GatewayBrowser) - An experimental mobile browser that aims to help build a sustainable community-owned P2P web (mobile)
+
+**Ethereum**
+
+- [MetaMask](https://metamask.io/) - A crypto wallet & gateway to blockchain apps
 
 
-### Deploy
 
-* `react-native run-ios --device 'Cartographer'`
+## Download
 
-### Running on a real device (untethered)
-
-From [Running On Device](https://facebook.github.io/react-native/docs/running-on-device):  
-
-> Building an app for distribution in the App Store requires using the Release scheme in Xcode. Apps built for Release will automatically disable the in-app Developer menu, which will prevent your users from inadvertently accessing the menu in production. It will also bundle the JavaScript locally, so you can put the app on a device and test whilst not connected to the computer.
-> To configure your app to be built using the Release scheme, go to Product → Scheme → Edit Scheme. Select the Run tab in the sidebar, then set the Build Configuration dropdown to Release.
-
-
-
-
-### Notes
-
-**How to re-cover when things don't run**
-
-1. `rm -Rfv ios/ && rm -Rfv android/`
-2. `react-native upgrade --legacy` (previously `react-native eject`)
-3. 
-	a. `xed -b ios` 
-	b. `npx pod-install ios`
-	c. ...(previously "Re-add packages, re-link and run")
-
-* Keep `"name": "Cartographer"` in package.json until further notice. 
-
+TODO - Add link to GH issue for TestFlight link.  
 
 
 ## Development
 
-### Debugging and Logging
+### Building
 
-**`log-*`**  
-Haven't yet had much luck with `react-native log-ios` and `react-native log-android`. 
+### iOS and iPadOS
 
-**Launch + Deploy**
-Updated `deploy:ios`  with `react-native run-ios --configuration=release --device="Waypoint"`
+Building Cartographer requires Xcode 11+, cocoapds and Node 14+.
 
+* `yarn install`
+* `npx pod-install ios`
+* `open ios/Cartographer.xcworkspace/`
 
-**Remote Debugger**  
-`Command+D` allows enabling "Remote JS Debugging" which is great.  
+### Android 
 
-Visit [the debugger](http://localhost:8081/debugger-ui/) in a new window so it has prominance (and doesn't run slowly).
-
-### Keyboard
-
-Still having issues here. Will eventually look into it. Minimal UI for now (padding/margin issues).  
-
-```javascript
-keyboardVerticalOffset={
-  Platform.select({
-    ios: () => 0,
-    android: () => 12
-  })()
-}
-```
-
-### Folders and Paths
-
-##### Absolute Paths
-
-Metro Bundler simplifies a lot of this by allowing the creation of small `package.json` files in folders you'd like to alias. I've only aliased `src` as so:
-
-* In the `/src` folder of the project, create a file named `package.json` with the contents of:
-
-```json
-{
-	"name": "src"
-}
-```
+Cartographer is currently in development and is being optimised for iOS/iPadOS.  
+_TODO: add an issue to show interest in an Android version_. 
 
 
+
+### Tests 
+
+TODO - Not exactly TDD. Soon come.
+
+&nbsp;
+
+
+### Contributors
+
+[Non-violent Communication](https://www.cnvc.org/learn-nvc/what-is-nvc) is key.  
+Cartography is a [Benevolent Dictatorship](https://en.wikipedia.org/wiki/Benevolent_dictator_for_life) (or [Enlightened absolutism](https://en.wikipedia.org/wiki/Enlightened_absolutism), depending on your world views). 
+
+&nbsp;
+
+
+
+## Features
+
+Currently, the browser is very rudimentary.
+
+#### Browser  
+
+- [x] Navigation
+- [ ] Tabs
+- [ ] Native sharing
+- [ ] Private browsing
+- [ ] Default browser
+- [ ] Search from address bar
+
+#### Protocols
+
+- [x] HTTP/HTTPS
+- [ ] web3
+- [ ] DAT/Hypercore
+- [ ] IPFS
+- [ ] Safe?
+
+#### UI/UX
+
+- [ ] Settings
+- [ ] Persistence
+- [x] Dark/light mode
+
+
+
+&nbsp;
+
+
+## License
+
+Copyright 2018 localhost %
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+--
+
+127.0.0.1 LTD trading as localhost %

@@ -2,20 +2,19 @@ export const WEBVIEW_REF = 'browser/webview-ref'
 export const URL_INPUT = 'browser/url-input'
 export const URL_CURRENT = 'browser/url-current'
 
-type BrowserState = {
+type NavigationState = {
   urlInput: string
   urlCurrent: string
   webViewRef: any
 }
 
-const initialState: BrowserState = {
+const initialState: NavigationState = {
   urlInput: 'https://duck.com/',
   urlCurrent: 'https://duck.com/',
   webViewRef: null
 }
 
-export default (state: BrowserState = initialState, action: any) => {
-  // console.log('ACTION', action)
+export default (state: NavigationState = initialState, action: any) => {
   switch (action.type) {
     case WEBVIEW_REF: {
       return {

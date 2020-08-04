@@ -12,18 +12,14 @@ import styled from 'styled-components/native'
 import data from 'src/data/settings.json'
 
 
-interface SettingsList {
-  id: number
-  name: string
-  description: string
-}
-
 
 const View = styled.View`
   flex: 1;
+  background-color: ${props => props.theme.ui.background};
 `
 const SafeAreaView = styled.SafeAreaView`
   flex: 1;
+  background-color: ${props => props.theme.ui.background};
 `
 const CloseButton = styled.TouchableOpacity`
   border: 1px solid red;

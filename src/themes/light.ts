@@ -12,7 +12,7 @@ const theme: DefaultTheme = {
   },
   addressBar: {
     background: 'rgba(0,0,0,.08)',
-    color: 'black'
+    color: 'rgba(0,0,0,1)'
   }  
 }
 
