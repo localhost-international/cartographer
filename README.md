@@ -21,7 +21,9 @@ If you're looking for a mature/feature rich web browsers that support these tech
 
 ## Download
 
-TODO - Add link to GH issue for TestFlight link.  
+Interested in testing Cartographer on iOS but not comfortable with compiling from source/don't have the tools?  
+
+Then [leave a comment on this issue](https://github.com/localhost-international/cartographer/issues/2) and I'll contact you to get you added to TestFlight.  
 
 
 ## Development
@@ -39,8 +41,8 @@ Building Cartographer requires Xcode 11+, cocoapds and Node 14+.
 ### Android 
 
 Cartographer is currently in development and is being optimised for iOS/iPadOS.  
-_TODO: add an issue to show interest in an Android version_. 
 
+[Leave a comment on the Android Support issue](https://github.com/localhost-international/cartographer/issues/1) so I know you're interested in an Android compatibility/release.
 
 
 ### Tests 
