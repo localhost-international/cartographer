@@ -74,10 +74,12 @@ Currently, the browser is very rudimentary.
 
 #### Protocols
 
-- [x] HTTP/HTTPS
+- [x] `http`
+- [x] `https`
+- [ ] `dat`
+- [ ] `hyper`
+- [ ] `ipfs`
 - [ ] web3
-- [ ] DAT/Hypercore
-- [ ] IPFS
 - [ ] Safe?
 
 #### UI/UX
