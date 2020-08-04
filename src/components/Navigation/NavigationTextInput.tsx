@@ -23,6 +23,22 @@ const TextInput = styled.TextInput`
 `
 
 
+const upgradeUrl = (uri: string) => {
+  const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+  const regex = new RegExp(expression)
+  const isURL = uri.match(regex)
+
+  if (isURL) {
+    if (!uri.startsWith('http')) {
+      return `http://${uri}/`
+    }
+    return uri
+  }
+  return `https://duck.com/?q=${encodeURI(uri)}`
+}
+
+
+
 export default function AddressTextInput() {
 
   const navigation = useSelector((state: AppState) => state.navigation)
@@ -36,7 +52,9 @@ export default function AddressTextInput() {
           dispatch({ type: URL_INPUT, urlInput: url })
         }}
         onSubmitEditing={(event) => {
-          dispatch({ type: URL_CURRENT, urlCurrent: event.nativeEvent.text })
+          const urlCurrent = upgradeUrl(event.nativeEvent.text)
+          dispatch({ type: URL_INPUT, urlInput: urlCurrent })
+          dispatch({ type: URL_CURRENT, urlCurrent: urlCurrent })
         }}
         onFocus={() => { }}
         onBlur={() => { }}

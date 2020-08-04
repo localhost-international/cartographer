@@ -5,7 +5,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
-import { WEBVIEW_REF } from 'src/store/navigation.actions'
+import { 
+  WEBVIEW_REF, 
+  URL_INPUT, 
+  URL_CURRENT 
+} from 'src/store/navigation.actions'
 
 
 const WebViewContainer = styled(WebView)`
@@ -40,6 +44,10 @@ export default function BrowserWebView() {
       originWhitelist={['*']}
       source={{ uri: navigation.urlCurrent }}
       onLoadStart={() => { }}
+      onNavigationStateChange={(navState) => {
+        const url = navState.url
+        dispatch({ type: URL_INPUT, urlInput: url })
+      }}
       startInLoadingState
       domStorageEnabled={config.allowStorage}
       javaScriptEnabled={config.allowJavascript}

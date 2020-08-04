@@ -70,7 +70,7 @@ Currently, the browser is very rudimentary.
 - [ ] Native sharing
 - [ ] Private browsing
 - [ ] Default browser
-- [ ] Search from address bar
+- [x] Search from address bar
 
 #### Protocols
 
@@ -79,14 +79,23 @@ Currently, the browser is very rudimentary.
 - [ ] `dat`
 - [ ] `hyper`
 - [ ] `ipfs`
-- [ ] web3
-- [ ] Safe?
+- [ ] `web3`
+- [ ] `safe`
+
+#### Settings
+
+- [ ] Persistence
+- [ ] Search engine
+
 
 #### UI/UX
 
-- [ ] Settings
-- [ ] Persistence
 - [x] Dark/light mode
+
+#### Project
+
+- [ ] Decentralised source control (e.g. Radicle)
+- [ ] Project roadmap 🙃
 
 
 &nbsp;

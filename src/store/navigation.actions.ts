@@ -14,6 +14,8 @@ const initialState: NavigationState = {
   webViewRef: null
 }
 
+
+
 export default (state: NavigationState = initialState, action: any) => {
   switch (action.type) {
     case WEBVIEW_REF: {
@@ -40,10 +42,12 @@ export default (state: NavigationState = initialState, action: any) => {
   }
 }
 
-export const urlInput = () => (dispatch: any) => {
-  dispatch({ type: URL_INPUT })
+export const urlInput = (url: string) => (dispatch: any) => {
+  console.log('urlInput dispatch', url)
+  dispatch({ type: URL_INPUT, urlInput: url })
 }
 
-export const urlCurrent = () => (dispatch: any) => {
-  dispatch({ type: URL_CURRENT })
+export const urlCurrent = (url: string) => (dispatch: any) => {
+  console.log('urlCurrent dispatch', url)
+  dispatch({ type: URL_CURRENT, urlCurrent: url })
 }
