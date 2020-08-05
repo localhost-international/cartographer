@@ -9,8 +9,8 @@ type NavigationState = {
 }
 
 const initialState: NavigationState = {
-  urlInput: 'https://duck.com/',
-  urlCurrent: 'https://duck.com/',
+  urlInput: '',
+  urlCurrent: 'https://beakerbrowser.com/',
   webViewRef: null
 }
 

@@ -27,9 +27,9 @@ export default function Browser() {
         behavior="padding"
       >
         <View>
-          <SafeAreaView>
+          {/* <SafeAreaView> */}
             <BrowserWebView />
-          </SafeAreaView>
+          {/* </SafeAreaView> */}
           <Navigation />
         </View>
       </KeyboardAvoidingView>
