@@ -12,8 +12,12 @@ import styled from 'styled-components/native'
 import data from 'src/data/settings.json'
 
 
-
 const View = styled.View`
+  flex: 1;
+  background-color: ${props => props.theme.ui.background};
+`
+
+const FlatListContainer = styled(FlatList)`
   flex: 1;
   background-color: ${props => props.theme.ui.background};
 `
@@ -34,7 +38,6 @@ export default function Settings() {
 
   const goBack = () => screenNavigation.goBack()
 
-
   const renderItems = ({ item }: any) => {
     return (
       <TouchableOpacity style={[styles.item]}>
@@ -47,15 +50,11 @@ export default function Settings() {
   return (
     <>
       <SafeAreaView>
-        <Text>Settings - Testing, testing, 1, 2, 3</Text>
         <FlatList
           data={data.settings}
           keyExtractor={(item, index) => index.toString()}
           renderItem={renderItems}
         />
-        {/* <CloseButton onPress={goBack}>
-          <Text>Go Back</Text>
-        </CloseButton> */}
       </SafeAreaView>
     </>
   )

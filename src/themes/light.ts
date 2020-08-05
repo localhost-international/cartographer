@@ -4,11 +4,11 @@ const theme: DefaultTheme = {
   colors: {
     scheme: 'light',
     text: 'black',
-    background: 'white',
+    background: 'rgb(228,229,230)',
     debug: 'red'
   },
   ui: {
-    background: 'rgba(0,0,0,.05)',
+    background: 'rgba(228,229,230,.97)',
     icon: 'rgba(125,125,125,1)'
   },
   addressBar: {

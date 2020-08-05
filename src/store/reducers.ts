@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import navigation from 'src/store/navigation.actions'
-import settings from 'src/store/settings.actions'
+import navigation from 'src/store/navigation.reducer'
+import settings from 'src/store/settings.reducer'
 
 const rootReducer = combineReducers({
   navigation,

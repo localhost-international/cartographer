@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
-import { URL_INPUT, URL_CURRENT } from 'src/store/navigation.actions'
+import { URL_INPUT, URL_CURRENT } from 'src/store/navigation.reducer'
 
 import { isDarkMode } from 'src/utils/appearance'
 

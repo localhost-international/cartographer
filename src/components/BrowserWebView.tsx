@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
-import { WEBVIEW_REF, URL_INPUT } from 'src/store/navigation.actions'
+import { WEBVIEW_REF, URL_INPUT } from 'src/store/navigation.reducer'
 
 
 const ScrollView = styled.ScrollView.attrs((props) => ({
@@ -74,6 +74,11 @@ export default function BrowserWebView() {
           }}
           onLoadEnd={() => {
             setRefreshing(false)
+          }}
+          onContentProcessDidTerminate={syntheticEvent => {
+            const { nativeEvent } = syntheticEvent
+            console.warn('Content process terminated, reloading', nativeEvent)
+            webViewReload()
           }}
           startInLoadingState
           domStorageEnabled={config.allowStorage}
