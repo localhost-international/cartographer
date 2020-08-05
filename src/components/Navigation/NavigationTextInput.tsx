@@ -5,6 +5,8 @@ import styled from 'styled-components/native'
 import { AppState } from 'src/store/reducers'
 import { URL_INPUT, URL_CURRENT } from 'src/store/navigation.actions'
 
+import { isDarkMode } from 'src/utils/appearance'
+
 
 const AddressBar = styled.View`
   margin-left: 10px;
@@ -64,7 +66,7 @@ export default function AddressTextInput() {
         returnKeyType="go"
         blurOnSubmit={true}
         clearButtonMode="while-editing"
-        keyboardAppearance="light"
+        keyboardAppearance={ isDarkMode() ? 'dark' : 'light'}
         keyboardType="web-search"
         returnKeyLabel="go"
         selectTextOnFocus={true}

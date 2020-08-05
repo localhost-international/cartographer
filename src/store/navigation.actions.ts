@@ -10,7 +10,7 @@ type NavigationState = {
 
 const initialState: NavigationState = {
   urlInput: '',
-  urlCurrent: 'https://beakerbrowser.com/',
+  urlCurrent: 'https://web3summit.com/',
   webViewRef: null
 }
 

@@ -12,13 +12,13 @@ const ScrollView = styled.ScrollView.attrs((props) => ({
   contentContainerStyle: {
     flex: 1
   }
-}))``
+}))`
+  margin-top: 46px;
+`
 
 const RefreshControl = styled.RefreshControl``
 
 const WebViewContainer = styled(WebView)`
-  /*padding-top: 46px;*/
-  margin-top: 46px;
 `
 
 
@@ -39,13 +39,16 @@ export default function BrowserWebView() {
   const navigation = useSelector((state: AppState) => state.navigation)
   const dispatch = useDispatch()
 
-  const [refreshing, setRefreshing] = useState(false)
+  const [ refreshing, setRefreshing ] = useState(false)
 
   useEffect(() => {
     dispatch({ type: WEBVIEW_REF, webViewRef })
   }, [])
 
-  const webViewReload = () => navigation.webViewRef.current?.reload()
+  const webViewReload = () => {
+    setRefreshing(true)
+    navigation.webViewRef.current.reload()
+  }
 
 
   return (
@@ -56,7 +59,7 @@ export default function BrowserWebView() {
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
-            onRefresh={() => { webViewReload() }} 
+            onRefresh={webViewReload} 
           />
         }>
         <WebViewContainer
@@ -68,6 +71,9 @@ export default function BrowserWebView() {
           onNavigationStateChange={(navState) => {
             const url = navState.url
             dispatch({ type: URL_INPUT, urlInput: url })
+          }}
+          onLoadEnd={() => {
+            setRefreshing(false)
           }}
           startInLoadingState
           domStorageEnabled={config.allowStorage}

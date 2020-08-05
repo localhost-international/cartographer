@@ -52,10 +52,10 @@ const NavigationButtons = ({ theme }: any) => {
   const navigation = useSelector((state: AppState) => state.navigation)
   const dispatch = useDispatch()
 
-  const webViewReload = () => navigation.webViewRef.current?.reload()
-  // TODO - Check if you can go back/forward and disable button
-  const webViewGoBack = () => navigation.webViewRef.current?.goBack()
-  const webViewGoForward = () => navigation.webViewRef.current?.goForward()
+  const webViewReload = () => navigation.webViewRef.current.reload()
+  // TODO - Check if you can go back/forward and disable button(s)
+  const webViewGoBack = () => navigation.webViewRef.current.goBack()
+  const webViewGoForward = () => navigation.webViewRef.current.goForward()
 
   const viewSettings = () => screenNavigation.navigate('Settings')
 

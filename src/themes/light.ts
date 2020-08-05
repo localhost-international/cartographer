@@ -2,6 +2,7 @@ import { DefaultTheme } from 'styled-components/native'
 
 const theme: DefaultTheme = {
   colors: {
+    scheme: 'light',
     text: 'black',
     background: 'white',
     debug: 'red'
