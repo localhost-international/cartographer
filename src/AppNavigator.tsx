@@ -45,24 +45,7 @@ export default function AppNavigator() {
           name="Settings"
           component={Settings}
           options={{
-            title: 'Settings',
-            headerShown: true,
-            headerStatusBarHeight: 20,
-            headerStyle: {
-              backgroundColor: theme.ui.background,
-              borderBottomColor: 'rgb(255,0,0)'
-            },
-            headerTitleStyle: {
-              color: theme.colors.text,
-              fontSize: 22,
-              borderBottomColor: 'rgb(255,0,0)'
-            },
-            headerBackTitleVisible: false,
-            headerLeft: props => (null),
-            headerRight: props => (
-              <Button title="Done" onPress={() => { }} />
-            ),
-            // headerTitle: props => (<Text>Stub</Text>)
+            headerShown: false,
           }}
         />
       </Stack.Navigator>
