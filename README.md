@@ -3,7 +3,7 @@ _An experimental mobile web browser_
 
 > Note: Cartographer is a very early work in progress, so approach with caution.
 
-[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+
 
 Cartographer is an experimental web browser, technology demo and user interface/experience playground.  
 It's focus will be on supporting decentralised and peer to peer technologies such as DAT/Hypercore and web3, but is mainly being built because: it's a fun R&D project.
@@ -75,6 +75,7 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 - [ ] Private browsing
 - [ ] Default browser (iOS 14)
 - [x] Search from address bar
+- [ ] History
 
 #### Protocols
 
@@ -90,7 +91,9 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 
 - [ ] Persistence
 - [ ] Search engine
-
+- [ ] Clear history
+- [ ] Clear website data
+- [ ] Ad blocker
 
 #### UI/UX
 
