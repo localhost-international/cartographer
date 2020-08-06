@@ -2,18 +2,18 @@
 	"settings": [
 		{
 			"id": "1",
-			"name": "Setting 01",
-			"description": "A setting"
+			"name": "Todo",
+			"description": "TODO - Settings options"
 		},
 		{
 			"id": "2",
-			"name": "Setting 02",
-			"description": "A setting"
+			"name": "Search engine",
+			"description": "TODO - Set default search engine"
 		},
 		{
 			"id": "3",
-			"name": "Setting 03",
-			"description": "A setting"
+			"name": "About",
+			"description": "TODO - Information about Cartographer"
 		}
 	]
 }

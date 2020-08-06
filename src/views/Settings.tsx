@@ -8,27 +8,61 @@ import {
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components/native'
+import { BlurView } from '@react-native-community/blur'
 
 import data from 'src/data/settings.json'
 
 
-const View = styled.View`
+const SafeAreaView = styled.SafeAreaView`
   flex: 1;
   background-color: ${props => props.theme.ui.background};
 `
+
+const Header = styled.View`
+  background-color: ${props => props.theme.ui.background};
+  padding: 20px 0;
+`
+const HeaderText = styled.Text`
+  color: ${props => props.theme.colors.text};
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+`
+const CloseButton = styled.TouchableOpacity.attrs((props) => ({
+  color: 'red'
+}))`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+`
+const CloseButtonText = styled.Text`
+  color: ${props => props.theme.colors.text};
+  font-size: 18px;
+`
+
+
 
 const FlatListContainer = styled(FlatList)`
   flex: 1;
   background-color: ${props => props.theme.ui.background};
 `
-const SafeAreaView = styled.SafeAreaView`
-  flex: 1;
-  background-color: ${props => props.theme.ui.background};
+const ListItem = styled.TouchableOpacity`
+  padding-top: 15px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  border-bottom-color: ${props => props.theme.ui.icon};
+  border-bottom-width: 1px;
 `
-const CloseButton = styled.TouchableOpacity`
-  border: 1px solid red;
-  padding: 10px;
-  align-self: flex-start;
+const ListItemTitle = styled.Text`
+  font-size: 18px;
+  padding-bottom: 4px;
+  color: ${props => props.theme.colors.text};
+`
+
+const ListItemDesc = styled.Text`
+  font-size: 16px;
+  color: ${props => props.theme.colors.text};
 `
 
 
@@ -40,66 +74,36 @@ export default function Settings() {
 
   const renderItems = ({ item }: any) => {
     return (
-      <TouchableOpacity style={[styles.item]}>
-        <Text style={styles.title}>{item.name}</Text>
-        <Text style={styles.description}>{item.description}</Text>
-      </TouchableOpacity>
+      <ListItem>
+        <ListItemTitle>{item.name}</ListItemTitle>
+        <ListItemDesc>{item.description}</ListItemDesc>
+      </ListItem>
     )
   }
 
   return (
     <>
-      <SafeAreaView>
-        <FlatList
-          data={data.settings}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={renderItems}
-        />
-      </SafeAreaView>
+      <BlurView
+        blurType="light"
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          right: 0,
+          left: 0,
+          top: 0
+        }}
+      />
+      <Header>
+        <HeaderText>Settings</HeaderText>
+        <CloseButton onPress={goBack}>
+          <CloseButtonText>Done</CloseButtonText>
+        </CloseButton>
+      </Header>
+      <FlatListContainer
+        data={data.settings}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={renderItems}
+      />
     </>
   )
 }
-
-
-
-const styles = StyleSheet.create({
-  keyboardContainer: {
-    flex: 1,
-  },
-  view: {
-    flex: 1,
-  },
-  container: {
-    flexGrow: 1
-  },
-  divider: {
-    borderBottomColor: 'rgba(0,0,0,.35)',
-    borderBottomWidth: 1,
-  },
-  item: {
-    paddingTop: 15,
-    paddingRight: 10,
-    paddingBottom: 15,
-    paddingLeft: 10,
-    borderBottomColor: 'rgba(0,0,0,.25)',
-    borderBottomWidth: 1,
-  },
-  title: {
-    fontSize: 16,
-    paddingBottom: 4,
-    color: 'rgba(0,0,0,1)',
-  },
-  description: {
-    fontSize: 12,
-    color: 'rgba(0,0,0,.35)',
-  },
-  textInput: {
-    fontSize: 16,
-    paddingTop: 15,
-    paddingRight: 10,
-    paddingBottom: 15,
-    paddingLeft: 10,
-  },
-  button: {
-  }
-});

@@ -10,7 +10,7 @@ import { WEBVIEW_REF, URL_INPUT } from 'src/store/navigation.reducer'
 
 const ScrollView = styled.ScrollView.attrs((props) => ({
   contentContainerStyle: {
-    flex: 1
+    flex: 1,
   }
 }))`
   margin-top: 46px;
@@ -78,6 +78,7 @@ export default function BrowserWebView() {
           onContentProcessDidTerminate={syntheticEvent => {
             const { nativeEvent } = syntheticEvent
             console.warn('Content process terminated, reloading', nativeEvent)
+            // TODO - Show message in UI that the webview crashed 
             webViewReload()
           }}
           startInLoadingState

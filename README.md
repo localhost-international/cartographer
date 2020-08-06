@@ -8,7 +8,7 @@ _An experimental mobile web browser_
 Cartographer is an experimental web browser, technology demo and user interface/experience playground.  
 It's focus will be on supporting decentralised and peer to peer technologies such as DAT/Hypercore and web3, but is mainly being built because: it's a fun R&D project.
 
-If you're looking for a mature/feature rich web browsers that support these technologies:
+If you're looking for mature/feature rich web browsers that support such technologies, checkout:
 
 **DAT/Hypercore**
 
@@ -18,6 +18,7 @@ If you're looking for a mature/feature rich web browsers that support these tech
 **Ethereum**
 
 - [MetaMask](https://metamask.io/) - A crypto wallet & gateway to blockchain apps
+- [Status](https://status.im/) - Status is a secure messaging app, crypto wallet, and Web3 browser built with state of the art technology
 
 
 
@@ -75,6 +76,7 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 - [ ] Private browsing
 - [ ] Default browser (iOS 14)
 - [x] Search from address bar
+- [ ] History
 
 #### Protocols
 
@@ -90,7 +92,9 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 
 - [ ] Persistence
 - [ ] Search engine
-
+- [ ] Clear history
+- [ ] Clear website data
+- [ ] Ad blocker
 
 #### UI/UX
 
