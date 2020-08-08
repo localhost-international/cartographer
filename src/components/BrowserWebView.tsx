@@ -13,13 +13,18 @@ const ScrollView = styled.ScrollView.attrs((props) => ({
     flex: 1,
   }
 }))`
-  margin-top: 46px;
+  /* Note: experiment with dynamic
+  /*margin-top: 46px;*/
+  /*margin-bottom: 134px;*/
 `
 
 const RefreshControl = styled.RefreshControl``
 
-const WebViewContainer = styled(WebView)`
+const SafeAreaView = styled.SafeAreaView`
+  flex: 1;
 `
+
+const WebViewContainer = styled(WebView)``
 
 
 export default function BrowserWebView() {
@@ -41,6 +46,7 @@ export default function BrowserWebView() {
 
   const [ refreshing, setRefreshing ] = useState(false)
 
+  // TODO - Unsubscribe on unmount
   useEffect(() => {
     dispatch({ type: WEBVIEW_REF, webViewRef })
   }, [])
@@ -62,32 +68,34 @@ export default function BrowserWebView() {
             onRefresh={webViewReload} 
           />
         }>
-        <WebViewContainer
-          ref={webViewRef}
-          userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
-          originWhitelist={['*']}
-          source={{ uri: navigation.urlCurrent }}
-          onLoadStart={() => { }}
-          onNavigationStateChange={(navState) => {
-            const url = navState.url
-            dispatch({ type: URL_INPUT, urlInput: url })
-          }}
-          onLoadEnd={() => {
-            setRefreshing(false)
-          }}
-          onContentProcessDidTerminate={syntheticEvent => {
-            const { nativeEvent } = syntheticEvent
-            console.warn('Content process terminated, reloading', nativeEvent)
-            // TODO - Show message in UI that the webview crashed 
-            webViewReload()
-          }}
-          startInLoadingState
-          domStorageEnabled={config.allowStorage}
-          javaScriptEnabled={config.allowJavascript}
-          decelerationRate={0.998}
-          allowsInlineMediaPlayback
-          allowsBackForwardNavigationGestures
-        />
+        <SafeAreaView>
+          <WebViewContainer
+            ref={webViewRef}
+            userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
+            originWhitelist={['*']}
+            source={{ uri: navigation.urlCurrent }}
+            onLoadStart={() => { }}
+            onNavigationStateChange={(navState) => {
+              const url = navState.url
+              dispatch({ type: URL_INPUT, urlInput: url })
+            }}
+            onLoadEnd={() => {
+              setRefreshing(false)
+            }}
+            onContentProcessDidTerminate={syntheticEvent => {
+              const { nativeEvent } = syntheticEvent
+              console.warn('Content process terminated, reloading', nativeEvent)
+              // TODO - Show message in UI that the webview crashed 
+              webViewReload()
+            }}
+            startInLoadingState
+            domStorageEnabled={config.allowStorage}
+            javaScriptEnabled={config.allowJavascript}
+            decelerationRate={0.998}
+            allowsInlineMediaPlayback
+            allowsBackForwardNavigationGestures
+          />
+        </SafeAreaView>
       </ScrollView>
     </>
   )

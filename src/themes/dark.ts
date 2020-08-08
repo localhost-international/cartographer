@@ -8,7 +8,7 @@ const theme: DefaultTheme = {
     debug: 'green'
   },
   ui: {
-    background: 'rgba(24,25,26,.97)',
+    background: 'rgba(24,25,26,.95)',
     icon: 'rgba(255,255,255,.5)'
   },
   addressBar: {

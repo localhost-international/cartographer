@@ -1,14 +1,10 @@
 import React from 'react'
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  ListRenderItem
-} from 'react-native'
+import { FlatList } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components/native'
 import { BlurView } from '@react-native-community/blur'
+
+import { isDarkMode } from 'src/utils/appearance'
 
 import data from 'src/data/settings.json'
 
@@ -39,8 +35,6 @@ const CloseButtonText = styled.Text`
   color: ${props => props.theme.colors.text};
   font-size: 18px;
 `
-
-
 
 const FlatListContainer = styled(FlatList)`
   flex: 1;
@@ -84,7 +78,7 @@ export default function Settings() {
   return (
     <>
       <BlurView
-        blurType="light"
+        blurType={isDarkMode() ? 'dark' : 'light'}
         style={{
           position: 'absolute',
           bottom: 0,

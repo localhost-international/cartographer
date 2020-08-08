@@ -11,6 +11,7 @@ export const isDarkMode = () => {
 
   const colorScheme = useColorScheme()
 
+  // TODO - Unsubscribe on unmount
   useEffect(() => {
     setIsDarkMode(colorScheme === 'dark' ? true : false)
     const subscription = Appearance.addChangeListener(({ colorScheme }) => {
