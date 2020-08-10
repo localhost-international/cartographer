@@ -6,9 +6,9 @@ _An experimental mobile web browser_
 
 
 Cartographer is an experimental web browser, technology demo and user interface/experience playground.  
-It's focus will be on supporting decentralised and peer to peer technologies such as DAT/Hypercore and web3, but is mainly being built because: it's a fun R&D project.
+It's focus will be on supporting decentralised and peer to peer technologies (such as DAT/Hypercore and web3), but is mainly being built because: it's fun!
 
-If you're looking for mature/feature rich web browsers that support such technologies, checkout:
+If you're looking for mature, feature rich browsers that support such technologies, please consider:
 
 **DAT/Hypercore**
 
@@ -24,10 +24,11 @@ If you're looking for mature/feature rich web browsers that support such technol
 
 ## Download
 
-Interested in testing Cartographer on iOS but not comfortable with compiling from source/don't have the tools?  
+Interested in testing Cartographer on iOS but not comfortable with compiling from source and/or don't have the tools?  
 
-Then [leave a comment on this issue](https://github.com/localhost-international/cartographer/issues/2) and I'll contact you to get you added to TestFlight.  
+Then [leave a comment on this issue](https://github.com/localhost-international/cartographer/issues/2) and we'll get you added to TestFlight.  
 
+Interested in running on Android? [See this issue](https://github.com/localhost-international/cartographer/issues/1).  
 
 ## Development
 
@@ -50,15 +51,17 @@ Cartographer is currently in development and is being optimised for iOS/iPadOS.
 
 ### Tests 
 
-TODO - Not exactly TDD. Soon come.
+TODO - Not exactly TDD, but it'll soon come.
 
 &nbsp;
 
 
 ### Contributors
 
+We're polite and inclusive, and it'd be great if you are also.  
 [Non-violent Communication](https://www.cnvc.org/learn-nvc/what-is-nvc) is key.  
-Cartography is a [Benevolent Dictatorship](https://en.wikipedia.org/wiki/Benevolent_dictator_for_life) (or [Enlightened absolutism](https://en.wikipedia.org/wiki/Enlightened_absolutism), depending on your world views). 
+Cartographer is a [Benevolent Dictatorship](https://en.wikipedia.org/wiki/Benevolent_dictator_for_life) (or [Enlightened absolutism](https://en.wikipedia.org/wiki/Enlightened_absolutism), depending on your world views).  
+
 
 &nbsp;
 
