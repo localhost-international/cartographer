@@ -101,12 +101,14 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 
 #### UI/UX
 
+- [ ] App Icon
 - [x] Dark/light mode
 - [x] Pull to refresh
 - [ ] Landscape mode
 
 #### Project
 
+- [ ] Branding
 - [ ] Unit Tests and CI
 - [ ] Decentralised source control (e.g. Radicle)
 - [ ] Project roadmap 🙃
