@@ -4,7 +4,7 @@ import { BlurView } from '@react-native-community/blur'
 
 import { isDarkMode } from 'src/utils/appearance'
 
-import NavigationTextInput from 'src/components/Navigation/NavigationTextInput'
+import NavigationTextInput from 'src/components/Navigation/NavigationComboInput'
 import NavigationButtons from 'src/components/Navigation/NavigationButtons'
 
 

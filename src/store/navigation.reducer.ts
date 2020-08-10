@@ -1,19 +1,22 @@
 export const WEBVIEW_REF = 'browser/webview-ref'
+export const WEBVIEW_STATE = 'browser/webview-state'
 export const URL_INPUT = 'browser/url-input'
 export const URL_CURRENT = 'browser/url-current'
+
 
 type NavigationState = {
   urlInput: string
   urlCurrent: string
   webViewRef: any
+  webViewState: any
 }
 
 const initialState: NavigationState = {
   urlInput: '',
   urlCurrent: 'https://web3summit.com/',
-  webViewRef: null
+  webViewRef: null,
+  webViewState: null
 }
-
 
 
 export default (state: NavigationState = initialState, action: any) => {
@@ -22,6 +25,13 @@ export default (state: NavigationState = initialState, action: any) => {
       return {
         ...state,
         webViewRef: action.webViewRef
+      }
+    }
+    // TODO - Refactor state
+    case WEBVIEW_STATE: {
+      return {
+        ...state,
+        webViewState: action.webViewState
       }
     }
     case URL_INPUT: {

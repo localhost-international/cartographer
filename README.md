@@ -75,7 +75,7 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 
 - [x] Navigation
 - [ ] Tabs
-- [ ] Native sharing
+- [x] Native sharing
 - [ ] Private browsing
 - [ ] Default browser (iOS 14)
 - [x] Search from address bar
