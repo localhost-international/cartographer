@@ -1,0 +1,5 @@
+#!/bin/bash
+      # Helper script for Gradle to call node on macOS in case it is not found
+      export PATH=$PATH:/var/folders/1m/wy92d8hj0x30kdtgv6_9589m0000gn/T/yarn--1597097440288-0.8543043097898311:/Users/leslieoa/Code/Projects/localhost/Projects/cartographer/node_modules/nodejs-mobile-react-native/node_modules/.bin:/Users/leslieoa/.config/yarn/link/node_modules/.bin:/Users/leslieoa/.nvm/versions/node/v14.2.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/leslieoa/.nvm/versions/node/v14.2.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/leslieoa/.nvm/versions/node/v14.2.0/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:~/.local/bin:/usr/local/opt/make/libexec/gnubin:/Users/leslieoa/.nvm/versions/node/v14.2.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:/opt/X11/bin:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+      node $@
+    
