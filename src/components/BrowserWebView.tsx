@@ -1,11 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { WebView } from 'react-native-webview'
 import { useSelector, useDispatch } from 'react-redux'
-
 import styled from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
-import { WEBVIEW_REF, URL_INPUT } from 'src/store/navigation.reducer'
+import { 
+  WEBVIEW_REF, 
+  WEBVIEW_STATE, 
+  URL_INPUT
+} from 'src/store/navigation.reducer'
 
 
 const ScrollView = styled.ScrollView.attrs((props) => ({
@@ -13,7 +16,7 @@ const ScrollView = styled.ScrollView.attrs((props) => ({
     flex: 1,
   }
 }))`
-  /* Note: experiment with dynamic
+  /* Note: experiment with dynamic container heights
   /*margin-top: 46px;*/
   /*margin-bottom: 134px;*/
 `
@@ -76,8 +79,9 @@ export default function BrowserWebView() {
             source={{ uri: navigation.urlCurrent }}
             onLoadStart={() => { }}
             onNavigationStateChange={(navState) => {
-              const url = navState.url
-              dispatch({ type: URL_INPUT, urlInput: url })
+              console.log('onNavigationStateChange', navState)
+              dispatch({ type: URL_INPUT, urlInput: navState.url })
+              dispatch({ type: WEBVIEW_STATE, webViewState: navState })
             }}
             onLoadEnd={() => {
               setRefreshing(false)

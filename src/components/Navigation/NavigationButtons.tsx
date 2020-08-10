@@ -2,12 +2,9 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-
-
 import styled, { withTheme } from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
-
 
 import IconArrowLeft from 'src/assets/icons/icon-arrow-left.svg'
 import IconArrowRight from 'src/assets/icons/icon-arrow-right.svg'
@@ -24,11 +21,10 @@ const iconSize = 32
 
 
 const View = styled.View`
-  /*border: 1px solid red;*/
   margin-left: 16px;
   margin-right: 16px;
   padding-top: 8px;
-  padding-bottom: 0px;
+  padding-bottom: 8px;
   flex-direction: row;
   justify-content: space-between;
 `
