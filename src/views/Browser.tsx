@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
+import nodejs from 'nodejs-mobile-react-native'
 
 import BrowserWebView from 'src/components/BrowserWebView'
 import Navigation from 'src/components/Navigation'
@@ -19,6 +20,14 @@ const KeyboardAvoidingView = styled.KeyboardAvoidingView`
 
 
 export default function Browser() {
+
+  nodejs.start('main.js')
+  nodejs.channel.addListener(
+    'message',
+    (msg) => {
+      alert(`Node.js: ${msg}`)
+    }
+  )
 
   return (
     <>

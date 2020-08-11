@@ -14,12 +14,12 @@ If you're looking for mature, feature rich browsers that support such technologi
 
 * [Beaker Browser](https://beakerbrowser.com/) - A peer-to-peer browser for Web hackers (desktop)
 * [Gateway Browser](https://twitter.com/GatewayBrowser) - An experimental mobile browser that aims to help build a sustainable community-owned P2P web (mobile)
+* [Agregore](https://github.com/RangerMauve/agregore-browser) - A minimal web browser for the distributed web
 
 **Ethereum**
 
 - [MetaMask](https://metamask.io/) - A crypto wallet & gateway to blockchain apps
 - [Status](https://status.im/) - Status is a secure messaging app, crypto wallet, and Web3 browser built with state of the art technology
-
 
 
 ## Download
