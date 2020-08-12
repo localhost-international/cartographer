@@ -15,7 +15,6 @@ import { isDarkMode } from 'src/utils/appearance'
 
 
 export default function App() {
-
   return (
     <>
       <AppearanceProvider>

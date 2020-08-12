@@ -18,6 +18,7 @@
   "dependencies": {
     "@hyperspace/client": "^1.9.2",
     "dat-sdk": "^2.7.0",
+    "hypercore": "^9.5.0",
     "lodash": "^4.17.19"
   }
 }

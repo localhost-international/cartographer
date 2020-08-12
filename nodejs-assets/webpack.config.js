@@ -1,18 +1,22 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   target: 'node',
-  mode: 'development',
-  entry: './nodejs-project/src/index.js',
+  mode: 'production',
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'nodejs-project'),
   },
-  module: {
-    loaders: [
-      {
-        loader: 'babel'
-      }
-    ]
-  }
+  // plugins: [
+  //   new webpack.ContextReplacementPlugin(
+  //     // /\/sodium-universal\//,
+  //     /(sodium-universal|hypercore-crypto|hypercore)/,
+  //     (data) => {
+  //       delete data.dependancies[0].critical
+  //       return data
+  //     }
+  //   )
+  // ]
 }
