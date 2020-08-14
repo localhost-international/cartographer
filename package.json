@@ -15,6 +15,7 @@
     "@react-navigation/native": "^5.7.2",
     "@react-navigation/stack": "^5.8.0",
     "@types/react-native-share": "^3.3.0",
+    "nodejs-mobile-react-native": "^0.6.1",
     "react": "16.13.1",
     "react-hooks-global-state": "^1.0.1",
     "react-native": "0.63.0",

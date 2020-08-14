@@ -1,8 +1,9 @@
-import React from 'react'
-import { FlatList } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { FlatList, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components/native'
 import { BlurView } from '@react-native-community/blur'
+import nodejs from 'nodejs-mobile-react-native'
 
 import { isDarkMode } from 'src/utils/appearance'
 
@@ -53,14 +54,31 @@ const ListItemTitle = styled.Text`
   padding-bottom: 4px;
   color: ${props => props.theme.colors.text};
 `
-
 const ListItemDesc = styled.Text`
   font-size: 16px;
   color: ${props => props.theme.colors.text};
 `
 
+const DebugText = styled.Text`
+  color: ${props => props.theme.colors.text};
+  text-align: center;
+  font-size: 12px;
+`
+
+
 
 export default function Settings() {
+
+  const [ debugNodeBridge, setDebugNodeBridge ] = useState('')
+
+  useEffect(() => {
+    nodejs.start('main.js')
+    nodejs.channel.addListener(
+      'message',
+      (msg) => { setDebugNodeBridge(`${msg}`) }
+    )
+  }, [])
+
 
   const screenNavigation = useNavigation()
 
@@ -89,6 +107,7 @@ export default function Settings() {
       />
       <Header>
         <HeaderText>Settings</HeaderText>
+        <DebugText>Node.js: {debugNodeBridge}</DebugText>
         <CloseButton onPress={goBack}>
           <CloseButtonText>Done</CloseButtonText>
         </CloseButton>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Text, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import BrowserWebView from 'src/components/BrowserWebView'
