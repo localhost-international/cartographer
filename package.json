@@ -74,7 +74,7 @@
     "browser"
   ],
   "author": "Leslie Owusu-Appiah <leslie@localhost.international>",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/localhost-international/cartographer/issues"
   },
