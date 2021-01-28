@@ -11,7 +11,7 @@ import {
 } from 'src/store/navigation.reducer'
 
 
-const ScrollView = styled.ScrollView.attrs((props) => ({
+const ScrollView = styled.ScrollView.attrs((props: any) => ({
   contentContainerStyle: {
     flex: 1,
   }
@@ -78,7 +78,7 @@ export default function BrowserWebView() {
             originWhitelist={['*']}
             source={{ uri: navigation.urlCurrent }}
             onLoadStart={() => { }}
-            onNavigationStateChange={(navState) => {
+            onNavigationStateChange={(navState: { url: string }) => {
               console.log('onNavigationStateChange', navState)
               dispatch({ type: URL_INPUT, urlInput: navState.url })
               dispatch({ type: WEBVIEW_STATE, webViewState: navState })
@@ -86,7 +86,7 @@ export default function BrowserWebView() {
             onLoadEnd={() => {
               setRefreshing(false)
             }}
-            onContentProcessDidTerminate={syntheticEvent => {
+            onContentProcessDidTerminate={(syntheticEvent: { nativeEvent: any }) => {
               const { nativeEvent } = syntheticEvent
               console.warn('Content process terminated, reloading', nativeEvent)
               // TODO - Show message in UI that the webview crashed 
@@ -96,8 +96,10 @@ export default function BrowserWebView() {
             domStorageEnabled={config.allowStorage}
             javaScriptEnabled={config.allowJavascript}
             decelerationRate={0.998}
-            allowsInlineMediaPlayback
             allowsBackForwardNavigationGestures
+            allowsInlineMediaPlayback={true}
+            allowsFullscreenVideo={false}
+
           />
         </SafeAreaView>
       </ScrollView>
