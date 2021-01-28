@@ -26,7 +26,7 @@
     "react-native-screens": "^2.16.1",
     "react-native-share": "^3.7.0",
     "react-native-svg": "^12.1.0",
-    "react-native-webview": "^10.3.3",
+    "react-native-webview": "^11.2.1",
     "react-redux": "^7.2.1",
     "recoil": "^0.1.2",
     "redux": "^4.0.5",

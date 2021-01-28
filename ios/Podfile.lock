@@ -244,7 +244,7 @@ PODS:
     - React
   - react-native-safe-area-context (3.1.9):
     - React-Core
-  - react-native-webview (10.10.2):
+  - react-native-webview (11.2.1):
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -504,7 +504,7 @@ SPEC CHECKSUMS:
   react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
-  react-native-webview: 0aa2cde4ee7e3e1c5fffdf64dbce9c709aa18155
+  react-native-webview: a4751ec8f0a6a397026f22ed54c1efeec4540555
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -526,4 +526,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 97aeb6e34c2ea1497a4b4987c2f2ee8fd0b2e6a7
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
