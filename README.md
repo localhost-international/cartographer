@@ -8,6 +8,9 @@ _An experimental mobile web browser_
 Cartographer is an experimental web browser, technology demo and user interface/experience playground.  
 It's focus will be on supporting decentralised and peer to peer technologies (such as DAT/Hypercore and web3), but is mainly being built because: it's fun!
 
+<img src="./docs/.assets/cartographer-preview.optimized.gif" width="320" alt="Illustrative screen capture of Cartographer alpha running on iOS browsing between sites" />
+
+
 If you're looking for mature, feature rich browsers that support such technologies, please consider:
 
 **DAT/Hypercore**
@@ -34,7 +37,7 @@ Interested in running on Android? [See this issue](https://github.com/localhost-
 
 ### Building
 
-If you haven't already, [install React Native and it's dependancies](https://reactnative.dev/docs/environment-setup).  
+If you haven't already, [install React Native and it's dependencies](https://reactnative.dev/docs/environment-setup).  
 
 ### iOS and iPadOS
 
@@ -47,7 +50,7 @@ Building Cartographer requires Xcode 11+, cocoapds and Node 14+.
 
 If you encounter any trouble with the above, replace step 2. with:
 
-* `cd ios/ && pod deintegrate && pod install && cd ..`
+* `cd ios/ && pod de-integrate && pod install && cd ..`
 
 
 ### Android 
@@ -98,11 +101,10 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 
 - [x] `http`
 - [x] `https`
+- [ ] `web3`
 - [ ] `dat`
 - [ ] `hyper`
 - [ ] `ipfs`
-- [ ] `web3`
-- [ ] `safe`
 
 #### Settings
 
