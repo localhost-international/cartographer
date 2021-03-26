@@ -3,7 +3,7 @@ import { FlatList, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components/native'
 import { BlurView } from '@react-native-community/blur'
-import nodejs from 'nodejs-mobile-react-native'
+// import nodejs from 'nodejs-mobile-react-native'
 
 import { isDarkMode } from 'src/utils/appearance'
 
@@ -72,11 +72,11 @@ export default function Settings() {
   const [ debugNodeBridge, setDebugNodeBridge ] = useState('')
 
   useEffect(() => {
-    nodejs.start('main.js')
-    nodejs.channel.addListener(
-      'message',
-      (msg) => { setDebugNodeBridge(`${msg}`) }
-    )
+    // nodejs.start('main.js')
+    // nodejs.channel.addListener(
+    //   'message',
+    //   (msg) => { setDebugNodeBridge(`${msg}`) }
+    // )
   }, [])
 
 
