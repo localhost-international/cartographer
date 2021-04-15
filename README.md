@@ -41,17 +41,18 @@ If you haven't already, [install React Native and it's dependencies](https://rea
 
 ### iOS and iPadOS
 
-Building Cartographer requires Xcode 11+, cocoapds and Node 14+.
+Building Cartographer for iOS and iPadOS requires a Mac, Xcode 11+, CocoaPods and Node 14+.
 
 1. `yarn install`
-2. `npx pod-install ios` or `cd ios/ && pod install && cd ..`
-3. `open ios/Cartographer.xcworkspace/`
-4. Then a select a simulator or device and "Run"
+2. `npx pod-install ios`
+3. `npx react-native run-ios`
 
-If you encounter any trouble with the above, replace step 2. with:
+To run on a connected device: 
 
-* `cd ios/ && pod de-integrate && pod install && cd ..`
+*  `yarn global add ios-deploy`
+*  `npx react-native run-ios --device "iPhone"`
 
+> TODO - M1 macOS development instructions
 
 ### Android 
 
@@ -76,8 +77,6 @@ TODO - Not exactly TDD, but it'll soon come.
 
 We're polite and inclusive, and it'd be great if you are also.  
 [Non-violent Communication](https://www.cnvc.org/learn-nvc/what-is-nvc) is key.  
-Cartographer is a [Benevolent Dictatorship](https://en.wikipedia.org/wiki/Benevolent_dictator_for_life) (or [Enlightened absolutism](https://en.wikipedia.org/wiki/Enlightened_absolutism), depending on your world views).  
-
 
 &nbsp;
 

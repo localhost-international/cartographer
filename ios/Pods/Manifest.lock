@@ -256,6 +256,8 @@ PODS:
     - React
   - react-native-blur (0.8.0):
     - React
+  - react-native-get-random-values (1.7.0):
+    - React-Core
   - react-native-safe-area-context (3.2.0):
     - React-Core
   - react-native-webview (11.3.2):
@@ -406,6 +408,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-appearance (from `../node_modules/react-native-appearance`)
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
+  - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -478,6 +481,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-appearance"
   react-native-blur:
     :path: "../node_modules/@react-native-community/blur"
+  react-native-get-random-values:
+    :path: "../node_modules/react-native-get-random-values"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-webview:
@@ -550,6 +555,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 0ae35a37b20d5e031eb020a69cc5afdbd6406301
   react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
+  react-native-get-random-values: 237bffb1c7e05fb142092681531810a29ba53015
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   react-native-webview: 71567b6bf3d4e55914e580d720cc8f7df64af817
   React-perflogger: 9c547d8f06b9bf00cb447f2b75e8d7f19b7e02af
