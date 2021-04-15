@@ -6,7 +6,7 @@ import { ethers } from 'ethers'
 
 const CONFIG = {
 	network: 'homestead',
-	apiKey: 'Y2DCTPZJPVQK4ZVREVZPIDT1DFG7HRGKU2'
+	apiKey: process.env.ETHERSCAN_API_KEY
 }
 
 const provider = new ethers.providers.FallbackProvider([
