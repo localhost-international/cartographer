@@ -1,3 +1,15 @@
+# Cartographer 
+#
+wallet-data.*
+
+# .env
+#
+.env.ts
+.env.development.ts
+.env.staging.ts
+.env.production.ts
+
+
 # OSX
 #
 .DS_Store
@@ -57,9 +69,3 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-
-# .env
-.env
-.env.development
-.env.staging
-.env.production

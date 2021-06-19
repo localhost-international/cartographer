@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigation } from '@react-navigation/native'
-import styled, { withTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
+
 import Share from 'react-native-share'
 
 import { AppState } from 'src/store/reducers'
@@ -13,34 +13,10 @@ import { upgradeUrl } from 'src/utils/url'
 import IconShare from 'src/assets/icons/icon-share.svg'
 
 
-const AddressBar = styled.View`
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  background-color: ${props => props.theme.addressBar.background};
-`
-const TextInput = styled.TextInput`
-  font-size: 18px;
-  text-align: left;
-  padding: 10px;
-  color: ${props => props.theme.addressBar.color};
-`
-const Icon = styled.TouchableOpacity`
-  /*border: 1px solid rgba(255,0,0,.5);*/
-  right: -8px;
-  text-align: right;
-  position: absolute;
-  padding-top: 7.5px;
-  margin-right: 8px;
-  padding-bottom: 7.5px;
-  margin-left: 8px;
-  color: ${props => props.theme.addressBar.color};
-`
 
+const AddressTextInput = () => {
 
-const AddressTextInput = ({ theme }: any) => {
+  const theme = useTheme()
 
   const navigation = useSelector((state: AppState) => state.navigation)
   const dispatch = useDispatch()
@@ -54,8 +30,8 @@ const AddressTextInput = ({ theme }: any) => {
       url: navigation.webViewState.url
     }
     Share.open(shareOptions)
-      .then((resp: any) => { console.log('Share successful', resp) })
-      .catch((err: any) => { console.log('Share error', err) })
+      .then((resp) => { console.log('Share successful', resp) })
+      .catch((err) => { console.log('Share error', err) })
   }
 
   return (
@@ -100,4 +76,33 @@ const AddressTextInput = ({ theme }: any) => {
 }
 
 
-export default withTheme(AddressTextInput)
+
+const AddressBar = styled.View`
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background-color: ${props => props.theme.addressBar.background};
+`
+const TextInput = styled.TextInput`
+  font-size: 18px;
+  text-align: left;
+  padding: 10px;
+  color: ${props => props.theme.addressBar.color};
+`
+const Icon = styled.TouchableOpacity`
+  /*border: 1px solid rgba(255,0,0,.5);*/
+  right: -8px;
+  text-align: right;
+  position: absolute;
+  padding-top: 7.5px;
+  margin-right: 8px;
+  padding-bottom: 7.5px;
+  margin-left: 8px;
+  color: ${props => props.theme.addressBar.color};
+`
+
+
+
+export default AddressTextInput

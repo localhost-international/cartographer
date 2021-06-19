@@ -1,40 +1,28 @@
-import React, { useState, useEffect } from 'react'
-import { FlatList, Text } from 'react-native'
+import React, { useContext } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components/native'
 import { BlurView } from '@react-native-community/blur'
 
 import { isDarkMode } from 'src/utils/appearance'
+import { useTheme } from 'styled-components/native'
 
 import data from 'src/data/settings.json'
 
+import { AppState } from 'src/store/reducers'
 
-import { ethereum } from 'src/protocols/ethereum'
+import IconCurrencyEthereum from 'src/assets/icons/currencies/currency-ethereum.svg'
 
 
 export default function Settings() {
 
-  const [ethBalance, setEthBalance] = useState<string>('...');
+	const theme = useTheme()
 
-
-  useEffect(() => {
-    (async () => setEthBalance(await ethereum.balance()))()
-  }, [])
-
-
+  const ethereumState = useSelector((state: AppState) => state.ethereum)
 
   const screenNavigation = useNavigation()
 
   const goBack = () => screenNavigation.goBack()
-
-  const renderItems = ({ item }: any) => {
-    return (
-      <ListItem>
-        <ListItemTitle>{item.name}</ListItemTitle>
-        <ListItemDesc>{item.description}</ListItemDesc>
-      </ListItem>
-    )
-  }
 
   return (
     <>
@@ -49,38 +37,40 @@ export default function Settings() {
         }}
       />
       <Header>
-        <HeaderText>Settings</HeaderText>
-        <DebugText>Ethereum Balance: {ethBalance}</DebugText>
+        <WalletInfo pointerEvents="none">
+          <WalletUserIcon />
+
+          <WalletAddressTitle>
+            {ethereumState.ethWalletEns}
+          </WalletAddressTitle>
+
+          <WalletAddressHex>
+            {ethereumState.ethWalletHex}
+          </WalletAddressHex>
+          <WalletBalance>
+            <WalletCurrencyIcon width={32} height={42} fill={theme.ui.icon} /> 
+            <WalletAmount>
+              {ethereumState.ethWalletBalance}
+            </WalletAmount>
+          </WalletBalance>
+        </WalletInfo>
         <CloseButton onPress={goBack}>
           <CloseButtonText>Done</CloseButtonText>
         </CloseButton>
       </Header>
-      <FlatListContainer
-        data={data.settings}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={renderItems}
-      />
+			<Body>
+			</Body>
     </>
   )
 }
 
 
 
-const SafeAreaView = styled.SafeAreaView`
-  flex: 1;
-  background-color: ${props => props.theme.ui.background};
-`
-
 const Header = styled.View`
   background-color: ${props => props.theme.ui.background};
   padding: 20px 0;
 `
-const HeaderText = styled.Text`
-  color: ${props => props.theme.colors.text};
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-`
+
 const CloseButton = styled.TouchableOpacity.attrs((props) => ({
   color: 'red'
 }))`
@@ -93,31 +83,52 @@ const CloseButtonText = styled.Text`
   font-size: 18px;
 `
 
-const FlatListContainer = styled(FlatList)`
-  flex: 1;
+const WalletInfo = styled.View`
+  margin: 20px 20px 20px 20px;
+`
+
+const walletUserIconSize = `80px`;
+const WalletUserIcon = styled.View`
+  width: ${walletUserIconSize};
+  height: ${walletUserIconSize};
+  border-radius: ${walletUserIconSize};
+  background-color: ${props => props.theme.colors.text};
+	opacity: .25;
+  margin: 0 0 20px 0;
+`
+
+const WalletAddressTitle = styled.Text`
+  color: ${props => props.theme.colors.text};
+  font-size: 24px;
+  font-weight: 600;
+`
+const WalletAddressHex = styled.Text`
+  color: ${props => props.theme.colors.text};
+	opacity: .65;
+  font-size: 13.5px;
+`
+
+const WalletBalance = styled.View`
+  /* border: 1px solid red; */
+  flex-direction: row;
+  margin: 20px 0 0 0;
+`
+
+const WalletCurrencyIcon = styled(IconCurrencyEthereum)`
+  /* border: 1px solid red; */
+	margin: 3.5px 10px 0 0;
+
+`
+
+const WalletAmount = styled.Text`
+  color: ${props => props.theme.colors.text};
+  font-size: 42px;
+  font-weight: 600;
+`
+
+
+
+const Body = styled.View`
   background-color: ${props => props.theme.ui.background};
+  flex: 1;
 `
-const ListItem = styled.TouchableOpacity`
-  padding-top: 15px;
-  padding-right: 10px;
-  padding-bottom: 15px;
-  padding-left: 10px;
-  border-bottom-color: ${props => props.theme.ui.icon};
-  border-bottom-width: 1px;
-`
-const ListItemTitle = styled.Text`
-  font-size: 18px;
-  padding-bottom: 4px;
-  color: ${props => props.theme.colors.text};
-`
-const ListItemDesc = styled.Text`
-  font-size: 16px;
-  color: ${props => props.theme.colors.text};
-`
-
-const DebugText = styled.Text`
-  color: ${props => props.theme.colors.text};
-  text-align: center;
-  font-size: 12px;
-`
-

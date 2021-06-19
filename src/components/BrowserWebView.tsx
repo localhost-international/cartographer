@@ -5,29 +5,11 @@ import styled from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
 import { 
-  WEBVIEW_REF, 
+  WEBVIEW_REF,
   WEBVIEW_STATE, 
   URL_INPUT
 } from 'src/store/navigation.reducer'
 
-
-const ScrollView = styled.ScrollView.attrs((props: any) => ({
-  contentContainerStyle: {
-    flex: 1,
-  }
-}))`
-  /* Note: experiment with dynamic container heights
-  /*margin-top: 46px;*/
-  /*margin-bottom: 134px;*/
-`
-
-const RefreshControl = styled.RefreshControl``
-
-const SafeAreaView = styled.SafeAreaView`
-  flex: 1;
-`
-
-const WebViewContainer = styled(WebView)``
 
 
 export default function BrowserWebView() {
@@ -49,10 +31,9 @@ export default function BrowserWebView() {
 
   const [ refreshing, setRefreshing ] = useState(false)
 
-  // TODO - Unsubscribe on unmount
   useEffect(() => {
-    dispatch({ type: WEBVIEW_REF, webViewRef })
-  }, [])
+    dispatch({ type: WEBVIEW_REF, webViewRef });
+  }, []);
 
   const webViewReload = () => {
     setRefreshing(true)
@@ -86,7 +67,7 @@ export default function BrowserWebView() {
             onLoadEnd={() => {
               setRefreshing(false)
             }}
-            onContentProcessDidTerminate={(syntheticEvent: { nativeEvent: any }) => {
+            onContentProcessDidTerminate={(syntheticEvent) => {
               const { nativeEvent } = syntheticEvent
               console.warn('Content process terminated, reloading', nativeEvent)
               // TODO - Show message in UI that the webview crashed 
@@ -99,10 +80,33 @@ export default function BrowserWebView() {
             allowsBackForwardNavigationGestures
             allowsInlineMediaPlayback={true}
             allowsFullscreenVideo={false}
-
           />
         </SafeAreaView>
       </ScrollView>
     </>
   )
 }
+
+
+
+const ScrollView = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: {
+    flex: 1,
+  }
+}))`
+  /* Note: experiment with dynamic container heights
+  /*margin-top: 46px;*/
+  /*margin-bottom: 134px;*/
+`
+
+const RefreshControl = styled.RefreshControl``
+
+const SafeAreaView = styled.SafeAreaView`
+  flex: 1;
+`
+
+const WebViewContainer = styled(WebView)``
+
+const Text = styled.Text`
+  color: ${props => props.theme.colors.text};
+`
