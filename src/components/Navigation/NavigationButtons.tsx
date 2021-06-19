@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { SafeAreaView } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-import styled, { withTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AppState } from 'src/store/reducers'
+
 
 import IconArrowLeft from 'src/assets/icons/icon-arrow-left.svg'
 import IconArrowRight from 'src/assets/icons/icon-arrow-right.svg'
@@ -17,31 +18,11 @@ interface IconProps {
   type: string
 }
 
-const iconSize = 32
 
 
-const View = styled.View`
-  margin-left: 16px;
-  margin-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  flex-direction: row;
-  justify-content: space-between;
-`
-const Icon = styled.TouchableOpacity`
-  /*border: 1px solid red;*/
-  height: ${iconSize}px;
-  padding-top: 0;
-  padding-right: 10px;
-  padding-bottom: 0;
-  padding-left: 10px;
-  ${({ type }: IconProps) => type === 'tabs' && ``}
-  ${({ type }: IconProps) => type === 'reload' && ``}
-  ${({ type }: IconProps) => type === 'options' && ``}
-`
+const NavigationButtons = () => {
 
-
-const NavigationButtons = ({ theme }: any) => {
+	const theme = useTheme()
 
   const screenNavigation = useNavigation()
 
@@ -80,4 +61,28 @@ const NavigationButtons = ({ theme }: any) => {
 }
 
 
-export default withTheme(NavigationButtons)
+const iconSize = 32
+
+const View = styled.View`
+  margin-left: 16px;
+  margin-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  flex-direction: row;
+  justify-content: space-between;
+`
+const Icon = styled.TouchableOpacity`
+  /*border: 1px solid red;*/
+  height: ${iconSize}px;
+  padding-top: 0;
+  padding-right: 10px;
+  padding-bottom: 0;
+  padding-left: 10px;
+  ${({ type }: IconProps) => type === 'tabs' && ``}
+  ${({ type }: IconProps) => type === 'reload' && ``}
+  ${({ type }: IconProps) => type === 'options' && ``}
+`
+
+
+
+export default NavigationButtons

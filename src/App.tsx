@@ -1,5 +1,4 @@
 import React from 'react'
-import { Alert } from 'react-native'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components/native'
 import { AppearanceProvider } from 'react-native-appearance'

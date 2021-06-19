@@ -1,7 +1,7 @@
 export const SETTINGS_REF = 'settings/settings-ref'
 
 type SettingsState = {
-  settingsRef: any
+  settingsRef: null
 }
 
 const initialState: SettingsState = {

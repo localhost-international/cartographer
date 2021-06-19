@@ -11,13 +11,19 @@ export const isDarkMode = () => {
 
   const colorScheme = useColorScheme()
 
-  // TODO - Unsubscribe on unmount
-  useEffect(() => {
-    setIsDarkMode(colorScheme === 'dark' ? true : false)
-    const subscription = Appearance.addChangeListener(({ colorScheme }) => {
-      setIsDarkMode(colorScheme === 'dark' ? true : false)
-    })
+	useEffect(() => {
+		let mounted = true;
+		setIsDarkMode(colorScheme === 'dark' ? true : false)
+		Appearance.addChangeListener(({ colorScheme }) => {
+			if (mounted) {
+				setIsDarkMode(colorScheme === 'dark' ? true : false)
+			}
+		})
+    return () => {
+      mounted = false;
+    }		
   }, [isDarkMode])
+
 
   return isDarkMode
 }
