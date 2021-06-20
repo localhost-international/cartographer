@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Appearance, useColorScheme } from 'react-native-appearance'
+import { Appearance, useColorScheme } from 'react-native'
 
 
 Appearance.getColorScheme()

@@ -36,7 +36,7 @@ const AddressTextInput = () => {
 
   return (
     <AddressBar>
-      <TextInput
+      <URLSearchInput
         value={navigation.urlInput}
         onChangeText={(url: string) => {
           dispatch({ type: URL_INPUT, urlInput: url })
@@ -60,8 +60,8 @@ const AddressTextInput = () => {
         blurOnSubmit={true}
         clearButtonMode="while-editing"
         keyboardAppearance={isDarkMode() ? 'dark' : 'light'}
-        keyboardType="web-search"
-        returnKeyLabel="go"
+        // TODO - Change keyboard type to search if URL not detected
+        keyboardType="web-search" 
         selectTextOnFocus={true}
         textContentType="URL"
       />
@@ -85,7 +85,7 @@ const AddressBar = styled.View`
   border-radius: 6px;
   background-color: ${props => props.theme.addressBar.background};
 `
-const TextInput = styled.TextInput`
+const URLSearchInput = styled.TextInput`
   font-size: 18px;
   text-align: left;
   padding: 10px;

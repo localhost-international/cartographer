@@ -9,6 +9,7 @@ const theme: DefaultTheme = {
   },
   ui: {
     background: 'rgba(24,25,26,.95)',
+    foreground: 'rgba(0,0,0,.75)',
     icon: 'rgba(255,255,255,.5)'
   },
   addressBar: {

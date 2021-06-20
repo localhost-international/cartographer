@@ -84,9 +84,9 @@ export default function AppNavigator() {
           gestureEnabled: true,
 					animationEnabled: true,
           ...TransitionPresets.ModalPresentationIOS,
-          headerStyle: {
-            borderBottom: 'none'
-          },
+          // headerStyle: {
+          //   borderBottom: 'none'
+          // },
         }}
         mode="modal"
         headerMode="screen"
