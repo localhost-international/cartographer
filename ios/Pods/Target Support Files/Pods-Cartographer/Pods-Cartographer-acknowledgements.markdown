@@ -1355,11 +1355,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## react-native-appearance
+## react-native-blur
 
 MIT License
 
-Copyright (c) Facebook, Inc. and its affiliates.
+Copyright (c) 2016 React Native Community
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -1380,11 +1380,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-## react-native-blur
+## react-native-config
 
-MIT License
+The MIT License (MIT)
 
-Copyright (c) 2016 React Native Community
+Copyright (c) 2015 Lugg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

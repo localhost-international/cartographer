@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { SafeAreaView } from 'react-native'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components/native'
@@ -25,7 +26,7 @@ export default function Settings() {
 
   const goBack = () => screenNavigation.goBack()
 
-  const [ searchWallet, setSearchWallet] = useState('')
+  const [searchWallet, setSearchWallet] = useState('')
 
   const wallet = new Ethereum();
 
@@ -42,13 +43,14 @@ export default function Settings() {
         }}
       />
       <Header>
+        <CloseButton onPress={goBack}>
+          <CloseButtonText>Done</CloseButtonText>
+        </CloseButton>
         <WalletInfo pointerEvents="none">
           <WalletUserIcon />
-
           <WalletAddressTitle>
             {ethereumState.ethWalletEns}
           </WalletAddressTitle>
-
           <WalletAddressHex>
             {ethereumState.ethWalletHex}
           </WalletAddressHex>
@@ -59,9 +61,6 @@ export default function Settings() {
             </WalletAmount>
           </WalletBalance>
         </WalletInfo>
-        <CloseButton onPress={goBack}>
-          <CloseButtonText>Done</CloseButtonText>
-        </CloseButton>
       </Header>
       <Body>
         <SearchWallet
@@ -83,7 +82,6 @@ export default function Settings() {
           clearButtonMode="always"
           textContentType="none" // TODO - URL and hex?
         />
-
       </Body>
     </>
   )
@@ -96,8 +94,8 @@ const Header = styled.View`
   padding: 20px 0;
 `
 
-const CloseButton = styled.TouchableOpacity.attrs((props) => ({
-  color: 'red'
+const CloseButton = styled.Pressable.attrs((props) => ({
+  hitSlop: 20
 }))`
   position: absolute;
   top: 24px;

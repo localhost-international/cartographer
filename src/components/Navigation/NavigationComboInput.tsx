@@ -91,7 +91,9 @@ const URLSearchInput = styled.TextInput`
   padding: 10px;
   color: ${props => props.theme.addressBar.color};
 `
-const Icon = styled.TouchableOpacity`
+const Icon = styled.Pressable.attrs({
+  hitSlop: 10
+})`
   /*border: 1px solid rgba(255,0,0,.5);*/
   right: -8px;
   text-align: right;

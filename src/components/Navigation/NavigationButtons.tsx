@@ -71,7 +71,9 @@ const View = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `
-const Icon = styled.TouchableOpacity`
+const Icon = styled.Pressable.attrs({
+  hitSlop: 10
+})`
   /*border: 1px solid red;*/
   height: ${iconSize}px;
   padding-top: 0;
