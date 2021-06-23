@@ -24,8 +24,9 @@ export default function BrowserWebView() {
     defaultSearchEngine: 'duck'
   }
 
-  const webViewRef = useRef<WebView>(null)
+  const webViewRef = useRef<WebView | null>(null)
 
+ 
   const navigation = useSelector((state: AppState) => state.navigation)
   const dispatch = useDispatch()
 
@@ -36,8 +37,8 @@ export default function BrowserWebView() {
   }, []);
 
   const webViewReload = () => {
-    setRefreshing(true)
-    navigation.webViewRef.current.reload()
+    setRefreshing(true);
+    navigation.webViewRef.current.reload();
   }
 
 

@@ -10,7 +10,9 @@ import { URL_INPUT, URL_CURRENT } from 'src/store/navigation.reducer'
 import { isDarkMode } from 'src/utils/appearance'
 import { upgradeUrl } from 'src/utils/url'
 
+import { ButtonIcon } from 'src/components/ButtonIcon'
 import IconShare from 'src/assets/icons/icon-share.svg'
+
 
 
 
@@ -36,7 +38,7 @@ const AddressTextInput = () => {
 
   return (
     <AddressBar>
-      <TextInput
+      <URLSearchInput
         value={navigation.urlInput}
         onChangeText={(url: string) => {
           dispatch({ type: URL_INPUT, urlInput: url })
@@ -60,8 +62,8 @@ const AddressTextInput = () => {
         blurOnSubmit={true}
         clearButtonMode="while-editing"
         keyboardAppearance={isDarkMode() ? 'dark' : 'light'}
-        keyboardType="web-search"
-        returnKeyLabel="go"
+        // TODO - Change keyboard type to search if URL not detected
+        keyboardType="web-search" 
         selectTextOnFocus={true}
         textContentType="URL"
       />
@@ -85,13 +87,15 @@ const AddressBar = styled.View`
   border-radius: 6px;
   background-color: ${props => props.theme.addressBar.background};
 `
-const TextInput = styled.TextInput`
+const URLSearchInput = styled.TextInput`
   font-size: 18px;
   text-align: left;
   padding: 10px;
   color: ${props => props.theme.addressBar.color};
 `
-const Icon = styled.TouchableOpacity`
+const Icon = styled.Pressable.attrs({
+  hitSlop: 10
+})`
   /*border: 1px solid rgba(255,0,0,.5);*/
   right: -8px;
   text-align: right;

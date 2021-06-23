@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test component renders 1`] = `
+<Text>
+  Testing, testing, 1, 2, 3
+</Text>
+`;

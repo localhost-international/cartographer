@@ -10,6 +10,7 @@ declare module 'styled-components/native' {
     },
     ui: {
       background: string
+			foreground: string
       icon: string
     },
     addressBar: {

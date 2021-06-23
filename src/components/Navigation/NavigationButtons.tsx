@@ -13,9 +13,11 @@ import IconOptions from 'src/assets/icons/icon-options.svg'
 import IconRefresh from 'src/assets/icons/icon-refresh.svg'
 import IconTabs from 'src/assets/icons/icon-tabs.svg'
 
+import { ButtonIcon } from 'src/components/ButtonIcon'
+
 
 interface IconProps {
-  type: string
+	type: string
 }
 
 
@@ -24,40 +26,76 @@ const NavigationButtons = () => {
 
 	const theme = useTheme()
 
-  const screenNavigation = useNavigation()
+	const screenNavigation = useNavigation()
 
-  const navigation = useSelector((state: AppState) => state.navigation)
-  const dispatch = useDispatch()
+	const navigation = useSelector((state: AppState) => state.navigation)
+	const dispatch = useDispatch()
 
-  const webViewReload = () => navigation.webViewRef.current.reload()
-  // TODO - Check if you can go back/forward and disable button(s)
-  const webViewGoBack = () => navigation.webViewRef.current.goBack()
-  const webViewGoForward = () => navigation.webViewRef.current.goForward()
+	const webViewReload = () => navigation.webViewRef.current.reload()
+	// TODO - Make backward/forward inactive based on history 
+	const webViewGoBack = () => navigation.webViewRef.current.goBack()
+	const webViewGoForward = () => navigation.webViewRef.current.goForward()
+	const viewSettings = () => screenNavigation.navigate('Settings')
 
-  const viewSettings = () => screenNavigation.navigate('Settings')
+
+	const navigationButtons = [
+		{
+			type: 'back',
+			onPress: () => webViewGoBack(),
+			iconImage: IconArrowLeft,
+			accessibilityLabel: 'Go back'
+		},
+		{
+			type: 'forward',
+			onPress: () => webViewGoForward(),
+			iconImage: IconArrowRight,
+			accessibilityLabel: 'Go forward'
+		},
+		{
+			type: 'tabs',
+			onPress: () => { },
+			iconImage: IconTabs,
+			accessibilityLabel: 'List opened web-site tabs'
+		},
+		{
+			type: 'reload',
+			onPress: () => webViewReload(),
+			iconImage: IconRefresh,
+			accessibilityLabel: 'Reload web-page'
+		},
+		{
+			type: 'options',
+			onPress: () => viewSettings(),
+			iconImage: IconOptions,
+			accessibilityLabel: 'More Options'
+		}
+	];
 
 
-  return (
-    <SafeAreaView>
-      <View>
-        <Icon type={`back`} onPress={webViewGoBack}>
-          <IconArrowLeft height={iconSize} fill={theme.ui.icon} />
-        </Icon>
-        <Icon type={`forward`} onPress={webViewGoForward}>
-          <IconArrowRight height={iconSize} fill={theme.ui.icon} />
-        </Icon>
-        <Icon type={`tabs`} onPress={() => { }}>
-          <IconTabs height={iconSize} fill={theme.ui.icon} />
-        </Icon>
-        <Icon type={`reload`} onPress={webViewReload}>
-          <IconRefresh height={iconSize} fill={theme.ui.icon} />
-        </Icon>
-        <Icon type={`options`} onPress={viewSettings}>
-          <IconOptions height={iconSize} fill={theme.ui.icon} />
-        </Icon>
-      </View>
-    </SafeAreaView>
-  )
+
+
+	return (
+		<SafeAreaView>
+			<View>
+
+				{
+					navigationButtons.map((button) => {
+						const { type, iconImage, accessibilityLabel, onPress } = button;
+						return (
+							<ButtonIcon
+								type={type}
+								key={`${button + type}`}
+								accessibilityLabel={accessibilityLabel}
+								onPress={onPress}
+								iconImage={iconImage}
+							/>
+						)
+					})
+				}
+
+			</View>
+		</SafeAreaView>
+	)
 }
 
 
@@ -71,8 +109,9 @@ const View = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `
-const Icon = styled.TouchableOpacity`
-  /*border: 1px solid red;*/
+const Icon = styled.Pressable.attrs({
+	hitSlop: 10
+})`
   height: ${iconSize}px;
   padding-top: 0;
   padding-right: 10px;

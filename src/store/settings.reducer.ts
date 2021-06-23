@@ -8,7 +8,18 @@ const initialState: SettingsState = {
   settingsRef: null
 }
 
-export default (state: SettingsState = initialState, action: any) => {
+type SettingsRef = {
+	type: typeof SETTINGS_REF
+	settingsOpen: boolean
+}
+
+type SettingsActionTypes = SettingsRef
+
+
+export default (
+	state: SettingsState = initialState, 
+	action: SettingsActionTypes
+) => {
   switch (action.type) {
     case SETTINGS_REF: {
       return {

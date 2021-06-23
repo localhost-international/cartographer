@@ -1,3 +1,5 @@
+import type React from 'react'
+import type { WebView } from 'react-native-webview'
 import type { Dispatch } from 'redux'
 
 export const WEBVIEW_REF = 'browser/webview-ref'
@@ -9,19 +11,43 @@ export const URL_CURRENT = 'browser/url-current'
 type NavigationState = {
   urlInput: string
   urlCurrent: string
-  webViewRef: null
+  webViewRef: React.RefObject<WebView> | null
   webViewState: null
 }
 
 const initialState: NavigationState = {
   urlInput: '',
-  urlCurrent: 'https://web3summit.com/',
+  urlCurrent: 'https://foundation.app/@leslie',
   webViewRef: null,
   webViewState: null
 }
 
 
-export default (state: NavigationState = initialState, action: any) => {
+type UrlInput = {
+	type: typeof URL_INPUT
+	urlInput: string
+}
+type UrlCurrent = {
+	type: typeof URL_CURRENT
+	urlCurrent: string
+}
+type WebViewRef = {
+	type: typeof WEBVIEW_REF
+	webViewRef: React.RefObject<WebView> | null
+}
+type WebViewState = {
+	type: typeof WEBVIEW_STATE
+	webViewState: null
+}
+
+type NavigationActionTypes = 
+	UrlInput | 
+	UrlCurrent | 
+	WebViewRef | 
+	WebViewState
+
+export default (
+	state: NavigationState = initialState, action: NavigationActionTypes) => {
   switch (action.type) {
     case WEBVIEW_REF: {
       return {
@@ -51,6 +77,11 @@ export default (state: NavigationState = initialState, action: any) => {
       return { ...state }
     }
   }
+}
+
+export const webViewRef = (ref: any) => (dispatch: Dispatch) => {
+  console.log('webViewRef dispatch', ref)
+  dispatch({ type: WEBVIEW_REF, webViewRef: ref })
 }
 
 export const urlInput = (url: string) => (dispatch: Dispatch) => {
