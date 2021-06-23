@@ -7,7 +7,9 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "@ethersproject/shims": "^5.1.0",
@@ -38,6 +40,8 @@
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/runtime": "^7.13.10",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@react-native-community/eslint-config": "^3.0.0",
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.23",
@@ -53,9 +57,11 @@
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "enzyme": "^3.11.0",
     "eslint": "^7.22.0",
+    "husky": "^6.0.0",
     "jest": "^27.0.4",
     "jest-enzyme": "^7.1.2",
     "jest-styled-components": "^7.0.4",
+    "lint-staged": "^11.0.0",
     "metro-react-native-babel-preset": "^0.66.0",
     "prettier": "^2.2.1",
     "react-native-svg-transformer": "^0.14.3",
