@@ -42,31 +42,31 @@ const NavigationButtons = () => {
 		{
 			type: 'back',
 			onPress: () => webViewGoBack(),
-			icon: IconArrowLeft,
+			iconImage: IconArrowLeft,
 			accessibilityLabel: 'Go back'
 		},
 		{
 			type: 'forward',
 			onPress: () => webViewGoForward(),
-			icon: IconArrowRight,
+			iconImage: IconArrowRight,
 			accessibilityLabel: 'Go forward'
 		},
 		{
 			type: 'tabs',
-			onPress: () => {},
-			icon: IconTabs,
+			onPress: () => { },
+			iconImage: IconTabs,
 			accessibilityLabel: 'List opened web-site tabs'
 		},
 		{
 			type: 'reload',
 			onPress: () => webViewReload(),
-			icon: IconRefresh,
+			iconImage: IconRefresh,
 			accessibilityLabel: 'Reload web-page'
 		},
 		{
 			type: 'options',
 			onPress: () => viewSettings(),
-			icon: IconOptions,
+			iconImage: IconOptions,
 			accessibilityLabel: 'More Options'
 		}
 	];
@@ -80,25 +80,14 @@ const NavigationButtons = () => {
 
 				{
 					navigationButtons.map((button) => {
-						const { type, icon, accessibilityLabel, onPress } = button;
-						const IconImage = icon
-						// return (
-						// 	<Icon 
-						// 		type={type} 
-						// 		key={`${button + type}`}
-						// 		accessibilityLabel={accessibilityLabel}
-						// 		onPress={onPress}
-						// 	>
-						// 		<IconImage height={iconSize} fill={theme.ui.icon} />
-						// 	</Icon>
-						// )
+						const { type, iconImage, accessibilityLabel, onPress } = button;
 						return (
-							<ButtonIcon 
+							<ButtonIcon
 								type={type}
 								key={`${button + type}`}
 								accessibilityLabel={accessibilityLabel}
 								onPress={onPress}
-								icon={icon}
+								iconImage={iconImage}
 							/>
 						)
 					})

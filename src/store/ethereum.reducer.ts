@@ -6,7 +6,6 @@ export const ETH_WALLET_HEX = 'ethereum/wallet-hex'
 export const ETH_WALLET_ENS = 'ethereum/wallet-ens'
 export const ETH_WALLET_BALANCE = 'ethereum/wallet-balance'
 
-
 type EthereumState = {
   ethWalletAddress: BigNumber | string | null
   ethWalletHex: string | null
@@ -21,8 +20,33 @@ const initialState: EthereumState = {
   ethWalletBalance: '...'
 }
 
+type EthereumWalletAddress = {
+	type: typeof ETH_WALLET_ADDRESS
+	ethWalletAddress: BigNumber | string | null
+}
+type EthereumWalletHex = {
+	type: typeof ETH_WALLET_HEX
+	ethWalletHex: string | null
+}
+type EthereumWalletENS = {
+	type: typeof ETH_WALLET_ENS
+	ethWalletEns: string | null
+}
+type EthereumWalletBalance = {
+	type: typeof ETH_WALLET_BALANCE
+	ethWalletBalance: string
+}
 
-export default (state: EthereumState = initialState, action: any) => {
+type EthereumActionTypes = 
+	EthereumWalletAddress | 
+	EthereumWalletHex | 
+	EthereumWalletENS | 
+	EthereumWalletBalance
+
+export default (
+	state: EthereumState = initialState, 
+	action: EthereumActionTypes
+) => {
   switch (action.type) {
     case ETH_WALLET_ADDRESS: {
       return {

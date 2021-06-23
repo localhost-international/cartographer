@@ -1,7 +1,7 @@
 import React from 'react'
+import { GestureResponderEvent } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 import styled, { useTheme } from 'styled-components/native'
-
 
 
 interface IconProps {
@@ -9,21 +9,18 @@ interface IconProps {
 };
 
 interface ButtonIconProps {
-	type: string;
-	onPress: any;
-	icon: object;
-	accessibilityLabel: string;
+	type: string
+	onPress: (event: GestureResponderEvent) => void
+	iconImage: React.FC<SvgProps>
+	accessibilityLabel: string
 };
 
 
 export const ButtonIcon = ({
-	type, onPress, icon, accessibilityLabel
+	type, onPress, iconImage, accessibilityLabel
 }: ButtonIconProps) => {
-
 	const theme = useTheme()
-	
-
-	const IconImage:any = icon
+	const IconImage = iconImage
 	return (
 		<Icon 
 			type={type} 

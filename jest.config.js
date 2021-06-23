@@ -14,6 +14,7 @@ module.exports = {
 		},
 	},
 	clearMocks: true,
+	// setupFiles: ["<rootDir>/jest.setup.js"],	
 	setupFilesAfterEnv: ['./jest.setup.js'],
 	collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/node_modules/**'],
 };
