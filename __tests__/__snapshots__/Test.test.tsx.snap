@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test component renders 1`] = `
-<Text>
+<Text
+  style={
+    Array [
+      Object {
+        "color": "red",
+      },
+    ]
+  }
+>
   Testing, testing, 1, 2, 3
 </Text>
 `;
