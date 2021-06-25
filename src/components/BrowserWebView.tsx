@@ -28,7 +28,7 @@ export default function BrowserWebView() {
         webViewRef: webViewRef,
       };
     });
-  });
+  }, [setNavState]);
 
   const webViewReload = () => {
     setRefreshing(true);

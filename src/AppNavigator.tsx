@@ -37,7 +37,7 @@ export default function AppNavigator() {
         ethWalletBalance: await wallet.getBalance(),
       });
     })();
-  });
+  }, [setEthereumState]);
 
   return (
     <NavigationContainer>
