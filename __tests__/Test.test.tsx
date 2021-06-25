@@ -1,17 +1,15 @@
-import * as React from 'react';
-import * as ReactNative from 'react-native';
+import React from 'react';
 import renderer from 'react-test-renderer';
 
 import Test from '../src/components/Test';
-import App from '../App';
+// import App from '../App';
 
-import { ButtonIcon } from '../src/components/ButtonIcon';
-import IconOptions from 'src/assets/icons/icon-options.svg';
+// import { ButtonIcon } from '../src/components/ButtonIcon';
+// import IconOptions from 'src/assets/icons/icon-options.svg';
 
-import { shallow, mount } from 'enzyme'
-import 'jest-enzyme'
-import 'jest-styled-components'
-
+// import { shallow, mount } from 'enzyme';
+import 'jest-enzyme';
+import 'jest-styled-components';
 
 // const button = {
 //   type: 'options',
@@ -20,10 +18,9 @@ import 'jest-styled-components'
 //   accessibilityLabel: 'More Options'
 // }
 
-
 // it('icon button renders', () => {
 //   const { type, iconImage, accessibilityLabel, onPress } = button;
-//   const component = 
+//   const component =
 //     <ButtonIcon
 //       type={type}
 //       key={`${button + type}`}
@@ -35,9 +32,8 @@ import 'jest-styled-components'
 //   expect(tree).toMatchSnapshot()
 // });
 
-
 it('Test component renders', () => {
-  const component = <Test />
-  const tree = renderer.create(component).toJSON()
-  expect(tree).toMatchSnapshot()
+  const component = <Test />;
+  const tree = renderer.create(component).toJSON();
+  expect(tree).toMatchSnapshot();
 });

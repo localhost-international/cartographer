@@ -1,15 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test component renders 1`] = `
-<Text
+<View
   style={
     Array [
       Object {
-        "color": "red",
+        "backgroundColor": "rgba(255, 0, 0, 0.25)",
       },
     ]
   }
 >
-  Testing, testing, 1, 2, 3
-</Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "red",
+        },
+      ]
+    }
+  >
+    Testing, testing, 1, 2, 3
+  </Text>
+</View>
 `;

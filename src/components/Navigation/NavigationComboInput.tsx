@@ -1,59 +1,65 @@
-import React, { useState, useContext } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import styled, { useTheme } from 'styled-components/native'
+import React, { useState } from 'react';
+import styled, { useTheme } from 'styled-components/native';
 
-import Share from 'react-native-share'
+import Share from 'react-native-share';
 
-import { AppState } from 'src/store/reducers'
-import { URL_INPUT, URL_CURRENT } from 'src/store/navigation.reducer'
+import { IsDarkMode } from 'src/utils/appearance';
+import { upgradeUrl } from 'src/utils/url';
 
-import { isDarkMode } from 'src/utils/appearance'
-import { upgradeUrl } from 'src/utils/url'
-
-import { ButtonIcon } from 'src/components/ButtonIcon'
-import IconShare from 'src/assets/icons/icon-share.svg'
-
-
-
+import IconShare from 'src/assets/icons/icon-share.svg';
+import { useRecoilState } from 'recoil';
+import { navigationState } from 'src/store/atoms';
 
 const AddressTextInput = () => {
+  const theme = useTheme();
 
-  const theme = useTheme()
+  const [navState, setNavState] = useRecoilState(navigationState);
 
-  const navigation = useSelector((state: AppState) => state.navigation)
-  const dispatch = useDispatch()
-
-  const [shareVisible, shareVisibility] = useState(true)
+  const [shareVisible, shareVisibility] = useState(true);
 
   const shareCurrentUri = () => {
     const shareOptions = {
       title: 'Share',
-      message: `Sharing: ${navigation.webViewState.title}`,
-      url: navigation.webViewState.url
-    }
+      message: `Sharing: ${navState.webViewState?.title}`,
+      url: navState.webViewState?.url,
+    };
     Share.open(shareOptions)
-      .then((resp) => { console.log('Share successful', resp) })
-      .catch((err) => { console.log('Share error', err) })
-  }
+      .then((resp) => {
+        console.log('Share successful', resp);
+      })
+      .catch((err) => {
+        console.log('Share error', err);
+      });
+  };
 
   return (
     <AddressBar>
       <URLSearchInput
-        value={navigation.urlInput}
+        value={navState.urlInput}
         onChangeText={(url: string) => {
-          dispatch({ type: URL_INPUT, urlInput: url })
+          setNavState((previous) => {
+            return {
+              ...previous,
+              urlInput: url,
+            };
+          });
         }}
         onSubmitEditing={(event) => {
-          const urlCurrent = upgradeUrl(event.nativeEvent.text)
-          dispatch({ type: URL_INPUT, urlInput: urlCurrent })
-          dispatch({ type: URL_CURRENT, urlCurrent: urlCurrent })
+          const urlCurrent = upgradeUrl(event.nativeEvent.text);
+          setNavState((previous) => {
+            return {
+              ...previous,
+              urlInput: urlCurrent,
+              urlCurrent: urlCurrent,
+            };
+          });
         }}
         onFocus={() => {
-          shareVisibility(false)
+          shareVisibility(false);
         }}
-        onBlur={(event) => {
+        onBlur={() => {
           // TODO - Re-instate previous URL on before onSubmitEditing
-          shareVisibility(true)
+          shareVisibility(true);
         }}
         autoCapitalize="none"
         autoCompleteType="off"
@@ -61,23 +67,20 @@ const AddressTextInput = () => {
         returnKeyType="go"
         blurOnSubmit={true}
         clearButtonMode="while-editing"
-        keyboardAppearance={isDarkMode() ? 'dark' : 'light'}
+        keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
         // TODO - Change keyboard type to search if URL not detected
-        keyboardType="web-search" 
+        keyboardType="web-search"
         selectTextOnFocus={true}
         textContentType="URL"
       />
-      {
-        shareVisible &&
+      {shareVisible && (
         <Icon onPress={shareCurrentUri}>
           <IconShare height={24} width={40} fill={theme.ui.icon} />
         </Icon>
-      }
+      )}
     </AddressBar>
-  )
-}
-
-
+  );
+};
 
 const AddressBar = styled.View`
   margin-left: 10px;
@@ -85,16 +88,16 @@ const AddressBar = styled.View`
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 6px;
-  background-color: ${props => props.theme.addressBar.background};
-`
+  background-color: ${(props) => props.theme.addressBar.background};
+`;
 const URLSearchInput = styled.TextInput`
   font-size: 18px;
   text-align: left;
   padding: 10px;
-  color: ${props => props.theme.addressBar.color};
-`
+  color: ${(props) => props.theme.addressBar.color};
+`;
 const Icon = styled.Pressable.attrs({
-  hitSlop: 10
+  hitSlop: 10,
 })`
   /*border: 1px solid rgba(255,0,0,.5);*/
   right: -8px;
@@ -104,9 +107,7 @@ const Icon = styled.Pressable.attrs({
   margin-right: 8px;
   padding-bottom: 7.5px;
   margin-left: 8px;
-  color: ${props => props.theme.addressBar.color};
-`
+  color: ${(props) => props.theme.addressBar.color};
+`;
 
-
-
-export default AddressTextInput
+export default AddressTextInput;
