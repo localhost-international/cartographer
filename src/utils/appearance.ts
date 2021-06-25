@@ -1,29 +1,25 @@
-import { useState, useEffect } from 'react'
-import { Appearance, useColorScheme } from 'react-native'
+import { useState, useEffect } from 'react';
+import { Appearance, useColorScheme } from 'react-native';
 
+Appearance.getColorScheme();
 
-Appearance.getColorScheme()
+export const IsDarkMode = () => {
+	const [isDarkMode, setIsDarkMode] = useState(false);
 
-
-export const isDarkMode = () => {
-
-  const [isDarkMode, setIsDarkMode] = useState(false)
-
-  const colorScheme = useColorScheme()
+	const colorScheme = useColorScheme();
 
 	useEffect(() => {
 		let mounted = true;
-		setIsDarkMode(colorScheme === 'dark' ? true : false)
-		Appearance.addChangeListener(({ colorScheme }) => {
+		setIsDarkMode(colorScheme === 'dark' ? true : false);
+		Appearance.addChangeListener(() => {
 			if (mounted) {
-				setIsDarkMode(colorScheme === 'dark' ? true : false)
+				setIsDarkMode(colorScheme === 'dark' ? true : false);
 			}
-		})
-    return () => {
-      mounted = false;
-    }		
-  }, [isDarkMode])
+		});
+		return () => {
+			mounted = false;
+		};
+	}, [isDarkMode, colorScheme]);
 
-
-  return isDarkMode
-}
+	return isDarkMode;
+};

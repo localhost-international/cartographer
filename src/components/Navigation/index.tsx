@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import NavigationTextInput from 'src/components/Navigation/NavigationComboInput'
-import NavigationButtons from 'src/components/Navigation/NavigationButtons'
-
+import NavigationTextInput from 'src/components/Navigation/NavigationComboInput';
+import NavigationButtons from 'src/components/Navigation/NavigationButtons';
 
 export default function Navigation() {
   return (
@@ -10,5 +9,5 @@ export default function Navigation() {
       <NavigationTextInput />
       <NavigationButtons />
     </>
-  )
+  );
 }

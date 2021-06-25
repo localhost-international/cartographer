@@ -1,35 +1,28 @@
 // import 'react-native-get-random-values'
-import '@ethersproject/shims'
-import { ethers } from 'ethers'
-import type { BigNumber, Wallet } from 'ethers'
+import '@ethersproject/shims';
+import { ethers } from 'ethers';
+import type { BigNumber, Wallet } from 'ethers';
 
-import { env } from 'environments/.env.development'
+import { env } from 'environments/.env.development';
 
-
-
-const provider = 
-	new ethers.providers.FallbackProvider([
-		new ethers.providers.EtherscanProvider(
-			`${env.ETHERSCAN_NETWORK}`,
-			`${env.ETHERSCAN_API_KEY}`
-		),
-	]);
-
-
-
+const provider = new ethers.providers.FallbackProvider([
+	new ethers.providers.EtherscanProvider(
+		`${env.ETHERSCAN_NETWORK}`,
+		`${env.ETHERSCAN_API_KEY}`,
+	),
+]);
 
 export class Ethereum {
-
-	walletPrivateKey: string; 
+	walletPrivateKey: string;
 	walletJSON: string;
 	walletPassword: string;
 	walletAddress: string;
 
 	constructor(
-		walletPrivateKey = '', 
-		walletJSON = '', 
+		walletPrivateKey = '',
+		walletJSON = '',
 		walletPassword = '',
-		walletAddress = '', 
+		walletAddress = '',
 	) {
 		this.walletPrivateKey = walletPrivateKey;
 		this.walletJSON = walletJSON;
@@ -41,42 +34,44 @@ export class Ethereum {
 	public isAddressENS() {
 		const { walletAddress } = this;
 		return !ethers.utils.isAddress(walletAddress) &&
-		/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/
-			.test(walletAddress) ? true : false;
+			/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/.test(
+				walletAddress,
+			)
+			? true
+			: false;
 	}
-
 
 	public isAddressHex() {
 		const { walletAddress } = this;
-		if (ethers.utils.isAddress(walletAddress))
-		return true;
-	};
-
+		if (ethers.utils.isAddress(walletAddress)) {
+			return true;
+		}
+	}
 
 	public async getEnsFromAddress(): Promise<string> {
 		const { walletAddress } = this;
-		if (!ethers.utils.isAddress(walletAddress)) 
-			return 'Not a valid address'
+		if (!ethers.utils.isAddress(walletAddress)) {
+			return 'Not a valid address';
+		}
 		return await provider
 			.lookupAddress(walletAddress)
-			.then(result => {
-				const address = result === null ? 
-					`${walletAddress.substr(0,6)}...${walletAddress.slice(-4)}` : 
-					result;
-				return address
+			.then((result) => {
+				const address =
+					result === null
+						? `${walletAddress.substr(0, 6)}...${walletAddress.slice(-4)}`
+						: result;
+				return address;
 			})
-			.catch(err => `Error: Address doesn't exist. ${err}`);
-	};
-
+			.catch((err) => `Error: Address doesn't exist. ${err}`);
+	}
 
 	public async getAddressFromEns(): Promise<string> {
 		const { walletAddress } = this;
 		return provider
 			.resolveName(walletAddress)
-			.then(result => result)
-			.catch(err => `Error: ${err}`)
+			.then((result) => result)
+			.catch((err) => `Error: ${err}`);
 	}
-
 
 	/**
 	 * TODO
@@ -89,27 +84,24 @@ export class Ethereum {
 		return await provider
 			.getBalance(walletAddress)
 			.then((result) => {
-				const balanceRemainder:BigNumber = result.mod(1e14);
+				const balanceRemainder: BigNumber = result.mod(1e14);
 				const balanceFormatted = ethers.utils.formatEther(
-					result.sub(balanceRemainder)
+					result.sub(balanceRemainder),
 				);
 				return balanceFormatted;
 			})
 			.catch((err) => {
 				console.error('Error:', err);
-				return 'Unknown'
+				return 'Unknown';
 			});
-	};
-
+	}
 
 	public async walletFromMnemonic(): Promise<object> {
 		const { walletPrivateKey } = this;
 		const privateKey = walletPrivateKey;
-		const walletWithProvider = new ethers
-			.Wallet(privateKey, provider)
-		return walletWithProvider
-	};
-
+		const walletWithProvider = new ethers.Wallet(privateKey, provider);
+		return walletWithProvider;
+	}
 
 	/**
 	 * Warning: this uses crypto and takes around 10 seconds
@@ -117,20 +109,16 @@ export class Ethereum {
 	 * ! Use Ethers in RN with native crypto?
 	 */
 	public async walletFromEncryptedJSON(): Promise<void> {
-		const { walletJSON, walletPassword } = this
-		const json:string = `${JSON.stringify(walletJSON)}`
-		const password:string = `${walletPassword}`
-		const wallet = ethers
-			.Wallet
-			.fromEncryptedJson(json, password)
-			.then((wallet:Wallet) => {
+		const { walletJSON, walletPassword } = this;
+		const json: string = `${JSON.stringify(walletJSON)}`;
+		const password: string = `${walletPassword}`;
+		ethers.Wallet.fromEncryptedJson(json, password)
+			.then((wallet: Wallet) => {
 				return wallet;
 			})
 			.catch((err) => {
-				console.log('Address Failed', err)
-				return 'Wallet decryption failed'
-			})
-	};
-
-	
-};
+				console.log('Address Failed', err);
+				return 'Wallet decryption failed';
+			});
+	}
+}

@@ -4,4 +4,4 @@ export type EnvType = {
 	ETH_WALLET_ADDRESS: String;
 	ETH_WALLET_SECRET_SEED_PHRASE: String;
 	ETH_WALLET_SECRET_PRIVATE_KEY: String;
-}
+};

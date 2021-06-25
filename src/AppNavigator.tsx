@@ -1,75 +1,43 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
 
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 
-import { useTheme } from 'styled-components/native'
+import { env } from 'environments/.env.development';
 
-import { env } from 'environments/.env.development'
+import { ethereumState } from 'src/store/atoms';
 
-import { AppState } from 'src/store/reducers'
-import { 
-  ETH_WALLET_ADDRESS, 
-  ETH_WALLET_BALANCE,
-	ETH_WALLET_HEX,
-	ETH_WALLET_ENS
-} from 'src/store/ethereum.reducer'
+import { Ethereum } from 'src/protocols/ethereum';
 
-import { Ethereum } from 'src/protocols/ethereum'
+import Browser from 'src/views/Browser';
+import Settings from 'src/views/Settings';
 
-import Browser from 'src/views/Browser'
-import Settings from 'src/views/Settings'
-import { ethers } from 'ethers'
-
-
-const Stack = createStackNavigator()
-
+const Stack = createStackNavigator();
 
 export default function AppNavigator() {
-
-  const theme = useTheme()
-
-  const ethereumState = useSelector((state: AppState) => state.ethereum)
-  const dispatch = useDispatch()
+  const setEthereumState = useSetRecoilState(ethereumState);
 
   useEffect(() => {
-
-		const wallet = new Ethereum()
-		wallet.walletPrivateKey = `${env.ETH_WALLET_SECRET_PRIVATE_KEY}`
-		wallet.walletAddress = `${(env.ETH_WALLET_ADDRESS).toLowerCase()}`
-
-		// Store users wallet address
-		dispatch({
-			type: ETH_WALLET_ADDRESS, 
-			ethWalletAddress: wallet.walletAddress
-		});
-
-
-		(async() => {
-
-			// Set hex and ENS wallet addresses
-			dispatch({
-				type: ETH_WALLET_ENS, 
-				ethWalletEns: wallet.isAddressHex() ?
-					await wallet.getEnsFromAddress() : 
-					wallet.walletAddress
-			});
-			dispatch({
-				type: ETH_WALLET_HEX, 
-				ethWalletHex: wallet.isAddressENS() ? 
-					await wallet.getAddressFromEns() : 
-					wallet.walletAddress
-			});
-
-			dispatch({
-				type: ETH_WALLET_BALANCE, 
-				ethWalletBalance: await wallet.getBalance()
-			});
-
+    const wallet = new Ethereum();
+    wallet.walletPrivateKey = `${env.ETH_WALLET_SECRET_PRIVATE_KEY}`;
+    wallet.walletAddress = `${env.ETH_WALLET_ADDRESS.toLowerCase()}`;
+    (async () => {
+      setEthereumState({
+        ethWalletAddress: wallet.walletAddress,
+        ethWalletHex: wallet.isAddressENS()
+          ? await wallet.getAddressFromEns()
+          : wallet.walletAddress,
+        ethWalletEns: wallet.isAddressHex()
+          ? await wallet.getEnsFromAddress()
+          : wallet.walletAddress,
+        ethWalletBalance: await wallet.getBalance(),
+      });
     })();
-  }, []);
-
+  }, [setEthereumState]);
 
   return (
     <NavigationContainer>
@@ -77,17 +45,16 @@ export default function AppNavigator() {
         initialRouteName="Browser"
         screenOptions={{
           cardStyle: {
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
           },
           cardOverlayEnabled: true,
           cardShadowEnabled: true,
           gestureEnabled: true,
-					animationEnabled: true,
+          animationEnabled: true,
           ...TransitionPresets.ModalPresentationIOS,
         }}
         mode="modal"
-        headerMode="screen"
-        >
+        headerMode="screen">
         <Stack.Screen
           name="Browser"
           component={Browser}
@@ -102,5 +69,5 @@ export default function AppNavigator() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-  )
+  );
 }
