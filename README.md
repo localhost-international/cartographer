@@ -51,8 +51,13 @@ To run on a connected device:
 
 *  `yarn global add ios-deploy`
 *  `npx react-native run-ios --device "iPhone"`
+*  
 
-> TODO - M1 macOS development instructions
+#### Building with Apple Silicon (M1)
+
+> TODO 
+
+
 
 ### Android 
 
@@ -66,9 +71,12 @@ Building Cartographer for Android requires Android Studio 4.0+ and OpenJDK 8.
 2. `npx react-native run-android`
 
 
-### Tests 
+### Testing and Linting
 
-TODO - Not exactly TDD, but it'll soon come.
+> TODO - Build out snapshot tests for components
+
+* `yarn lint`
+* `yarn test`
 
 &nbsp;
 
@@ -100,7 +108,7 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 
 - [x] `http`
 - [x] `https`
-- [ ] `web3`
+- [x] `web3` <small>_Pre-alpha_</small>
 - [ ] `dat`
 - [ ] `hyper`
 - [ ] `ipfs`
@@ -115,7 +123,7 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 
 #### UI/UX
 
-- [ ] App Icon
+- [x] App Icon <small>_Temporary_</small>
 - [x] Dark/light mode
 - [x] Pull to refresh
 - [ ] Landscape mode
@@ -131,7 +139,8 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 #### Project
 
 - [ ] Branding
-- [ ] Unit Tests and CI
+- [x] Unit Tests <small>_Partial_</small>
+- [ ] CI
 - [ ] Decentralised source control (e.g. Radicle)
 - [ ] Project roadmap 🙃
 
