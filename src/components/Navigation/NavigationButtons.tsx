@@ -19,9 +19,9 @@ const NavigationButtons = () => {
 
   const [navState] = useRecoilState(navigationState);
 
-  const webViewReload = () => navState.webViewRef.current.reload();
-  const webViewGoBack = () => navState.webViewRef.current.goBack();
-  const webViewGoForward = () => navState.webViewRef.current.goForward();
+  const webViewReload = () => navState.webViewRef?.current?.reload();
+  const webViewGoBack = () => navState.webViewRef?.current?.goBack();
+  const webViewGoForward = () => navState.webViewRef?.current?.goForward();
 
   const viewSettings = () => screenNavigation.navigate('Settings');
 
