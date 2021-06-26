@@ -14,6 +14,7 @@ import { ethereumState } from 'src/store/atoms';
 import { Ethereum } from 'src/protocols/ethereum';
 
 import Browser from 'src/views/Browser';
+import Tabs from 'src/views/Tabs';
 import Settings from 'src/views/Settings';
 
 const Stack = createStackNavigator();
@@ -59,6 +60,14 @@ export default function AppNavigator() {
           name="Browser"
           component={Browser}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Tabs"
+          component={Tabs}
+          options={{
+            headerShown: false,
+            // safeAreaInsets: { top: 0, right: 0, bottom: 0, left: 0 }
+          }}
         />
         <Stack.Screen
           name="Settings"

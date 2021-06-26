@@ -4,6 +4,8 @@ const theme: DefaultTheme = {
 	colors: {
 		scheme: 'light',
 		text: 'black',
+		title: 'rgba(100,100,100,1)',
+		header: 'rgba(80,80,80,1)',
 		background: 'rgb(228,229,230)',
 		debug: 'red',
 	},
