@@ -24,14 +24,16 @@ export default function Tabs() {
     return (
       <TabListItem
         key={tabIndex}
-        onPress={() => setBrowserTabs(switchTab(tabId, browserTabs))}>
+        onPress={() => {
+          setBrowserTabs(switchTab(tabId, browserTabs));
+          goBack();
+        }}>
         <TabListItemTitle>{tabTitle}</TabListItemTitle>
         <TabListItemUrl>{tabUri}</TabListItemUrl>
 
         <TabWebViewDeleteButton
           onPress={() => {
             setBrowserTabs(removeTab(tabId, browserTabs));
-            // alert('Delete')
           }}>
           <TabWebViewDeleteButtonText>Delete</TabWebViewDeleteButtonText>
         </TabWebViewDeleteButton>

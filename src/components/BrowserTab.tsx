@@ -6,13 +6,22 @@ import type { BrowserTabState } from 'src/store';
 
 interface BrowserTabProps {
   config: BrowserTabState;
-  style: React.CSSProperties;
 }
 
 export default function BrowserTab({ config }: BrowserTabProps) {
-  const { tabRef, tabIndex, tabMounted, tabId, tabTitle, tabUri } = config;
+  const { tabRef, tabIndex, tabActive, tabMounted, tabId, tabTitle, tabUri } =
+    config;
 
-  console.log('Debug', tabRef, tabIndex, tabMounted, tabId, tabTitle, tabUri);
+  console.log(
+    'Debug',
+    tabRef,
+    tabIndex,
+    tabActive,
+    tabMounted,
+    tabId,
+    tabTitle,
+    tabUri,
+  );
 
   return (
     <>

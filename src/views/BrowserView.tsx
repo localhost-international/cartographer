@@ -35,11 +35,9 @@ export default function Browser() {
           {browserTabs.tabs.map((browserTab) => {
             const { tabMounted, tabId, tabActive } = browserTab;
             return tabMounted ? (
-              <BrowserTab
-                key={tabId}
-                config={browserTab}
-                style={{ display: tabActive ? 'block' : 'none' }}
-              />
+              <BrowserTabContainer key={tabId} active={tabActive}>
+                <BrowserTab config={browserTab} />
+              </BrowserTabContainer>
             ) : null;
           })}
           <Navigation />
@@ -49,9 +47,17 @@ export default function Browser() {
   );
 }
 
+interface BrowserTabProps {
+  active: boolean;
+}
+
 const View = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
+`;
+const BrowserTabContainer = styled.View<BrowserTabProps>`
+  display: ${(props) => (props.active ? 'flex' : 'none')};
+  flex: 1;
 `;
 const KeyboardAvoidingView = styled.KeyboardAvoidingView`
   flex: 1;
