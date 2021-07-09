@@ -8,7 +8,7 @@ import { upgradeUrl } from 'src/utils/url';
 
 import IconShare from 'src/assets/icons/icon-share.svg';
 import { useRecoilState } from 'recoil';
-import { navigationState } from 'src/store/atoms';
+import { navigationState } from 'src/store';
 
 const AddressTextInput = () => {
   const theme = useTheme();
@@ -50,7 +50,9 @@ const AddressTextInput = () => {
             return {
               ...previous,
               urlInput: urlCurrent,
-              urlCurrent: urlCurrent,
+              urlCurrent: {
+                uri: urlCurrent,
+              },
             };
           });
         }}

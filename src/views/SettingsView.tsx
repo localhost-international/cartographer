@@ -8,7 +8,7 @@ import { IsDarkMode } from 'src/utils/appearance';
 import { useTheme } from 'styled-components/native';
 
 import IconCurrencyEthereum from 'src/assets/icons/currencies/currency-ethereum.svg';
-import { ethereumState } from 'src/store/atoms';
+import { ethereumState } from 'src/store';
 
 export default function Settings() {
   const theme = useTheme();

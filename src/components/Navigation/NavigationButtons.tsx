@@ -4,13 +4,16 @@ import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
-import { navigationState } from 'src/store/atoms';
+import { navigationState, browserTabsState } from 'src/store';
+
+import { newTab } from 'src/utils/tabs';
 
 import IconArrowLeft from 'src/assets/icons/icon-arrow-left.svg';
 import IconArrowRight from 'src/assets/icons/icon-arrow-right.svg';
 import IconOptions from 'src/assets/icons/icon-options.svg';
 import IconRefresh from 'src/assets/icons/icon-refresh.svg';
 import IconTabs from 'src/assets/icons/icon-tabs.svg';
+import IconAddTab from 'src/assets/icons/icon-add-document.svg';
 
 import { ButtonIcon } from 'src/components/ButtonIcon';
 
@@ -18,6 +21,7 @@ const NavigationButtons = () => {
   const screenNavigation = useNavigation();
 
   const [navState] = useRecoilState(navigationState);
+  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
 
   const webViewReload = () => navState.webViewRef?.current?.reload();
   const webViewGoBack = () => navState.webViewRef?.current?.goBack();
@@ -43,6 +47,12 @@ const NavigationButtons = () => {
       onPress: () => viewTabs(),
       iconImage: IconTabs,
       accessibilityLabel: 'List opened web-site tabs',
+    },
+    {
+      type: 'add-tabs',
+      onPress: () => setBrowserTabs(newTab('https://hm.com/', browserTabs)),
+      iconImage: IconAddTab,
+      accessibilityLabel: 'Add a new tab',
     },
     {
       type: 'reload',

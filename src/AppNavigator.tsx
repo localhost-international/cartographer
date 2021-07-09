@@ -9,13 +9,13 @@ import {
 
 import { env } from 'environments/.env.development';
 
-import { ethereumState } from 'src/store/atoms';
+import { ethereumState } from 'src/store';
 
 import { Ethereum } from 'src/protocols/ethereum';
 
-import Browser from 'src/views/Browser';
-import Tabs from 'src/views/Tabs';
-import Settings from 'src/views/Settings';
+import Browser from 'src/views/BrowserView';
+import Tabs from 'src/views/TabsView';
+import Settings from 'src/views/SettingsView';
 
 const Stack = createStackNavigator();
 

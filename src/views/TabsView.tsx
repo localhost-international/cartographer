@@ -1,79 +1,43 @@
 import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import { BlurView } from '@react-native-community/blur';
 
 import { IsDarkMode } from 'src/utils/appearance';
 
-type Tab = {
-  tabIndex: number;
-  tabTitle: string;
-  tabUrl: string;
-  tabThumbnail: string;
-  tabRef: any;
-};
-type Tabs = Tab[];
+import { browserTabsState } from 'src/store';
+import type { BrowserTabState } from 'src/store';
 
-const dummyTabs: Tabs = [
-  {
-    tabIndex: 0,
-    tabTitle: 'Catalog',
-    tabUrl: 'https://beta.catalog.works/omarijazz/',
-    tabThumbnail: '',
-    tabRef: null,
-  },
-  {
-    tabIndex: 1,
-    tabTitle: 'Foundation',
-    tabUrl: 'https://foundation.app/leslie/',
-    tabThumbnail: '',
-    tabRef: null,
-  },
-  {
-    tabIndex: 1,
-    tabTitle: 'Mirror',
-    tabUrl: 'https://foundation.app/leslie/',
-    tabThumbnail: '',
-    tabRef: null,
-  },
-];
-
-const _renderItem: any = ({ item }: { item: Tab }) => {
-  const { tabIndex, tabTitle, tabUrl } = item;
-  return (
-    <TabListItem
-      key={tabIndex}
-      onPress={() => {
-        Alert.alert(
-          'Debug - Open Tab',
-          'TODO - Tab opening',
-          [
-            {
-              text: 'Cancel',
-              onPress: () => console.log('Cancel Pressed'),
-              style: 'cancel',
-            },
-            {
-              text: 'OK',
-              onPress: () => console.log('OK Pressed'),
-            },
-          ],
-          { cancelable: false },
-        );
-      }}>
-      <TabListItemTitle>{tabTitle}</TabListItemTitle>
-      <TabListItemUrl>{tabUrl}</TabListItemUrl>
-    </TabListItem>
-  );
-};
+import { newTab, switchTab, removeTab } from 'src/utils/tabs';
 
 export default function Tabs() {
   const screenNavigation = useNavigation();
 
+  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
   const [searchTabs, setSearchTabs] = useState('');
 
   const goBack = () => screenNavigation.goBack();
+
+  const _renderItem: any = ({ item }: { item: BrowserTabState }) => {
+    const { tabIndex, tabId, tabTitle, tabUri } = item;
+    return (
+      <TabListItem
+        key={tabIndex}
+        onPress={() => setBrowserTabs(switchTab(tabId, browserTabs))}>
+        <TabListItemTitle>{tabTitle}</TabListItemTitle>
+        <TabListItemUrl>{tabUri}</TabListItemUrl>
+
+        <TabWebViewDeleteButton
+          onPress={() => {
+            setBrowserTabs(removeTab(tabId, browserTabs));
+            // alert('Delete')
+          }}>
+          <TabWebViewDeleteButtonText>Delete</TabWebViewDeleteButtonText>
+        </TabWebViewDeleteButton>
+      </TabListItem>
+    );
+  };
 
   return (
     <>
@@ -103,11 +67,25 @@ export default function Tabs() {
           clearButtonMode="always"
           textContentType="none"
         />
-        <TabList
-          data={dummyTabs}
-          renderItem={_renderItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
+
+        <NewTabButton
+          onPress={() => {
+            setBrowserTabs(newTab('https://metamask.com/', browserTabs));
+          }}>
+          <NewTabButtonText>Ext: Add New Tab</NewTabButtonText>
+        </NewTabButton>
+
+        {browserTabs.tabs.length ? (
+          <TabList
+            data={browserTabs.tabs}
+            renderItem={_renderItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        ) : (
+          <TabListItem>
+            <TabListItemTitle>No tabs</TabListItemTitle>
+          </TabListItem>
+        )}
       </Body>
     </>
   );
@@ -184,4 +162,29 @@ const TabListItemUrl = styled.Text`
   opacity: 0.5;
   font-size: 16px;
   font-weight: 400;
+`;
+
+const TabWebViewDeleteButton = styled.Pressable`
+  align-self: flex-start;
+  background-color: red;
+`;
+const TabWebViewDeleteButtonText = styled.Text`
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+`;
+
+const NewTabButton = styled.Pressable`
+  color: ${(props) => props.theme.colors.text};
+  font-size: 16px;
+  font-weight: 400;
+  padding: 20px;
+  background: rgba(105, 215, 0, 1);
+`;
+
+const NewTabButtonText = styled.Text`
+  color: ${(props) => props.theme.colors.text};
+  opacity: 0.5;
+  font-size: 20px;
+  font-weight: 600;
 `;

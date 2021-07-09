@@ -20,9 +20,16 @@ export const ethereumState = atom({
 	},
 });
 
+type WebViewUrl = {
+	uri: string;
+};
+type WebViewHtml = {
+	html: string;
+};
+
 export type NavigationState = {
 	urlInput: string;
-	urlCurrent: string;
+	urlCurrent: WebViewUrl | WebViewHtml;
 	webViewRef: React.RefObject<WebView> | null;
 	webViewState: null | WebViewNavigation;
 };
@@ -31,7 +38,9 @@ export const navigationState = atom({
 	key: 'navigationState',
 	default: <NavigationState>{
 		urlInput: '',
-		urlCurrent: 'https://foundation.app/@leslie',
+		urlCurrent: {
+			uri: 'https://colony.io/',
+		},
 		webViewRef: null,
 		webViewState: null,
 	},
@@ -48,4 +57,32 @@ export const settingsState = atom({
 	default: <SettingsState>{
 		settingsRef: null,
 	},
+});
+
+export type BrowserTabState = {
+	tabRef: any;
+	tabIndex: number;
+	tabActive: boolean;
+	tabMounted: boolean;
+	tabId: string;
+	tabTitle: string;
+	tabUri: string;
+	tabThumbnail: null | string;
+	tabLastActive: null | Date;
+};
+export type BrowserTabsState = {
+	tabs: BrowserTabState[];
+	activeTabId: null | string;
+	previousTabId: null | string;
+	tabIncrement: number;
+};
+export const browserTabsState = atom({
+	key: 'browserTabsState',
+	default: <BrowserTabsState>{
+		tabs: [],
+		activeTabId: null,
+		previousTabId: null,
+		tabIncrement: 0,
+	},
+	dangerouslyAllowMutability: true,
 });
