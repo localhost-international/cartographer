@@ -4,9 +4,10 @@ import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
-import { navigationState, browserTabsState } from 'src/store';
+import { browserTabsState } from 'src/store';
 
 import { newTab } from 'src/utils/tabs';
+import { randomSite } from 'src/utils/debug';
 
 import IconArrowLeft from 'src/assets/icons/icon-arrow-left.svg';
 import IconArrowRight from 'src/assets/icons/icon-arrow-right.svg';
@@ -20,12 +21,11 @@ import { ButtonIcon } from 'src/components/ButtonIcon';
 const NavigationButtons = () => {
   const screenNavigation = useNavigation();
 
-  const [navState] = useRecoilState(navigationState);
   const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
 
-  const webViewReload = () => navState.webViewRef?.current?.reload();
-  const webViewGoBack = () => navState.webViewRef?.current?.goBack();
-  const webViewGoForward = () => navState.webViewRef?.current?.goForward();
+  const webViewReload = () => browserTabs.activeTabRef?.current?.reload();
+  const webViewGoBack = () => browserTabs.activeTabRef?.current?.goBack();
+  const webViewGoForward = () => browserTabs.activeTabRef?.current?.goForward();
   const viewTabs = () => screenNavigation.navigate('Tabs');
   const viewSettings = () => screenNavigation.navigate('Settings');
 
@@ -46,11 +46,17 @@ const NavigationButtons = () => {
       type: 'tabs',
       onPress: () => viewTabs(),
       iconImage: IconTabs,
-      accessibilityLabel: 'List opened web-site tabs',
+      accessibilityLabel: 'View tabs',
     },
     {
       type: 'add-tabs',
-      onPress: () => setBrowserTabs(newTab('https://hm.com/', browserTabs)),
+      onPress: () =>
+        setBrowserTabs(
+          newTab(
+            randomSite(), // Need to detach browser tabs from global state
+            browserTabs,
+          ),
+        ),
       iconImage: IconAddTab,
       accessibilityLabel: 'Add a new tab',
     },

@@ -8,51 +8,65 @@ import { upgradeUrl } from 'src/utils/url';
 
 import IconShare from 'src/assets/icons/icon-share.svg';
 import { useRecoilState } from 'recoil';
-import { navigationState } from 'src/store';
+
+import { browserTabsState } from 'src/store';
 
 const AddressTextInput = () => {
   const theme = useTheme();
 
-  const [navState, setNavState] = useRecoilState(navigationState);
+  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
 
   const [shareVisible, shareVisibility] = useState(true);
 
   const shareCurrentUri = () => {
-    const shareOptions = {
-      title: 'Share',
-      message: `Sharing: ${navState.webViewState?.title}`,
-      url: navState.webViewState?.url,
-    };
-    Share.open(shareOptions)
-      .then((resp) => {
-        console.log('Share successful', resp);
-      })
-      .catch((err) => {
-        console.log('Share error', err);
-      });
+    if (browserTabs.activeTabIndex !== null) {
+      const sharingMessage =
+        browserTabs.tabs[browserTabs.activeTabIndex].tabTitle;
+      const sharingUri = browserTabs.tabs[browserTabs.activeTabIndex].tabUri;
+      const shareOptions = {
+        title: 'Share',
+        message: `Sharing: ${sharingMessage}`,
+        url: sharingUri,
+      };
+      Share.open(shareOptions)
+        .then((resp) => {
+          console.log('Share successful', resp);
+        })
+        .catch((err) => {
+          console.log('Share error', err);
+        });
+    }
   };
 
   return (
     <AddressBar>
       <URLSearchInput
-        value={navState.urlInput}
+        value={
+          browserTabs.activeTabIndex !== null
+            ? browserTabs.tabs[browserTabs.activeTabIndex].tabUriValue
+            : ''
+        }
         onChangeText={(url: string) => {
-          setNavState((previous) => {
+          setBrowserTabs((previous) => {
+            if (previous.activeTabIndex !== null) {
+              previous.tabs[previous.activeTabIndex].tabUriValue = url;
+            }
             return {
               ...previous,
-              urlInput: url,
             };
           });
         }}
         onSubmitEditing={(event) => {
           const urlCurrent = upgradeUrl(event.nativeEvent.text);
-          setNavState((previous) => {
+          setBrowserTabs((previous) => {
+            if (previous.activeTabIndex !== null) {
+              previous.tabs[previous.activeTabIndex].tabUriValue = urlCurrent;
+              previous.tabs[previous.activeTabIndex].tabUriCurrent = {
+                uri: urlCurrent,
+              };
+            }
             return {
               ...previous,
-              urlInput: urlCurrent,
-              urlCurrent: {
-                uri: urlCurrent,
-              },
             };
           });
         }}

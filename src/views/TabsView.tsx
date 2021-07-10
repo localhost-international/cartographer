@@ -20,7 +20,7 @@ export default function Tabs() {
   const goBack = () => screenNavigation.goBack();
 
   const _renderItem: any = ({ item }: { item: BrowserTabState }) => {
-    const { tabIndex, tabId, tabTitle, tabUri } = item;
+    const { tabIndex, tabId, tabTitle, tabUriValue } = item;
     return (
       <TabListItem
         key={tabIndex}
@@ -28,14 +28,16 @@ export default function Tabs() {
           setBrowserTabs(switchTab(tabId, browserTabs));
           goBack();
         }}>
-        <TabListItemTitle>{tabTitle}</TabListItemTitle>
-        <TabListItemUrl>{tabUri}</TabListItemUrl>
+        <TabListItemTitle>
+          {tabTitle.length ? tabTitle : '[No title]'}
+        </TabListItemTitle>
+        <TabListItemUrl>{tabUriValue}</TabListItemUrl>
 
         <TabWebViewDeleteButton
           onPress={() => {
             setBrowserTabs(removeTab(tabId, browserTabs));
           }}>
-          <TabWebViewDeleteButtonText>Delete</TabWebViewDeleteButtonText>
+          <TabWebViewDeleteButtonText>Close</TabWebViewDeleteButtonText>
         </TabWebViewDeleteButton>
       </TabListItem>
     );

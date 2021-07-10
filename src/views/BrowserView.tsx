@@ -20,12 +20,12 @@ export default function Browser() {
   }, [browserTabs.tabs.length]);
 
   useEffect(() => {
-    console.log(
-      'Active and Previous Tab IDs',
-      browserTabs.activeTabId,
-      browserTabs.previousTabId,
-    );
-    console.log('New tab', browserTabs.tabs[browserTabs.tabs.length - 1]);
+    // console.log(
+    //   'Active and Previous Tab IDs',
+    //   browserTabs.activeTabId,
+    //   browserTabs.previousTabId,
+    // );
+    // console.log('New tab', browserTabs.tabs[browserTabs.tabs.length - 1]);
   }, [browserTabs]);
 
   return (
@@ -36,7 +36,7 @@ export default function Browser() {
             const { tabMounted, tabId, tabActive } = browserTab;
             return tabMounted ? (
               <BrowserTabContainer key={tabId} active={tabActive}>
-                <BrowserTab config={browserTab} />
+                <BrowserTab tabState={browserTab} />
               </BrowserTabContainer>
             ) : null;
           })}
@@ -57,7 +57,11 @@ const View = styled.View`
 `;
 const BrowserTabContainer = styled.View<BrowserTabProps>`
   display: ${(props) => (props.active ? 'flex' : 'none')};
-  flex: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 `;
 const KeyboardAvoidingView = styled.KeyboardAvoidingView`
   flex: 1;
