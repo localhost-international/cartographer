@@ -35,14 +35,13 @@ type WebViewUrl = { uri: string };
 type WebViewHtml = { html: string };
 
 export type BrowserTabState = {
-	tabRef: React.RefObject<WebView> | null;
-	tabIndex: number;
+	tabRef?: React.RefObject<WebView> | null;
 	tabActive: boolean;
 	tabMounted: boolean;
 	tabId: string;
-	tabTitle: string;
-	tabThumbnail: null | string;
-	tabLastActive: null | Date;
+	tabTitle: string | null;
+	tabThumbnail: string | null;
+	tabLastActive: Date | null;
 	tabUri: string; // TODO - Initial tab Uri for new tabs?
 	tabUriValue: string;
 	tabUriCurrent: WebViewUrl | WebViewHtml;
@@ -52,20 +51,18 @@ export type BrowserTabsState = {
 	// Active Tab
 	activeTabId: null | string;
 	activeTabIndex: null | number;
-	activeTabRef: React.RefObject<WebView> | null;
 	// Previous Tab
 	previousTabId: null | string;
-	tabIncrement: number;
+	tabIdIncrement: number;
 };
-export let browserTabsState = atom({
+export const browserTabsState = atom({
 	key: 'browserTabsState',
 	default: <BrowserTabsState>{
 		tabs: [],
 		activeTabId: null,
 		activeTabIndex: null,
-		activeTabRef: null,
 		previousTabId: null,
-		tabIncrement: 0,
+		tabIdIncrement: 0,
 	},
 	dangerouslyAllowMutability: true,
 });

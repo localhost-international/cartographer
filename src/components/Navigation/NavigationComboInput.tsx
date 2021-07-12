@@ -19,7 +19,7 @@ const AddressTextInput = () => {
   const [shareVisible, shareVisibility] = useState(true);
 
   const shareCurrentUri = () => {
-    if (browserTabs.activeTabIndex !== null) {
+    if (browserTabs.tabs.length && browserTabs.activeTabIndex !== null) {
       const sharingMessage =
         browserTabs.tabs[browserTabs.activeTabIndex].tabTitle;
       const sharingUri = browserTabs.tabs[browserTabs.activeTabIndex].tabUri;
@@ -42,7 +42,7 @@ const AddressTextInput = () => {
     <AddressBar>
       <URLSearchInput
         value={
-          browserTabs.activeTabIndex !== null
+          browserTabs.tabs.length && browserTabs.activeTabIndex !== null
             ? browserTabs.tabs[browserTabs.activeTabIndex].tabUriValue
             : ''
         }
@@ -125,5 +125,9 @@ const Icon = styled.Pressable.attrs({
   margin-left: 8px;
   color: ${(props) => props.theme.addressBar.color};
 `;
+
+// const NoTabsOpenMessage = styled.Text`
+//   color: ${(props) => props.theme.colors.text};
+// `;
 
 export default AddressTextInput;

@@ -20,16 +20,17 @@ export default function Tabs() {
   const goBack = () => screenNavigation.goBack();
 
   const _renderItem: any = ({ item }: { item: BrowserTabState }) => {
-    const { tabIndex, tabId, tabTitle, tabUriValue } = item;
+    const { tabId, tabTitle, tabUriValue } = item;
     return (
       <TabListItem
-        key={tabIndex}
+        key={tabId}
         onPress={() => {
           setBrowserTabs(switchTab(tabId, browserTabs));
           goBack();
         }}>
         <TabListItemTitle>
-          {tabTitle.length ? tabTitle : '[No title]'}
+          {tabTitle ? tabTitle : '[No title]'}
+          {/* {tabTitle} */}
         </TabListItemTitle>
         <TabListItemUrl>{tabUriValue}</TabListItemUrl>
 
@@ -74,9 +75,9 @@ export default function Tabs() {
 
         <NewTabButton
           onPress={() => {
-            setBrowserTabs(newTab('https://metamask.com/', browserTabs));
+            setBrowserTabs(newTab('https://metamask.io/', browserTabs));
           }}>
-          <NewTabButtonText>Ext: Add New Tab</NewTabButtonText>
+          <NewTabButtonText>Add New Tab (MetaMask)</NewTabButtonText>
         </NewTabButton>
 
         {browserTabs.tabs.length ? (

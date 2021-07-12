@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { WebView } from 'react-native-webview';
 import styled from 'styled-components/native';
 
@@ -12,12 +12,11 @@ interface BrowserTabProps {
 }
 
 export default function BrowserTab({ tabState }: BrowserTabProps) {
-  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
+  const setBrowserTabs = useSetRecoilState(browserTabsState);
 
   const [refreshing, setRefreshing] = useState(false);
 
-  // Do I need this?
-  const { tabRef } = tabState;
+  const { tabRef, tabId, tabActive, tabUriCurrent } = tabState;
 
   const config = {
     detectorTypes: 'all',
@@ -36,42 +35,35 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
     }
   };
 
-  useEffect(() => {
-    // console.log('\n\ntabUriCurrent', tabUriCurrent);
-  }, [browserTabs]);
-
   return (
     <>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={webViewReload} />
-        }>
-        <SafeAreaViewContainer>
-          {browserTabs.activeTabIndex !== null && (
+      <BrowserTabContainer active={tabActive}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={webViewReload} />
+          }>
+          <SafeAreaViewContainer>
             <WebViewContainer
-              ref={tabRef}
-              userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
+              // ref={tabRef}
+              // userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
               originWhitelist={['*']}
-              // source={tabUriCurrent}
               source={
-                browserTabs.tabs[browserTabs.activeTabIndex].tabUriCurrent
+                // browserTabs?.tabs[browserTabs.activeTabIndex].tabUriCurrent
+                tabUriCurrent
               }
               onLoadStart={() => {}}
               onNavigationStateChange={(currentNavState) => {
-                // console.log('onNavigationStateChange', currentNavState);
-
                 setBrowserTabs((previous) => {
-                  // console.log('\nonNavigationStateChange', previous);
-                  if (previous.activeTabIndex !== null) {
-                    previous.tabs[previous.activeTabIndex].tabUriValue =
-                      currentNavState.url;
-                    previous.tabs[previous.activeTabIndex].tabUri =
-                      currentNavState.url;
-                    previous.tabs[previous.activeTabIndex].tabTitle =
-                      currentNavState.title;
-                  }
+                  const tabIndex = previous.tabs.findIndex(
+                    (tab) => tab.tabId === tabId,
+                  );
+
+                  previous.tabs[tabIndex].tabUriValue = currentNavState.url;
+                  previous.tabs[tabIndex].tabUri = currentNavState.url;
+                  previous.tabs[tabIndex].tabTitle = currentNavState.title;
+
                   return {
                     ...previous,
                   };
@@ -97,12 +89,25 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
               allowsInlineMediaPlayback={true}
               allowsFullscreenVideo={false}
             />
-          )}
-        </SafeAreaViewContainer>
-      </ScrollView>
+          </SafeAreaViewContainer>
+        </ScrollView>
+      </BrowserTabContainer>
     </>
   );
 }
+
+interface BrowserTabContainerProps {
+  active: boolean;
+}
+
+const BrowserTabContainer = styled.View<BrowserTabContainerProps>`
+  display: ${(props) => (props.active ? 'flex' : 'none')};
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`;
 
 const ScrollView = styled.ScrollView.attrs(() => ({
   contentContainerStyle: {

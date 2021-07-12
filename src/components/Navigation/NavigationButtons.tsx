@@ -23,9 +23,22 @@ const NavigationButtons = () => {
 
   const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
 
-  const webViewReload = () => browserTabs.activeTabRef?.current?.reload();
-  const webViewGoBack = () => browserTabs.activeTabRef?.current?.goBack();
-  const webViewGoForward = () => browserTabs.activeTabRef?.current?.goForward();
+  const webViewReload = () => {
+    if (browserTabs.tabs.length && browserTabs.activeTabIndex !== null) {
+      browserTabs.tabs[browserTabs.activeTabIndex].tabRef?.current?.reload();
+    }
+  };
+  const webViewGoBack = () => {
+    if (browserTabs.tabs.length && browserTabs.activeTabIndex !== null) {
+      browserTabs.tabs[browserTabs.activeTabIndex].tabRef?.current?.goBack();
+    }
+  };
+  const webViewGoForward = () => {
+    if (browserTabs.tabs.length && browserTabs.activeTabIndex !== null) {
+      browserTabs.tabs[browserTabs.activeTabIndex].tabRef?.current?.goForward();
+    }
+  };
+
   const viewTabs = () => screenNavigation.navigate('Tabs');
   const viewSettings = () => screenNavigation.navigate('Settings');
 

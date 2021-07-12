@@ -1,20 +1,14 @@
-import React from 'react';
 import type { BrowserTabsState, BrowserTabState } from 'src/store';
 
-/**
- * TODO
- *  - Consider the memory/performance cost of this
- */
 export const newTab = (tabUri: string, previousTabs: BrowserTabsState) => {
-	console.log('\n\nnewTab', previousTabs.tabIncrement, '\n\n');
+	console.log('\n\nnewTab', previousTabs.tabIdIncrement, '\n\n');
 
 	const newBrowsertab: BrowserTabState = {
-		tabRef: React.createRef(),
-		tabIndex: previousTabs.tabIncrement,
+		// tabRef: React.createRef(),
 		tabActive: true,
 		tabMounted: true,
-		tabId: `tab-id-index-${previousTabs.tabIncrement}`,
-		tabTitle: `Tab ${previousTabs.tabIncrement + 1}`,
+		tabId: `tab-id-index-${previousTabs.tabIdIncrement}`,
+		tabTitle: null,
 		tabThumbnail: null,
 		tabLastActive: null,
 		tabUri: tabUri,
@@ -25,13 +19,13 @@ export const newTab = (tabUri: string, previousTabs: BrowserTabsState) => {
 	};
 
 	if (previousTabs.tabs.length) {
+		console.log('Do previous tabs have length?', previousTabs.tabs.length);
 		previousTabs.previousTabId = previousTabs.activeTabId;
 	}
 
 	// Set new tab as active ID, Index and Ref
 	previousTabs.activeTabId = newBrowsertab.tabId;
-	previousTabs.activeTabIndex = previousTabs.tabIncrement;
-	previousTabs.activeTabRef = newBrowsertab.tabRef;
+	previousTabs.activeTabIndex = previousTabs.tabIdIncrement;
 
 	if (previousTabs.tabs.length) {
 		const previousTabIndex = previousTabs.tabs.findIndex(
@@ -40,54 +34,65 @@ export const newTab = (tabUri: string, previousTabs: BrowserTabsState) => {
 		previousTabs.tabs[previousTabIndex].tabActive = false;
 	}
 	previousTabs.tabs = [...previousTabs.tabs, newBrowsertab];
-	previousTabs.tabIncrement++;
+	previousTabs.tabIdIncrement++;
 	return {
 		...previousTabs,
 	};
 };
 
 export const removeTab = (tabId: string, previousTabs: BrowserTabsState) => {
-	const deleteTabByIndex = previousTabs.tabs.findIndex(
+	const tabToRemoveByIndex = previousTabs.tabs.findIndex(
 		(tab) => tab.tabId === tabId,
 	);
+	// If only one tab set activeTabId, previousTabId and activeTabIndex to null
+	if (previousTabs.tabs.length === 1) {
+		previousTabs.activeTabIndex = null;
+		previousTabs.activeTabId = null;
+		previousTabs.previousTabId = null;
+	}
+	// If there is more than 1 tab
 	if (previousTabs.tabs.length > 1) {
 		const activeIndex =
-			deleteTabByIndex === 0 ? deleteTabByIndex + 1 : deleteTabByIndex - 1;
-
+			tabToRemoveByIndex === 0
+				? tabToRemoveByIndex + 1
+				: tabToRemoveByIndex - 1;
 		previousTabs.activeTabIndex = activeIndex;
 		previousTabs.activeTabId = previousTabs.tabs[activeIndex].tabId;
-		previousTabs.activeTabRef = previousTabs.tabs[activeIndex].tabRef;
 		previousTabs.tabs[activeIndex].tabActive = true;
-	} else {
-		previousTabs.activeTabId = null;
-		previousTabs.activeTabRef = null;
-		previousTabs.previousTabId = null;
 	}
 	return {
 		...previousTabs,
 		tabs: [
-			...previousTabs.tabs.slice(0, deleteTabByIndex),
-			...previousTabs.tabs.slice(deleteTabByIndex + 1),
+			...previousTabs.tabs.slice(0, tabToRemoveByIndex),
+			...previousTabs.tabs.slice(tabToRemoveByIndex + 1),
 		],
 	};
 };
 
 export const switchTab = (tabId: string, previousTabs: BrowserTabsState) => {
-	if (previousTabs.tabs.length) {
-		const previousTabIndex = previousTabs.tabs.findIndex(
-			(tab) => tab.tabId === previousTabs.previousTabId,
-		);
-		console.log('previousTabIndex', previousTabIndex);
-		previousTabs.tabs[previousTabIndex].tabActive = false;
-		previousTabs.previousTabId = previousTabs.activeTabId;
-		const newTabIndex = previousTabs.tabs.findIndex(
-			(tab) => tab.tabId === tabId,
-		);
-		previousTabs.tabs[newTabIndex].tabActive = true;
-		previousTabs.activeTabIndex = newTabIndex;
-		previousTabs.activeTabRef = previousTabs.tabs[newTabIndex].tabRef;
+	const newTabId = tabId;
+	const previousTabId = previousTabs.activeTabId;
+
+	console.log('switchTab');
+	// If there is only one tab, do nothing!
+	if (previousTabs.tabs.length === 1) {
+		console.log('Only one tab, so do nothing');
 	}
-	previousTabs.activeTabId = tabId;
+	if (previousTabs.tabs.length >= 2) {
+		// Get index of new tab to switch to
+		const newActiveTabIndex = previousTabs.tabs.findIndex(
+			(tab) => tab.tabId === newTabId,
+		);
+		previousTabs.activeTabId = previousTabs.tabs[newActiveTabIndex].tabId;
+		previousTabs.activeTabIndex = newActiveTabIndex;
+		previousTabs.tabs[newActiveTabIndex].tabActive = true;
+		// Get index of previously selected tab
+		const previousTabIndex = previousTabs.tabs.findIndex(
+			(tab) => tab.tabId === previousTabId,
+		);
+		previousTabs.previousTabId = previousTabs.tabs[previousTabIndex].tabId;
+		previousTabs.tabs[previousTabIndex].tabActive = false;
+	}
 	return {
 		...previousTabs,
 	};

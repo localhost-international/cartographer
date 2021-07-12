@@ -16,16 +16,17 @@ export default function Browser() {
   const browserTabs = useRecoilValue(browserTabsState);
 
   useEffect(() => {
-    console.log('Open Browser Tabs', browserTabs.tabs.length);
-  }, [browserTabs.tabs.length]);
+    console.log('\n\n\n\n\n\n\n\n\n\n');
 
-  useEffect(() => {
-    // console.log(
-    //   'Active and Previous Tab IDs',
-    //   browserTabs.activeTabId,
-    //   browserTabs.previousTabId,
-    // );
-    // console.log('New tab', browserTabs.tabs[browserTabs.tabs.length - 1]);
+    console.log('\nbrowserTabs.tabs.length:', browserTabs.tabs.length);
+
+    console.log(
+      '\nactiveTabId and previousTabId:',
+      browserTabs.activeTabId,
+      browserTabs.previousTabId,
+    );
+
+    console.log('\n\n\n\n\n\n\n\n\n\n');
   }, [browserTabs]);
 
   return (
@@ -33,12 +34,8 @@ export default function Browser() {
       <KeyboardAvoidingView enabled behavior="padding">
         <View>
           {browserTabs.tabs.map((browserTab) => {
-            const { tabMounted, tabId, tabActive } = browserTab;
-            return tabMounted ? (
-              <BrowserTabContainer key={tabId} active={tabActive}>
-                <BrowserTab tabState={browserTab} />
-              </BrowserTabContainer>
-            ) : null;
+            const { tabId } = browserTab;
+            return <BrowserTab key={tabId} tabState={browserTab} />;
           })}
           <Navigation />
         </View>
@@ -47,22 +44,11 @@ export default function Browser() {
   );
 }
 
-interface BrowserTabProps {
-  active: boolean;
-}
-
 const View = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
 `;
-const BrowserTabContainer = styled.View<BrowserTabProps>`
-  display: ${(props) => (props.active ? 'flex' : 'none')};
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-`;
+
 const KeyboardAvoidingView = styled.KeyboardAvoidingView`
   flex: 1;
 `;
