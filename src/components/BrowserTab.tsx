@@ -13,10 +13,9 @@ interface BrowserTabProps {
 
 export default function BrowserTab({ tabState }: BrowserTabProps) {
   const setBrowserTabs = useSetRecoilState(browserTabsState);
+  const { tabRef, tabId, tabActive, tabUriCurrent } = tabState;
 
   const [refreshing, setRefreshing] = useState(false);
-
-  const { tabRef, tabId, tabActive, tabUriCurrent } = tabState;
 
   const config = {
     detectorTypes: 'all',
@@ -30,9 +29,7 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
 
   const webViewReload = () => {
     setRefreshing(true);
-    if (tabRef) {
-      tabRef.current?.reload();
-    }
+    if (tabRef) tabRef.current?.reload();
   };
 
   return (
@@ -46,24 +43,19 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
           }>
           <SafeAreaViewContainer>
             <WebViewContainer
-              // ref={tabRef}
-              // userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
+              ref={tabRef}
+              userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
+              // applicationNameForUserAgent="Cartographer"
               originWhitelist={['*']}
-              source={
-                // browserTabs?.tabs[browserTabs.activeTabIndex].tabUriCurrent
-                tabUriCurrent
-              }
+              source={tabUriCurrent}
               onLoadStart={() => {}}
               onNavigationStateChange={(currentNavState) => {
                 setBrowserTabs((previous) => {
                   const tabIndex = previous.tabs.findIndex(
                     (tab) => tab.tabId === tabId,
                   );
-
                   previous.tabs[tabIndex].tabUriValue = currentNavState.url;
-                  previous.tabs[tabIndex].tabUri = currentNavState.url;
                   previous.tabs[tabIndex].tabTitle = currentNavState.title;
-
                   return {
                     ...previous,
                   };

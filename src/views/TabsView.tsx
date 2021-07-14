@@ -75,9 +75,9 @@ export default function Tabs() {
 
         <NewTabButton
           onPress={() => {
-            setBrowserTabs(newTab('https://metamask.io/', browserTabs));
+            setBrowserTabs(newTab('https://status.im/', browserTabs));
           }}>
-          <NewTabButtonText>Add New Tab (MetaMask)</NewTabButtonText>
+          <NewTabButtonText>Add New Tab (Status)</NewTabButtonText>
         </NewTabButton>
 
         {browserTabs.tabs.length ? (

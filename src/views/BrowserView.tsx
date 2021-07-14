@@ -7,27 +7,20 @@ import { browserTabsState } from 'src/store';
 import Navigation from 'src/components/Navigation';
 import BrowserTab from 'src/components/BrowserTab';
 
-/**
- * TODO
- * - Send WebView ref to Navigation instance
- */
-
 export default function Browser() {
   const browserTabs = useRecoilValue(browserTabsState);
 
+  // const [localBrowserTabs, setLocalBrowserTabs] = useState<object[]>([]);
+
   useEffect(() => {
-    console.log('\n\n\n\n\n\n\n\n\n\n');
+    console.log(Array(10).join('\n'));
+    console.log('Browser Tabs', browserTabs, null, 2);
+    console.log(Array(10).join('\n'));
 
-    console.log('\nbrowserTabs.tabs.length:', browserTabs.tabs.length);
-
-    console.log(
-      '\nactiveTabId and previousTabId:',
-      browserTabs.activeTabId,
-      browserTabs.previousTabId,
-    );
-
-    console.log('\n\n\n\n\n\n\n\n\n\n');
-  }, [browserTabs]);
+    return () => {
+      console.log('Browser unmounted!');
+    };
+  }, [browserTabs, browserTabs.tabs.length]);
 
   return (
     <>

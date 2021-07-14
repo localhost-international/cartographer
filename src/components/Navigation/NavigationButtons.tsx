@@ -23,19 +23,24 @@ const NavigationButtons = () => {
 
   const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
 
+  const hasTabs =
+    browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null;
+
   const webViewReload = () => {
-    if (browserTabs.tabs.length && browserTabs.activeTabIndex !== null) {
-      browserTabs.tabs[browserTabs.activeTabIndex].tabRef?.current?.reload();
+    if (browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null) {
+      browserTabs.tabs[browserTabs.activeTab.index].tabRef?.current?.reload();
     }
   };
   const webViewGoBack = () => {
-    if (browserTabs.tabs.length && browserTabs.activeTabIndex !== null) {
-      browserTabs.tabs[browserTabs.activeTabIndex].tabRef?.current?.goBack();
+    if (browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null) {
+      browserTabs.tabs[browserTabs.activeTab.index].tabRef?.current?.goBack();
     }
   };
   const webViewGoForward = () => {
-    if (browserTabs.tabs.length && browserTabs.activeTabIndex !== null) {
-      browserTabs.tabs[browserTabs.activeTabIndex].tabRef?.current?.goForward();
+    if (browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null) {
+      browserTabs.tabs[
+        browserTabs.activeTab.index
+      ].tabRef?.current?.goForward();
     }
   };
 
@@ -45,13 +50,13 @@ const NavigationButtons = () => {
   const navigationButtons = [
     {
       type: 'back',
-      onPress: () => webViewGoBack(),
+      onPress: () => hasTabs && webViewGoBack(),
       iconImage: IconArrowLeft,
       accessibilityLabel: 'Go back',
     },
     {
       type: 'forward',
-      onPress: () => webViewGoForward(),
+      onPress: () => hasTabs && webViewGoForward(),
       iconImage: IconArrowRight,
       accessibilityLabel: 'Go forward',
     },
@@ -63,19 +68,17 @@ const NavigationButtons = () => {
     },
     {
       type: 'add-tabs',
-      onPress: () =>
-        setBrowserTabs(
-          newTab(
-            randomSite(), // Need to detach browser tabs from global state
-            browserTabs,
-          ),
-        ),
+      onPress: () => {
+        const previousTabs = browserTabs;
+        const randomUri = randomSite();
+        setBrowserTabs(newTab(randomUri, previousTabs));
+      },
       iconImage: IconAddTab,
       accessibilityLabel: 'Add a new tab',
     },
     {
       type: 'reload',
-      onPress: () => webViewReload(),
+      onPress: () => hasTabs && webViewReload(),
       iconImage: IconRefresh,
       accessibilityLabel: 'Reload web-page',
     },

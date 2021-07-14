@@ -11,18 +11,19 @@ import { useRecoilState } from 'recoil';
 
 import { browserTabsState } from 'src/store';
 
+// import { getIndexByTabId } from 'src/utils/tabs';
+
 const AddressTextInput = () => {
   const theme = useTheme();
-
   const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
-
   const [shareVisible, shareVisibility] = useState(true);
 
   const shareCurrentUri = () => {
-    if (browserTabs.tabs.length && browserTabs.activeTabIndex !== null) {
+    if (browserTabs.activeTab.index !== null) {
       const sharingMessage =
-        browserTabs.tabs[browserTabs.activeTabIndex].tabTitle;
-      const sharingUri = browserTabs.tabs[browserTabs.activeTabIndex].tabUri;
+        browserTabs.tabs[browserTabs.activeTab.index].tabTitle;
+      const sharingUri =
+        browserTabs.tabs[browserTabs.activeTab.index].tabUriValue;
       const shareOptions = {
         title: 'Share',
         message: `Sharing: ${sharingMessage}`,
@@ -42,14 +43,14 @@ const AddressTextInput = () => {
     <AddressBar>
       <URLSearchInput
         value={
-          browserTabs.tabs.length && browserTabs.activeTabIndex !== null
-            ? browserTabs.tabs[browserTabs.activeTabIndex].tabUriValue
+          browserTabs.activeTab.index !== null
+            ? browserTabs.tabs[browserTabs.activeTab.index].tabUriValue
             : ''
         }
         onChangeText={(url: string) => {
           setBrowserTabs((previous) => {
-            if (previous.activeTabIndex !== null) {
-              previous.tabs[previous.activeTabIndex].tabUriValue = url;
+            if (previous.activeTab.index !== null) {
+              previous.tabs[previous.activeTab.index].tabUriValue = url;
             }
             return {
               ...previous,
@@ -59,9 +60,9 @@ const AddressTextInput = () => {
         onSubmitEditing={(event) => {
           const urlCurrent = upgradeUrl(event.nativeEvent.text);
           setBrowserTabs((previous) => {
-            if (previous.activeTabIndex !== null) {
-              previous.tabs[previous.activeTabIndex].tabUriValue = urlCurrent;
-              previous.tabs[previous.activeTabIndex].tabUriCurrent = {
+            if (previous.activeTab.index !== null) {
+              previous.tabs[previous.activeTab.index].tabUriValue = urlCurrent;
+              previous.tabs[previous.activeTab.index].tabUriCurrent = {
                 uri: urlCurrent,
               };
             }
@@ -125,9 +126,5 @@ const Icon = styled.Pressable.attrs({
   margin-left: 8px;
   color: ${(props) => props.theme.addressBar.color};
 `;
-
-// const NoTabsOpenMessage = styled.Text`
-//   color: ${(props) => props.theme.colors.text};
-// `;
 
 export default AddressTextInput;

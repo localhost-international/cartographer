@@ -1,13 +1,21 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-// import NavigationTextInput from 'src/components/Navigation/NavigationComboInput';
+import { useRecoilValue } from 'recoil';
+
+import { browserTabsState } from 'src/store';
+
+import NavigationTextInput from 'src/components/Navigation/NavigationComboInput';
 import NavigationButtons from 'src/components/Navigation/NavigationButtons';
 
 export default function Navigation() {
+  const browserTabs = useRecoilValue(browserTabsState);
+
+  const hasTabs = browserTabs.tabs.length >= 1;
+
   return (
     <NavigationContainer>
-      {/* <NavigationTextInput /> */}
+      {hasTabs && <NavigationTextInput />}
       <NavigationButtons />
     </NavigationContainer>
   );

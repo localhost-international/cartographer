@@ -37,32 +37,38 @@ type WebViewHtml = { html: string };
 export type BrowserTabState = {
 	tabRef?: React.RefObject<WebView> | null;
 	tabActive: boolean;
-	tabMounted: boolean;
 	tabId: string;
 	tabTitle: string | null;
-	tabThumbnail: string | null;
-	tabLastActive: Date | null;
-	tabUri: string; // TODO - Initial tab Uri for new tabs?
 	tabUriValue: string;
 	tabUriCurrent: WebViewUrl | WebViewHtml;
+	// tabMounted: boolean;
+	// tabThumbnail: string | null;
+	// tabLastActive: Date | null;
+	// tabUri: string; // TODO - remove??!?!
 };
 export type BrowserTabsState = {
 	tabs: BrowserTabState[];
-	// Active Tab
-	activeTabId: null | string;
-	activeTabIndex: null | number;
-	// Previous Tab
-	previousTabId: null | string;
-	tabIdIncrement: number;
+	activeTab: {
+		id: null | string;
+		index: null | number;
+	};
+	previousTab: {
+		id: null | string;
+		index: null | number;
+	};
 };
 export const browserTabsState = atom({
 	key: 'browserTabsState',
 	default: <BrowserTabsState>{
 		tabs: [],
-		activeTabId: null,
-		activeTabIndex: null,
-		previousTabId: null,
-		tabIdIncrement: 0,
+		activeTab: {
+			id: null,
+			index: null,
+		},
+		previousTab: {
+			id: null,
+			index: null,
+		},
 	},
 	dangerouslyAllowMutability: true,
 });
