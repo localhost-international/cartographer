@@ -9,12 +9,13 @@ import {
 
 import { env } from 'environments/.env.development';
 
-import { ethereumState } from 'src/store/atoms';
+import { ethereumState } from 'src/store';
 
 import { Ethereum } from 'src/protocols/ethereum';
 
-import Browser from 'src/views/Browser';
-import Settings from 'src/views/Settings';
+import Browser from 'src/views/BrowserView';
+import Tabs from 'src/views/TabsView';
+import Settings from 'src/views/SettingsView';
 
 const Stack = createStackNavigator();
 
@@ -59,6 +60,14 @@ export default function AppNavigator() {
           name="Browser"
           component={Browser}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Tabs"
+          component={Tabs}
+          options={{
+            headerShown: false,
+            // safeAreaInsets: { top: 0, right: 0, bottom: 0, left: 0 }
+          }}
         />
         <Stack.Screen
           name="Settings"

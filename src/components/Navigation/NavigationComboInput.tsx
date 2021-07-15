@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styled, { useTheme } from 'styled-components/native';
 
 import Share from 'react-native-share';
@@ -8,79 +9,103 @@ import { upgradeUrl } from 'src/utils/url';
 
 import IconShare from 'src/assets/icons/icon-share.svg';
 import { useRecoilState } from 'recoil';
-import { navigationState } from 'src/store/atoms';
+
+import { browserTabsState } from 'src/store';
+
+// import { getIndexByTabId } from 'src/utils/tabs';
 
 const AddressTextInput = () => {
   const theme = useTheme();
-
-  const [navState, setNavState] = useRecoilState(navigationState);
-
+  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
   const [shareVisible, shareVisibility] = useState(true);
 
   const shareCurrentUri = () => {
-    const shareOptions = {
-      title: 'Share',
-      message: `Sharing: ${navState.webViewState?.title}`,
-      url: navState.webViewState?.url,
-    };
-    Share.open(shareOptions)
-      .then((resp) => {
-        console.log('Share successful', resp);
-      })
-      .catch((err) => {
-        console.log('Share error', err);
-      });
+    if (browserTabs.activeTab.index !== null) {
+      const sharingMessage =
+        browserTabs.tabs[browserTabs.activeTab.index].tabTitle;
+      const sharingUri =
+        browserTabs.tabs[browserTabs.activeTab.index].tabUriValue;
+      const shareOptions = {
+        title: 'Share',
+        message: `${sharingMessage}`,
+        url: sharingUri,
+      };
+      Share.open(shareOptions)
+        .then((resp) => {
+          console.log('Share successful', resp);
+        })
+        .catch((err) => {
+          console.log('Share error', err);
+        });
+    }
   };
 
   return (
-    <AddressBar>
-      <URLSearchInput
-        value={navState.urlInput}
-        onChangeText={(url: string) => {
-          setNavState((previous) => {
-            return {
-              ...previous,
-              urlInput: url,
-            };
-          });
-        }}
-        onSubmitEditing={(event) => {
-          const urlCurrent = upgradeUrl(event.nativeEvent.text);
-          setNavState((previous) => {
-            return {
-              ...previous,
-              urlInput: urlCurrent,
-              urlCurrent: urlCurrent,
-            };
-          });
-        }}
-        onFocus={() => {
-          shareVisibility(false);
-        }}
-        onBlur={() => {
-          // TODO - Re-instate previous URL on before onSubmitEditing
-          shareVisibility(true);
-        }}
-        autoCapitalize="none"
-        autoCompleteType="off"
-        autoCorrect={false}
-        returnKeyType="go"
-        blurOnSubmit={true}
-        clearButtonMode="while-editing"
-        keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
-        // TODO - Change keyboard type to search if URL not detected
-        keyboardType="web-search"
-        selectTextOnFocus={true}
-        textContentType="URL"
-      />
-      {shareVisible && (
-        <Icon onPress={shareCurrentUri}>
-          <IconShare height={24} width={40} fill={theme.ui.icon} />
-        </Icon>
-      )}
-    </AddressBar>
+    <SafeAreaViewContainer>
+      <AddressBar>
+        <URLSearchInput
+          value={
+            browserTabs.activeTab.index !== null
+              ? browserTabs.tabs[browserTabs.activeTab.index].tabUriValue
+              : ''
+          }
+          onChangeText={(url: string) => {
+            setBrowserTabs((previous) => {
+              if (previous.activeTab.index !== null) {
+                previous.tabs[previous.activeTab.index].tabUriValue = url;
+              }
+              return {
+                ...previous,
+              };
+            });
+          }}
+          onSubmitEditing={(event) => {
+            const urlCurrent = upgradeUrl(event.nativeEvent.text);
+            setBrowserTabs((previous) => {
+              if (previous.activeTab.index !== null) {
+                previous.tabs[previous.activeTab.index].tabUriValue =
+                  urlCurrent;
+                previous.tabs[previous.activeTab.index].tabUriCurrent = {
+                  uri: urlCurrent,
+                };
+              }
+              return {
+                ...previous,
+              };
+            });
+          }}
+          onFocus={() => {
+            shareVisibility(false);
+          }}
+          onBlur={() => {
+            // TODO - Re-instate previous URL on before onSubmitEditing
+            shareVisibility(true);
+          }}
+          autoCapitalize="none"
+          autoCompleteType="off"
+          autoCorrect={false}
+          returnKeyType="go"
+          blurOnSubmit={true}
+          clearButtonMode="while-editing"
+          keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
+          // TODO - Change keyboard type to search if URL not detected
+          keyboardType="web-search"
+          selectTextOnFocus={true}
+          textContentType="URL"
+        />
+        {shareVisible && (
+          <Icon onPress={shareCurrentUri}>
+            <IconShare height={24} width={40} fill={theme.ui.icon} />
+          </Icon>
+        )}
+      </AddressBar>
+    </SafeAreaViewContainer>
   );
 };
+
+const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
+  edges: ['right', 'left'],
+}))``;
 
 const AddressBar = styled.View`
   margin-left: 10px;

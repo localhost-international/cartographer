@@ -5,6 +5,12 @@ import type { BigNumber, Wallet } from 'ethers';
 
 import { env } from 'environments/.env.development';
 
+/**
+ * TODO
+ * - Change network (from mainnet to testnets)
+ * - Connect to custom/local EVM blockchain (e.g. dev.local, Lukso, etc)
+ */
+
 const provider = new ethers.providers.FallbackProvider([
 	new ethers.providers.EtherscanProvider(
 		`${env.ETHERSCAN_NETWORK}`,

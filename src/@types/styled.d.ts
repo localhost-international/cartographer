@@ -5,6 +5,8 @@ declare module 'styled-components/native' {
 		colors: {
 			scheme: string;
 			text: string;
+			title: string;
+			header: string;
 			background: string;
 			debug: string;
 		};

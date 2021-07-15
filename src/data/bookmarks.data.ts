@@ -9,6 +9,7 @@ export const Bookmarks: Bookmark[] = [
 		location: 'https://foundation.app/',
 		tags: ['ethereum', 'nft', 'art'],
 	},
+	// https://beta.catalog.works/omarijazz
 	{
 		displayName: 'Catalog',
 		description:

@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        outline: none;
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+          Roboto;
+      }
+
+      main {
+        margin: 5.5rem 1.5rem 2.5rem 1.5rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        padding-bottom: .75rem;
+      }
+      h1 {
+        font-weight: 400;
+      }
+      h2 {
+        font-weight: 200;
+      }
+      h3 {
+        font-weight: 100;
+      }
+
+      [data-id-home] {
+        /* border: 1px solid pink; */
+        margin-bottom: 30px;
+      }
+
+      .sub-heading {
+        display: none;
+      }
+      .sub-heading.active {
+        display: block;
+      }
+
+      [data-id-search] {
+        /* border: 1px solid cyan; */
+        margin-bottom: 30px;
+      }
+
+      form {
+        border: none;
+      }
+      form fieldset {
+        border: none;
+      }
+      form fieldset input {
+        border: none;
+        background: rgba(0,0,0,.15);
+        color: rgb(105, 105, 105);
+        border-radius: 5px;
+        padding: 14px 14px 14px 14px;
+        font-size: 18px;
+        font-weight: 300;
+        display: inline-block;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: rgba(30,30,30,1);
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: rgba(255,255,255,.75);
+        }
+        a {
+          color: rgba(205,205,205,.95);
+        }
+        form fieldset input {
+          background: rgba(0,0,0,1);
+          color: rgb(155,155,155);
+        }
+        form fieldset input::placeholder {
+          color: rgba(225,225,225,.25);
+        }
+      }
+      @media (prefers-color-scheme: light) {
+        body {
+          background: rgba(240,240,240,1);
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: rgba(0,0,0,1);
+        }
+        a {
+          color: rgba(105,105,105,.65);
+        }
+        form fieldset input {
+          background: rgba(255,255,255,1);
+          color: rgb(155,155,155);
+        }
+        form fieldset input::placeholder {
+          color: rgb(205,205,205);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section data-id-home>
+        <h1 class="heading" data-id-title>
+          Where do you want to go today?
+        </h1>
+        <h3 class="sub-heading" data-id-salutation></h3>
+        <h3 class="sub-heading" data-id-last-session></h3>
+      </section>
+      <section data-id-search>
+        <form>
+          <fieldset>
+            <input type="text" placeholder="Search DuckDuckGo" />
+          </fieldset>
+      </section>
+    </main>
+
+    <script>
+      const body = document.body;
+      const titleMsg = body.querySelector("[data-id-title]");
+      const salutationMsg = body.querySelector("[data-id-salutation]");
+      const sessionMsg = body.querySelector("[data-id-last-session]");
+
+      const form = body.querySelector("[data-id-search] form");
+
+      const titles = [
+        `Where do you want to go today?`,
+        `What do you want to do today?`
+      ];
+
+      const salutations = [
+        `Maybe learn something new?`,
+        `Create and new self-hosted website?`,
+        `Support an artist?`
+      ];
+
+      const previousSession = [
+        `You have 5 <a href="about:tabs#unread">un-read tabs</a>.`,
+        `You have a <a href="about:history/transactions">new wallet transaction</a>.`
+      ];
+
+      function setTitle() {
+        return titles[Math.floor(Math.random() * titles.length)];
+      }
+
+      function salutationsFn() {
+        console.log("Salutations");
+        titleMsg.innerHTML = setTitle();
+        sessionMsg.classList.remove("active");
+        salutationMsg.classList.add("active");
+        salutationMsg.innerHTML =
+          salutations[Math.floor(Math.random() * salutations.length)];
+      }
+
+      function previousFn() {
+        console.log("Previous tabs");
+        salutationMsg.classList.remove("active");
+        sessionMsg.classList.add("active");
+        sessionMsg.innerHTML =
+          previousSession[Math.floor(Math.random() * previousSession.length)];
+      }
+
+      form.addEventListener('submit', (evt) => {
+        alert('Search submitted');
+      });
+
+      const mode = Math.random() < 0.5 ? salutationsFn() : previousFn();
+    </script>
+  </body>
+</html>

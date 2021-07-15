@@ -1,52 +1,84 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
-import { navigationState } from 'src/store/atoms';
+import { browserTabsState } from 'src/store';
+
+import { newTab } from 'src/utils/tabs';
+import { randomSite } from 'src/utils/debug';
 
 import IconArrowLeft from 'src/assets/icons/icon-arrow-left.svg';
 import IconArrowRight from 'src/assets/icons/icon-arrow-right.svg';
 import IconOptions from 'src/assets/icons/icon-options.svg';
 import IconRefresh from 'src/assets/icons/icon-refresh.svg';
 import IconTabs from 'src/assets/icons/icon-tabs.svg';
+import IconAddTab from 'src/assets/icons/icon-add-document.svg';
 
 import { ButtonIcon } from 'src/components/ButtonIcon';
 
 const NavigationButtons = () => {
   const screenNavigation = useNavigation();
 
-  const [navState] = useRecoilState(navigationState);
+  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
 
-  const webViewReload = () => navState.webViewRef?.current?.reload();
-  const webViewGoBack = () => navState.webViewRef?.current?.goBack();
-  const webViewGoForward = () => navState.webViewRef?.current?.goForward();
+  const hasTabs =
+    browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null;
 
+  const webViewReload = () => {
+    if (browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null) {
+      browserTabs.tabs[browserTabs.activeTab.index].tabRef?.current?.reload();
+    }
+  };
+  const webViewGoBack = () => {
+    if (browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null) {
+      browserTabs.tabs[browserTabs.activeTab.index].tabRef?.current?.goBack();
+    }
+  };
+  const webViewGoForward = () => {
+    if (browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null) {
+      browserTabs.tabs[
+        browserTabs.activeTab.index
+      ].tabRef?.current?.goForward();
+    }
+  };
+
+  const viewTabs = () => screenNavigation.navigate('Tabs');
   const viewSettings = () => screenNavigation.navigate('Settings');
 
   const navigationButtons = [
     {
       type: 'back',
-      onPress: () => webViewGoBack(),
+      onPress: () => hasTabs && webViewGoBack(),
       iconImage: IconArrowLeft,
       accessibilityLabel: 'Go back',
     },
     {
       type: 'forward',
-      onPress: () => webViewGoForward(),
+      onPress: () => hasTabs && webViewGoForward(),
       iconImage: IconArrowRight,
       accessibilityLabel: 'Go forward',
     },
     {
       type: 'tabs',
-      onPress: () => {},
+      onPress: () => viewTabs(),
       iconImage: IconTabs,
-      accessibilityLabel: 'List opened web-site tabs',
+      accessibilityLabel: 'View tabs',
+    },
+    {
+      type: 'add-tabs',
+      onPress: () => {
+        const previousTabs = browserTabs;
+        const randomUri = randomSite();
+        setBrowserTabs(newTab(randomUri, previousTabs));
+      },
+      iconImage: IconAddTab,
+      accessibilityLabel: 'Add a new tab',
     },
     {
       type: 'reload',
-      onPress: () => webViewReload(),
+      onPress: () => hasTabs && webViewReload(),
       iconImage: IconRefresh,
       accessibilityLabel: 'Reload web-page',
     },
@@ -59,7 +91,8 @@ const NavigationButtons = () => {
   ];
 
   return (
-    <SafeAreaView>
+    <SafeAreaViewContainer>
+      {/* <SafeAreaView> */}
       <View>
         {navigationButtons.map((button) => {
           const { type, iconImage, accessibilityLabel, onPress } = button;
@@ -74,9 +107,14 @@ const NavigationButtons = () => {
           );
         })}
       </View>
-    </SafeAreaView>
+      {/* </SafeAreaView> */}
+    </SafeAreaViewContainer>
   );
 };
+
+const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
+  edges: ['bottom', 'right', 'left'],
+}))``;
 
 const View = styled.View`
   margin-left: 16px;
