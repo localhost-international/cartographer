@@ -12,6 +12,8 @@ import type { BrowserTabState } from 'src/store';
 
 import { newTab, switchTab, removeTab } from 'src/utils/tabs';
 
+import IconClose from 'src/assets/icons/icon-close-filled.svg';
+
 export default function Tabs() {
   const screenNavigation = useNavigation();
 
@@ -31,16 +33,16 @@ export default function Tabs() {
         }}>
         <TabListItemTitle>
           {tabTitle ? tabTitle : '[No title]'}
-          {/* {tabTitle} */}
         </TabListItemTitle>
         <TabListItemUrl>{tabUriValue}</TabListItemUrl>
-
-        <TabWebViewDeleteButton
+        <TabListItemDebug>{tabId}</TabListItemDebug>
+        <TabCloseButton
+          accessibilityLabel={'Close this tab'}
           onPress={() => {
             setBrowserTabs(removeTab(tabId, browserTabs));
           }}>
-          <TabWebViewDeleteButtonText>Close</TabWebViewDeleteButtonText>
-        </TabWebViewDeleteButton>
+          <TabCloseIcon />
+        </TabCloseButton>
       </TabListItem>
     );
   };
@@ -140,7 +142,7 @@ const Body = styled.View`
 
 const TabsTitle = styled.Text`
   color: ${(props) => props.theme.colors.header};
-  font-size: 44px;
+  font-size: 32px;
   font-weight: 600;
 `;
 
@@ -161,44 +163,58 @@ const TabList = styled.FlatList`
 const TabListItem = styled.Pressable`
   border-bottom-width: 1px;
   border-bottom-color: ${(props) => props.theme.addressBar.background};
-  font-size: 24px;
   font-weight: 600;
-  padding: 15px 20px;
+  padding: 20px 20px 20px 20px;
 `;
 const TabListItemTitle = styled.Text`
   color: ${(props) => props.theme.colors.title};
   font-size: 24px;
   font-weight: 600;
+  padding-bottom: 10px;
 `;
-
 const TabListItemUrl = styled.Text`
   color: ${(props) => props.theme.colors.text};
-  opacity: 0.5;
   font-size: 16px;
   font-weight: 400;
+  opacity: 0.5;
+  padding-bottom: 10px;
 `;
-
-const TabWebViewDeleteButton = styled.Pressable`
-  align-self: flex-start;
-  background-color: red;
-`;
-const TabWebViewDeleteButtonText = styled.Text`
-  font-size: 20px;
-  color: white;
-  padding: 10px;
-`;
-
-const NewTabButton = styled.Pressable`
+const TabListItemDebug = styled.Text`
   color: ${(props) => props.theme.colors.text};
+  opacity: 0.5;
+  font-size: 8px;
+  font-weight: 200;
+  padding-bottom: 10px;
+`;
+
+const TabCloseButton = styled.Pressable`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  opacity: 0.25;
+  /* border: 1px solid red; */
+`;
+
+const TabCloseIcon = styled(IconClose).attrs(() => ({
+  height: 32,
+  width: 32,
+}))`
+  /* border: 1px solid blue; */
+`;
+
+const NewTabButton = styled.Pressable.attrs({
+  hitSlop: 15,
+})`
   font-size: 16px;
   font-weight: 400;
   padding: 20px;
-  background: rgba(105, 215, 0, 1);
+  background: #4f9b09;
 `;
 
 const NewTabButtonText = styled.Text`
-  color: ${(props) => props.theme.colors.text};
-  opacity: 0.5;
-  font-size: 20px;
+  /* color: ${(props) => props.theme.colors.text}; */
+  color: white;
+  opacity: 1;
+  font-size: 16px;
   font-weight: 600;
 `;
