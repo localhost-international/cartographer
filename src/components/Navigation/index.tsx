@@ -22,11 +22,8 @@ export default function Navigation() {
 }
 
 const NavigationContainer = styled.View`
-  position: absolute;
-  top: auto;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
+  /* position: absolute; */
+  /* display: flex; */
+  /* flex: 1; */
   background: ${(props) => props.theme.colors.background};
 `;

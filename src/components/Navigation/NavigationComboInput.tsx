@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styled, { useTheme } from 'styled-components/native';
 
 import Share from 'react-native-share';
@@ -26,7 +27,7 @@ const AddressTextInput = () => {
         browserTabs.tabs[browserTabs.activeTab.index].tabUriValue;
       const shareOptions = {
         title: 'Share',
-        message: `Sharing: ${sharingMessage}`,
+        message: `${sharingMessage}`,
         url: sharingUri,
       };
       Share.open(shareOptions)
@@ -40,64 +41,71 @@ const AddressTextInput = () => {
   };
 
   return (
-    <AddressBar>
-      <URLSearchInput
-        value={
-          browserTabs.activeTab.index !== null
-            ? browserTabs.tabs[browserTabs.activeTab.index].tabUriValue
-            : ''
-        }
-        onChangeText={(url: string) => {
-          setBrowserTabs((previous) => {
-            if (previous.activeTab.index !== null) {
-              previous.tabs[previous.activeTab.index].tabUriValue = url;
-            }
-            return {
-              ...previous,
-            };
-          });
-        }}
-        onSubmitEditing={(event) => {
-          const urlCurrent = upgradeUrl(event.nativeEvent.text);
-          setBrowserTabs((previous) => {
-            if (previous.activeTab.index !== null) {
-              previous.tabs[previous.activeTab.index].tabUriValue = urlCurrent;
-              previous.tabs[previous.activeTab.index].tabUriCurrent = {
-                uri: urlCurrent,
+    <SafeAreaViewContainer>
+      <AddressBar>
+        <URLSearchInput
+          value={
+            browserTabs.activeTab.index !== null
+              ? browserTabs.tabs[browserTabs.activeTab.index].tabUriValue
+              : ''
+          }
+          onChangeText={(url: string) => {
+            setBrowserTabs((previous) => {
+              if (previous.activeTab.index !== null) {
+                previous.tabs[previous.activeTab.index].tabUriValue = url;
+              }
+              return {
+                ...previous,
               };
-            }
-            return {
-              ...previous,
-            };
-          });
-        }}
-        onFocus={() => {
-          shareVisibility(false);
-        }}
-        onBlur={() => {
-          // TODO - Re-instate previous URL on before onSubmitEditing
-          shareVisibility(true);
-        }}
-        autoCapitalize="none"
-        autoCompleteType="off"
-        autoCorrect={false}
-        returnKeyType="go"
-        blurOnSubmit={true}
-        clearButtonMode="while-editing"
-        keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
-        // TODO - Change keyboard type to search if URL not detected
-        keyboardType="web-search"
-        selectTextOnFocus={true}
-        textContentType="URL"
-      />
-      {shareVisible && (
-        <Icon onPress={shareCurrentUri}>
-          <IconShare height={24} width={40} fill={theme.ui.icon} />
-        </Icon>
-      )}
-    </AddressBar>
+            });
+          }}
+          onSubmitEditing={(event) => {
+            const urlCurrent = upgradeUrl(event.nativeEvent.text);
+            setBrowserTabs((previous) => {
+              if (previous.activeTab.index !== null) {
+                previous.tabs[previous.activeTab.index].tabUriValue =
+                  urlCurrent;
+                previous.tabs[previous.activeTab.index].tabUriCurrent = {
+                  uri: urlCurrent,
+                };
+              }
+              return {
+                ...previous,
+              };
+            });
+          }}
+          onFocus={() => {
+            shareVisibility(false);
+          }}
+          onBlur={() => {
+            // TODO - Re-instate previous URL on before onSubmitEditing
+            shareVisibility(true);
+          }}
+          autoCapitalize="none"
+          autoCompleteType="off"
+          autoCorrect={false}
+          returnKeyType="go"
+          blurOnSubmit={true}
+          clearButtonMode="while-editing"
+          keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
+          // TODO - Change keyboard type to search if URL not detected
+          keyboardType="web-search"
+          selectTextOnFocus={true}
+          textContentType="URL"
+        />
+        {shareVisible && (
+          <Icon onPress={shareCurrentUri}>
+            <IconShare height={24} width={40} fill={theme.ui.icon} />
+          </Icon>
+        )}
+      </AddressBar>
+    </SafeAreaViewContainer>
   );
 };
+
+const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
+  edges: ['right', 'left'],
+}))``;
 
 const AddressBar = styled.View`
   margin-left: 10px;

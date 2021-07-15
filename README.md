@@ -97,8 +97,9 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 #### Browser  
 
 - [x] Navigation
-- [ ] Tabs
+- [x] Tabs
 - [x] Native sharing
+- [ ] Home screen
 - [ ] Private browsing
 - [ ] Default browser (iOS 14)
 - [x] Search from address bar
@@ -126,7 +127,7 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 - [x] App Icon <small>_Temporary_</small>
 - [x] Dark/light mode
 - [x] Pull to refresh
-- [ ] Landscape mode
+- [x] Landscape mode
 
 
 #### Platforms

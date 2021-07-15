@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
@@ -47,51 +48,53 @@ export default function Tabs() {
   return (
     <>
       <BlurViewContainer blurType={IsDarkMode() ? 'dark' : 'light'} />
-      <Header>
-        <CloseButton onPress={goBack}>
-          <CloseButtonText>Done</CloseButtonText>
-        </CloseButton>
-        <TabsTitle>Tabs</TabsTitle>
-      </Header>
-      <Body>
-        <SearchTabs
-          placeholder="Search by tab title or address"
-          value={searchTabs}
-          onChangeText={(query: string) => {
-            setSearchTabs(query);
-          }}
-          onSubmitEditing={() => {
-            console.log('TODO - Search for wallet information');
-          }}
-          autoCapitalize="none"
-          autoCompleteType="off"
-          autoCorrect={false}
-          returnKeyType="search"
-          keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
-          blurOnSubmit={true}
-          clearButtonMode="always"
-          textContentType="none"
-        />
-
-        <NewTabButton
-          onPress={() => {
-            setBrowserTabs(newTab('https://status.im/', browserTabs));
-          }}>
-          <NewTabButtonText>Add New Tab (Status)</NewTabButtonText>
-        </NewTabButton>
-
-        {browserTabs.tabs.length ? (
-          <TabList
-            data={browserTabs.tabs}
-            renderItem={_renderItem}
-            keyExtractor={(item, index) => index.toString()}
+      <SafeAreaViewContainer>
+        <Header>
+          <CloseButton onPress={goBack}>
+            <CloseButtonText>Done</CloseButtonText>
+          </CloseButton>
+          <TabsTitle>Tabs</TabsTitle>
+        </Header>
+        <Body>
+          <SearchTabs
+            placeholder="Search by tab title or address"
+            value={searchTabs}
+            onChangeText={(query: string) => {
+              setSearchTabs(query);
+            }}
+            onSubmitEditing={() => {
+              console.log('TODO - Search for wallet information');
+            }}
+            autoCapitalize="none"
+            autoCompleteType="off"
+            autoCorrect={false}
+            returnKeyType="search"
+            keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
+            blurOnSubmit={true}
+            clearButtonMode="always"
+            textContentType="none"
           />
-        ) : (
-          <TabListItem>
-            <TabListItemTitle>No tabs</TabListItemTitle>
-          </TabListItem>
-        )}
-      </Body>
+
+          <NewTabButton
+            onPress={() => {
+              setBrowserTabs(newTab('https://status.im/', browserTabs));
+            }}>
+            <NewTabButtonText>Add New Tab (Status)</NewTabButtonText>
+          </NewTabButton>
+
+          {browserTabs.tabs.length ? (
+            <TabList
+              data={browserTabs.tabs}
+              renderItem={_renderItem}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          ) : (
+            <TabListItem>
+              <TabListItemTitle>No tabs</TabListItemTitle>
+            </TabListItem>
+          )}
+        </Body>
+      </SafeAreaViewContainer>
     </>
   );
 }
@@ -102,6 +105,12 @@ const BlurViewContainer = styled(BlurView)`
   right: 0;
   left: 0;
   top: 0;
+`;
+
+const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
+  edges: ['right', 'left'],
+}))`
+  flex: 1;
 `;
 
 const Header = styled.View`

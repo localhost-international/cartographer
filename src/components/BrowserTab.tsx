@@ -29,7 +29,9 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
 
   const webViewReload = () => {
     setRefreshing(true);
-    if (tabRef) tabRef.current?.reload();
+    if (tabRef) {
+      tabRef.current?.reload();
+    }
   };
 
   return (
@@ -112,11 +114,11 @@ const ScrollView = styled.ScrollView.attrs(() => ({
 const RefreshControl = styled.RefreshControl``;
 
 const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
-  // edges: ['right', 'left'],
+  edges: ['top', 'right', 'left'],
 }))`
   flex: 1;
 `;
 
 const WebViewContainer = styled(WebView)`
-  /* flex: 1; */
+  flex: 1;
 `;

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilValue } from 'recoil';
 
 import { browserTabsState } from 'src/store';
@@ -25,19 +26,21 @@ export default function Browser() {
   return (
     <>
       <KeyboardAvoidingView enabled behavior="padding">
-        <View>
+        <SafeAreaViewContainer>
           {browserTabs.tabs.map((browserTab) => {
             const { tabId } = browserTab;
             return <BrowserTab key={tabId} tabState={browserTab} />;
           })}
-          <Navigation />
-        </View>
+        </SafeAreaViewContainer>
+        <Navigation />
       </KeyboardAvoidingView>
     </>
   );
 }
 
-const View = styled.View`
+const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
+  edges: ['top'],
+}))`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
 `;

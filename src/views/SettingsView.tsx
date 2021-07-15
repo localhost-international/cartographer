@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
@@ -24,40 +25,42 @@ export default function Settings() {
   return (
     <>
       <BlurViewContainer blurType={IsDarkMode() ? 'dark' : 'light'} />
-      <Header>
-        <CloseButton onPress={goBack}>
-          <CloseButtonText>Done</CloseButtonText>
-        </CloseButton>
-        <WalletInfo pointerEvents="none">
-          <WalletUserIcon />
-          <WalletAddressTitle>{ethState.ethWalletEns}</WalletAddressTitle>
-          <WalletAddressHex>{ethState.ethWalletHex}</WalletAddressHex>
-          <WalletBalance>
-            <WalletCurrencyIcon width={32} height={42} fill={theme.ui.icon} />
-            <WalletAmount>{ethState.ethWalletBalance}</WalletAmount>
-          </WalletBalance>
-        </WalletInfo>
-      </Header>
-      <Body>
-        <SearchWallet
-          placeholder="Search by wallet address"
-          value={searchWallet}
-          onChangeText={(address: string) => {
-            setSearchWallet(address);
-          }}
-          onSubmitEditing={() => {
-            console.log('TODO - Search for wallet information');
-          }}
-          autoCapitalize="none"
-          autoCompleteType="off"
-          autoCorrect={false}
-          returnKeyType="search"
-          keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
-          blurOnSubmit={true}
-          clearButtonMode="always"
-          textContentType="none" // TODO - URL and hex?
-        />
-      </Body>
+      <SafeAreaViewContainer>
+        <Header>
+          <CloseButton onPress={goBack}>
+            <CloseButtonText>Done</CloseButtonText>
+          </CloseButton>
+          <WalletInfo pointerEvents="none">
+            <WalletUserIcon />
+            <WalletAddressTitle>{ethState.ethWalletEns}</WalletAddressTitle>
+            <WalletAddressHex>{ethState.ethWalletHex}</WalletAddressHex>
+            <WalletBalance>
+              <WalletCurrencyIcon width={32} height={42} fill={theme.ui.icon} />
+              <WalletAmount>{ethState.ethWalletBalance}</WalletAmount>
+            </WalletBalance>
+          </WalletInfo>
+        </Header>
+        <Body>
+          <SearchWallet
+            placeholder="Search by wallet address"
+            value={searchWallet}
+            onChangeText={(address: string) => {
+              setSearchWallet(address);
+            }}
+            onSubmitEditing={() => {
+              console.log('TODO - Search for wallet information');
+            }}
+            autoCapitalize="none"
+            autoCompleteType="off"
+            autoCorrect={false}
+            returnKeyType="search"
+            keyboardAppearance={IsDarkMode() ? 'dark' : 'light'}
+            blurOnSubmit={true}
+            clearButtonMode="always"
+            textContentType="none" // TODO - URL and hex?
+          />
+        </Body>
+      </SafeAreaViewContainer>
     </>
   );
 }
@@ -68,6 +71,12 @@ const BlurViewContainer = styled(BlurView)`
   right: 0;
   left: 0;
   top: 0;
+`;
+
+const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
+  edges: ['right', 'left'],
+}))`
+  flex: 1;
 `;
 
 const Header = styled.View`
