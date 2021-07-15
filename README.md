@@ -37,39 +37,7 @@ Interested in running on Android? [See this issue](https://github.com/localhost-
 
 ### Building
 
-If you haven't already, [install React Native and it's dependencies](https://reactnative.dev/docs/environment-setup).  
-
-### iOS and iPadOS
-
-Building Cartographer for iOS and iPadOS requires a Mac, Xcode 11+, CocoaPods and Node 14+.
-
-1. `yarn install`
-2. `npx pod-install ios`
-3. `npx react-native run-ios`
-
-To run on a connected device: 
-
-*  `yarn global add ios-deploy`
-*  `npx react-native run-ios --device "iPhone"`
-*  
-
-#### Building with Apple Silicon (M1)
-
-> TODO 
-
-
-
-### Android 
-
-Cartographer is currently in development and is being optimised for iOS/iPadOS.  
-
-[Leave a comment on the Android Support issue](https://github.com/localhost-international/cartographer/issues/1) so I know you're interested in an Android compatibility/release.
-
-Building Cartographer for Android requires Android Studio 4.0+ and OpenJDK 8.
-
-1. `yarn install`
-2. `npx react-native run-android`
-
+For instructions on building Cartographer, please see [BUILDING.md](./BUILDING.md).
 
 ### Testing and Linting
 
@@ -79,7 +47,6 @@ Building Cartographer for Android requires Android Studio 4.0+ and OpenJDK 8.
 * `yarn test`
 
 &nbsp;
-
 
 ### Contributors
 
