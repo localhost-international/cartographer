@@ -1,11 +1,12 @@
 import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 
 import { useRecoilValue } from 'recoil';
 
 import { browserTabsState } from 'src/store';
 
-import NavigationTextInput from 'src/components/Navigation/NavigationComboInput';
+import NavigationTextInput from 'src/components/Navigation/NavigationTextInput';
 import NavigationButtons from 'src/components/Navigation/NavigationButtons';
 
 export default function Navigation() {
@@ -14,16 +15,19 @@ export default function Navigation() {
   const hasTabs = browserTabs.tabs.length >= 1;
 
   return (
-    <NavigationContainer>
-      {hasTabs && <NavigationTextInput />}
-      <NavigationButtons />
-    </NavigationContainer>
+    <KeyboardAvoidingView enabled behavior="padding">
+      <NavigationContainer>
+        {hasTabs && <NavigationTextInput />}
+        <NavigationButtons />
+      </NavigationContainer>
+    </KeyboardAvoidingView>
   );
 }
 
-const NavigationContainer = styled.View`
-  /* position: absolute; */
-  /* display: flex; */
-  /* flex: 1; */
+const NavigationContainer = styled(SafeAreaView).attrs(() => ({
+  edges: ['right', 'bottom', 'left'],
+}))`
   background: ${(props) => props.theme.colors.background};
 `;
+
+const KeyboardAvoidingView = styled.KeyboardAvoidingView``;

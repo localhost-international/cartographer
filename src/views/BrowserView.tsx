@@ -25,15 +25,13 @@ export default function Browser() {
 
   return (
     <>
-      <KeyboardAvoidingView enabled behavior="padding">
-        <SafeAreaViewContainer>
-          {browserTabs.tabs.map((browserTab) => {
-            const { tabId } = browserTab;
-            return <BrowserTab key={tabId} tabState={browserTab} />;
-          })}
-        </SafeAreaViewContainer>
-        <Navigation />
-      </KeyboardAvoidingView>
+      <SafeAreaViewContainer>
+        {browserTabs.tabs.map((browserTab) => {
+          const { tabId } = browserTab;
+          return <BrowserTab key={tabId} tabState={browserTab} />;
+        })}
+      </SafeAreaViewContainer>
+      <Navigation />
     </>
   );
 }
@@ -43,8 +41,4 @@ const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
 }))`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
-`;
-
-const KeyboardAvoidingView = styled.KeyboardAvoidingView`
-  flex: 1;
 `;

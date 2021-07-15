@@ -1,5 +1,4 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
@@ -91,30 +90,22 @@ const NavigationButtons = () => {
   ];
 
   return (
-    <SafeAreaViewContainer>
-      {/* <SafeAreaView> */}
-      <View>
-        {navigationButtons.map((button) => {
-          const { type, iconImage, accessibilityLabel, onPress } = button;
-          return (
-            <ButtonIcon
-              type={type}
-              key={`${button + type}`}
-              accessibilityLabel={accessibilityLabel}
-              onPress={onPress}
-              iconImage={iconImage}
-            />
-          );
-        })}
-      </View>
-      {/* </SafeAreaView> */}
-    </SafeAreaViewContainer>
+    <View>
+      {navigationButtons.map((button) => {
+        const { type, iconImage, accessibilityLabel, onPress } = button;
+        return (
+          <ButtonIcon
+            type={type}
+            key={`${button + type}`}
+            accessibilityLabel={accessibilityLabel}
+            onPress={onPress}
+            iconImage={iconImage}
+          />
+        );
+      })}
+    </View>
   );
 };
-
-const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
-  edges: ['bottom', 'right', 'left'],
-}))``;
 
 const View = styled.View`
   margin-left: 16px;
