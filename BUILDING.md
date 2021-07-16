@@ -35,7 +35,7 @@ To build and run on a connected device:
 
 ### Building for Apple Silicon
 
-When building on an M1 processor, some 
+When building with an M1 processor, use the following:
 
 Install CocoaPods with:  
 ```sudo arch -x86_64 gem install cocoapods```

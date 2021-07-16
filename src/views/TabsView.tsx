@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
@@ -14,11 +14,18 @@ import { newTab, switchTab, removeTab } from 'src/utils/tabs';
 
 import IconClose from 'src/assets/icons/icon-close-filled.svg';
 
+interface TabListItemProps {
+  noTabs?: boolean;
+}
+
 export default function Tabs() {
   const screenNavigation = useNavigation();
 
   const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
-  const [searchTabs, setSearchTabs] = useState('');
+  const [filteredBrowserTabs, setFilteredBrowserTabs] = useState<
+    BrowserTabState[]
+  >(browserTabs.tabs);
+  const [searchTabs, setSearchTabs] = useState<string>('');
 
   const goBack = () => screenNavigation.goBack();
 
@@ -47,6 +54,29 @@ export default function Tabs() {
     );
   };
 
+  const searchTabsFilter = (query: string) => {
+    if (query) {
+      const newData = browserTabs.tabs.filter((item) => {
+        const itemData = item.tabTitle
+          ? item.tabTitle.toLocaleLowerCase()
+          : ''.toLocaleLowerCase();
+        const textData = query.toLocaleLowerCase();
+        console.log('\n\n\n', itemData.indexOf(textData) > -1);
+        return itemData.indexOf(textData) > -1;
+      });
+      console.log('\n\n\n\nSearch Filter - item:', newData, query, '\n\n\n\n');
+      setFilteredBrowserTabs(newData);
+      setSearchTabs(query);
+    } else {
+      setFilteredBrowserTabs(browserTabs.tabs);
+      setSearchTabs(query);
+    }
+  };
+
+  useEffect(() => {
+    setFilteredBrowserTabs(browserTabs.tabs);
+  }, [browserTabs.tabs]);
+
   return (
     <>
       <BlurViewContainer blurType={IsDarkMode() ? 'dark' : 'light'} />
@@ -62,7 +92,8 @@ export default function Tabs() {
             placeholder="Search by tab title or address"
             value={searchTabs}
             onChangeText={(query: string) => {
-              setSearchTabs(query);
+              // setSearchTabs(query);
+              searchTabsFilter(query);
             }}
             onSubmitEditing={() => {
               console.log('TODO - Search for wallet information');
@@ -86,12 +117,13 @@ export default function Tabs() {
 
           {browserTabs.tabs.length ? (
             <TabList
-              data={browserTabs.tabs}
+              // data={browserTabs.tabs}
+              data={filteredBrowserTabs}
               renderItem={_renderItem}
               keyExtractor={(item, index) => index.toString()}
             />
           ) : (
-            <TabListItem>
+            <TabListItem noTabs>
               <TabListItemTitle>No tabs</TabListItemTitle>
             </TabListItem>
           )}
@@ -165,6 +197,13 @@ const TabListItem = styled.Pressable`
   border-bottom-color: ${(props) => props.theme.addressBar.background};
   font-weight: 600;
   padding: 20px 20px 20px 20px;
+  ${({ noTabs }: TabListItemProps) =>
+    noTabs === true &&
+    `
+    border-bottom-width: 0;
+    padding-bottom: 10px;
+    opacity: .5;
+  `}
 `;
 const TabListItemTitle = styled.Text`
   color: ${(props) => props.theme.colors.title};
