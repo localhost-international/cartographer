@@ -21,4 +21,5 @@ If you're looking for more mature, feature rich web browsers that support distri
 * [Status](https://status.im/get/) - Test out Status' Desktop Beta for private and secure communication where you work
 - [MetaMask browser extension](https://metamask.io/) - A crypto wallet and gateway to blockchain apps
 ##### Mobile
+- [MetaMask mobile](https://metamask.io/) - A crypto wallet and gateway to blockchain apps
 - [Status](https://status.im/get/) - Status is a secure messaging app, crypto wallet, and Web3 browser built with state of the art technology
