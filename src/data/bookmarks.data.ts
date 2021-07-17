@@ -9,13 +9,12 @@ export const Bookmarks: Bookmark[] = [
 		location: 'https://foundation.app/',
 		tags: ['ethereum', 'nft', 'art'],
 	},
-	// https://beta.catalog.works/omarijazz
 	{
 		displayName: 'Catalog',
 		description:
 			'Catalog is a record press, an auction house, and an open music library.',
 		protocol: 'http',
-		location: 'https://beta.catalog.works/leslie',
+		location: 'https://beta.catalog.works/',
 		tags: ['ethereum', 'nft', 'music'],
 	},
 	{

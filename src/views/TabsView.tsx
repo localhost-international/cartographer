@@ -92,7 +92,6 @@ export default function Tabs() {
             placeholder="Search by tab title or address"
             value={searchTabs}
             onChangeText={(query: string) => {
-              // setSearchTabs(query);
               searchTabsFilter(query);
             }}
             onSubmitEditing={() => {
@@ -117,7 +116,6 @@ export default function Tabs() {
 
           {browserTabs.tabs.length ? (
             <TabList
-              // data={browserTabs.tabs}
               data={filteredBrowserTabs}
               renderItem={_renderItem}
               keyExtractor={(item, index) => index.toString()}

@@ -44,7 +44,6 @@ export type BrowserTabState = {
 	// tabMounted: boolean;
 	// tabThumbnail: string | null;
 	// tabLastActive: Date | null;
-	// tabUri: string; // TODO - remove??!?!
 };
 export type BrowserTabsState = {
 	tabs: BrowserTabState[];

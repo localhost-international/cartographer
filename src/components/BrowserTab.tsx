@@ -47,7 +47,7 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
             <WebViewContainer
               ref={tabRef}
               userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
-              // applicationNameForUserAgent="Cartographer"
+              applicationNameForUserAgent="Cartographer"
               originWhitelist={['*']}
               source={tabUriCurrent}
               onLoadStart={() => {}}
@@ -67,12 +67,12 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
                 setRefreshing(false);
               }}
               onContentProcessDidTerminate={(syntheticEvent) => {
+                // TODO - Show message in UI that the webview crashed
                 const { nativeEvent } = syntheticEvent;
                 console.warn(
                   'Content process terminated, reloading',
                   nativeEvent,
                 );
-                // TODO - Show message in UI that the webview crashed
                 webViewReload();
               }}
               startInLoadingState

@@ -66,7 +66,6 @@ export default function AppNavigator() {
           component={Tabs}
           options={{
             headerShown: false,
-            // safeAreaInsets: { top: 0, right: 0, bottom: 0, left: 0 }
           }}
         />
         <Stack.Screen

@@ -11,8 +11,6 @@ import BrowserTab from 'src/components/BrowserTab';
 export default function Browser() {
   const browserTabs = useRecoilValue(browserTabsState);
 
-  // const [localBrowserTabs, setLocalBrowserTabs] = useState<object[]>([]);
-
   useEffect(() => {
     console.log(Array(10).join('\n'));
     console.log('Browser Tabs', browserTabs, null, 2);
