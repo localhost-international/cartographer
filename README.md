@@ -6,23 +6,16 @@ _An experimental mobile web browser_
 
 
 Cartographer is an experimental web browser, technology demo and user interface/experience playground.  
-It's focus will be on supporting decentralised and peer to peer technologies (such as DAT/Hypercore and web3), but is mainly being built because: it's fun!
+It's focus will be on supporting distributed, decentralised and peer to peer technologies such as Ethereum, IPFS and Hypercore.  
 
-<img src="./docs/.assets/cartographer-preview.optimized.gif" width="320" alt="Illustrative screen capture of Cartographer alpha running on iOS browsing between sites" />
+It's mostly being built because: building things is fun.
+
+<img src="./docs/.assets/cartographer-preview-17.07.2021.gif" width="320" alt="Illustrative screen capture of Cartographer running on iOS, browsing between webs sites, tabs and the settings screen, which displays an Ethereum wallet balance" />
 
 
-If you're looking for mature, feature rich browsers that support such technologies, please consider:
+If you're looking for more mature, feature rich web browsers that support distributed and decentralised web technologies, please see our [P2P Web Browsers](./docs/p2p-web-browsers.md) document. 
 
-**DAT/Hypercore**
 
-* [Beaker Browser](https://beakerbrowser.com/) - A peer-to-peer browser for Web hackers (desktop)
-* [Gateway Browser](https://twitter.com/GatewayBrowser) - An experimental mobile browser that aims to help build a sustainable community-owned P2P web (mobile)
-* [Agregore](https://github.com/RangerMauve/agregore-browser) - A minimal web browser for the distributed web
-
-**Ethereum**
-
-- [MetaMask](https://metamask.io/) - A crypto wallet & gateway to blockchain apps
-- [Status](https://status.im/) - Status is a secure messaging app, crypto wallet, and Web3 browser built with state of the art technology
 
 
 ## Download
@@ -77,9 +70,9 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 - [x] `http`
 - [x] `https`
 - [x] `web3` <small>_Pre-alpha_</small>
-- [ ] `dat`
-- [ ] `hyper`
 - [ ] `ipfs`
+- [ ] `hyper`
+- [ ] `dat`
 
 #### Settings
 
