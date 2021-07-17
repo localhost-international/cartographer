@@ -1,3 +1,5 @@
+// const crypto = require('crypto');
+
 const chars12 = () => Math.round(Math.random() * 36 ** 12).toString(36);
 const chars9 = () => Math.random().toString(36).substr(2, 9);
 const timestamp = () => Date.now();

@@ -1,5 +1,3 @@
-// const crypto = require('crypto');
-
 import React from 'react';
 import type { BrowserTabsState, BrowserTabState } from 'src/store';
 import uuid from 'src/utils/uuid';
