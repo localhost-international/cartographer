@@ -51,7 +51,8 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
               originWhitelist={['*']}
               source={tabUriCurrent}
               onLoadStart={() => {}}
-              onNavigationStateChange={(currentNavState) => {
+              onNavigationStateChange={(navState) => {
+                const currentNavState = navState;
                 setBrowserTabs((previous) => {
                   const tabIndex = previous.tabs.findIndex(
                     (tab) => tab.tabId === tabId,

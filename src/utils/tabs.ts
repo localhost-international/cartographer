@@ -92,3 +92,16 @@ export const switchTab = (
 		},
 	};
 };
+
+export const closeAllTabs = (
+	browserTabsState: BrowserTabsState,
+): BrowserTabsState => {
+	return {
+		tabs: [],
+		activeTab: {
+			id: null,
+			index: null,
+		},
+		previousTab: browserTabsState.activeTab,
+	};
+};

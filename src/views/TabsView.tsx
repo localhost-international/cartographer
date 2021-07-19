@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
-import styled from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import { BlurView } from '@react-native-community/blur';
 
 import { IsDarkMode } from 'src/utils/appearance';
@@ -10,15 +11,18 @@ import { IsDarkMode } from 'src/utils/appearance';
 import { browserTabsState } from 'src/store';
 import type { BrowserTabState } from 'src/store';
 
-import { newTab, switchTab, removeTab } from 'src/utils/tabs';
+import { newTab, switchTab, removeTab, closeAllTabs } from 'src/utils/tabs';
+import { randomSite } from 'src/utils/debug';
 
 import IconClose from 'src/assets/icons/icon-close-filled.svg';
+import IconAdd from 'src/assets/icons/icon-add.svg';
 
 interface TabListItemProps {
   noTabs?: boolean;
 }
 
 export default function Tabs() {
+  const theme = useTheme();
   const screenNavigation = useNavigation();
 
   const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
@@ -73,6 +77,31 @@ export default function Tabs() {
     }
   };
 
+  const closeTabs = () => {
+    const tabs = browserTabs.tabs;
+    if (tabs.length >= 1) {
+      Alert.alert(
+        'Close all tabs',
+        `Do you want to close ${tabs.length} tabs?`,
+        [
+          {
+            text: 'Cancel',
+            onPress: () => {
+              console.log('Cancel Pressed');
+            },
+            style: 'cancel',
+          },
+          {
+            text: 'OK',
+            onPress: () => {
+              setBrowserTabs(closeAllTabs(browserTabs));
+            },
+          },
+        ],
+      );
+    }
+  };
+
   useEffect(() => {
     setFilteredBrowserTabs(browserTabs.tabs);
   }, [browserTabs.tabs]);
@@ -89,7 +118,7 @@ export default function Tabs() {
         </Header>
         <Body>
           <SearchTabs
-            placeholder="Search by tab title or address"
+            placeholder="Search by tab title"
             value={searchTabs}
             onChangeText={(query: string) => {
               searchTabsFilter(query);
@@ -106,14 +135,6 @@ export default function Tabs() {
             clearButtonMode="always"
             textContentType="none"
           />
-
-          <NewTabButton
-            onPress={() => {
-              setBrowserTabs(newTab('https://status.im/', browserTabs));
-            }}>
-            <NewTabButtonText>Add New Tab (Status)</NewTabButtonText>
-          </NewTabButton>
-
           {browserTabs.tabs.length ? (
             <TabList
               data={filteredBrowserTabs}
@@ -122,10 +143,35 @@ export default function Tabs() {
             />
           ) : (
             <TabListItem noTabs>
-              <TabListItemTitle>No tabs</TabListItemTitle>
+              <TabListItemTitle>No tabs open</TabListItemTitle>
             </TabListItem>
           )}
         </Body>
+        <FooterContainer>
+          <Footer>
+            <ButtonContainer
+              onPress={() => {
+                closeTabs();
+              }}>
+              <ButtonText>Close All</ButtonText>
+            </ButtonContainer>
+            <ButtonContainer
+              onPress={() => {
+                setBrowserTabs(
+                  newTab('https://cartographers.surge.sh/', browserTabs),
+                );
+              }}>
+              <IconAdd height={30} width={30} fill={theme.ui.icon} />
+            </ButtonContainer>
+            <ButtonContainer
+              onPress={() => {
+                const randomUri = randomSite();
+                setBrowserTabs(newTab(randomUri, browserTabs));
+              }}>
+              <ButtonText>Random</ButtonText>
+            </ButtonContainer>
+          </Footer>
+        </FooterContainer>
       </SafeAreaViewContainer>
     </>
   );
@@ -198,10 +244,10 @@ const TabListItem = styled.Pressable`
   ${({ noTabs }: TabListItemProps) =>
     noTabs === true &&
     `
-    border-bottom-width: 0;
-    padding-bottom: 10px;
-    opacity: .5;
-  `}
+      border-bottom-width: 0;
+      padding-bottom: 10px;
+      opacity: .5;
+   `}
 `;
 const TabListItemTitle = styled.Text`
   color: ${(props) => props.theme.colors.title};
@@ -239,19 +285,28 @@ const TabCloseIcon = styled(IconClose).attrs(() => ({
   /* border: 1px solid blue; */
 `;
 
-const NewTabButton = styled.Pressable.attrs({
-  hitSlop: 15,
-})`
-  font-size: 16px;
-  font-weight: 400;
-  padding: 20px;
-  background: #4f9b09;
+const FooterContainer = styled.View`
+  /* border: 1px solid red; */
+  background-color: ${(props) => props.theme.ui.background};
+`;
+const Footer = styled(SafeAreaView).attrs(() => ({
+  edges: ['right', 'left', 'bottom'],
+}))`
+  /* border: 1px solid red; */
+  margin-left: 16px;
+  margin-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
-const NewTabButtonText = styled.Text`
-  /* color: ${(props) => props.theme.colors.text}; */
-  color: white;
-  opacity: 1;
-  font-size: 16px;
-  font-weight: 600;
+const ButtonContainer = styled.Pressable.attrs({
+  hitSlop: 10,
+})``;
+const ButtonText = styled.Text`
+  color: ${(props) => props.theme.colors.text};
+  font-size: 18px;
+  padding-top: 5px;
+  opacity: 0.5;
 `;

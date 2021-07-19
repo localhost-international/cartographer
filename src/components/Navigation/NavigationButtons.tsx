@@ -6,7 +6,6 @@ import styled from 'styled-components/native';
 import { browserTabsState } from 'src/store';
 
 import { newTab } from 'src/utils/tabs';
-import { randomSite } from 'src/utils/debug';
 
 import IconArrowLeft from 'src/assets/icons/icon-arrow-left.svg';
 import IconArrowRight from 'src/assets/icons/icon-arrow-right.svg';
@@ -68,9 +67,7 @@ const NavigationButtons = () => {
     {
       type: 'add-tabs',
       onPress: () => {
-        const previousTabs = browserTabs;
-        const randomUri = randomSite();
-        setBrowserTabs(newTab(randomUri, previousTabs));
+        setBrowserTabs(newTab('https://cartographers.surge.sh/', browserTabs));
       },
       iconImage: IconAddTab,
       accessibilityLabel: 'Add a new tab',
