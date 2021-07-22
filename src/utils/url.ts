@@ -25,11 +25,9 @@ export const upgradeUrl = (uri: string) => {
 	if (isInternal(uri)) {
 		// TODO - Implement about: URI scheme for internal pages
 		console.log('Internal URI!');
-
 		Alert.alert('about: URI scheme', 'Not yet implemented.\nCheck back soon.', [
 			{ text: 'OK' },
 		]);
-
 		return;
 	}
 	return `https://duck.com/?q=${encodeURI(uri)}`;

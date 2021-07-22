@@ -3,13 +3,13 @@ import styled from 'styled-components/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilValue } from 'recoil';
 
-import { browserTabsState } from 'src/store';
+import { tabsState } from 'src/store';
 
 import Navigation from 'src/components/Navigation';
 import BrowserTab from 'src/components/BrowserTab';
 
 export default function Browser() {
-  const browserTabs = useRecoilValue(browserTabsState);
+  const browserTabs = useRecoilValue(tabsState);
 
   useEffect(() => {
     console.log(Array(10).join('\n'));

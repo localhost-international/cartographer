@@ -8,8 +8,8 @@ import { BlurView } from '@react-native-community/blur';
 
 import { IsDarkMode } from 'src/utils/appearance';
 
-import { browserTabsState } from 'src/store';
-import type { BrowserTabState } from 'src/store';
+import { tabsState } from 'src/store';
+import type { TabState } from 'src/store';
 
 import { newTab, switchTab, removeTab, closeAllTabs } from 'src/utils/tabs';
 import { randomSite } from 'src/utils/debug';
@@ -25,15 +25,15 @@ export default function Tabs() {
   const theme = useTheme();
   const screenNavigation = useNavigation();
 
-  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
-  const [filteredBrowserTabs, setFilteredBrowserTabs] = useState<
-    BrowserTabState[]
-  >(browserTabs.tabs);
+  const [browserTabs, setBrowserTabs] = useRecoilState(tabsState);
+  const [filteredBrowserTabs, setFilteredBrowserTabs] = useState<TabState[]>(
+    browserTabs.tabs,
+  );
   const [searchTabs, setSearchTabs] = useState<string>('');
 
   const goBack = () => screenNavigation.goBack();
 
-  const _renderItem: any = ({ item }: { item: BrowserTabState }) => {
+  const _renderItem: any = ({ item }: { item: TabState }) => {
     const { tabId, tabTitle, tabUriValue } = item;
     return (
       <TabListItem

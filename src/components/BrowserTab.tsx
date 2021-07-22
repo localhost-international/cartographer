@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { WebView } from 'react-native-webview';
 import styled from 'styled-components/native';
 
-import { browserTabsState } from 'src/store';
-import type { BrowserTabState } from 'src/store';
+import { tabsState } from 'src/store';
+import type { TabState } from 'src/store';
 
 interface BrowserTabProps {
-  tabState: BrowserTabState;
+  tabState: TabState;
 }
 
 export default function BrowserTab({ tabState }: BrowserTabProps) {
-  const setBrowserTabs = useSetRecoilState(browserTabsState);
+  const [browserTabs, setBrowserTabs] = useRecoilState(tabsState);
+  const [refreshing, setRefreshing] = useState(false);
+
   const { tabRef, tabId, tabActive, tabUriCurrent } = tabState;
 
-  const [refreshing, setRefreshing] = useState(false);
+  const tabIndex = browserTabs.tabs.findIndex((tab) => tab.tabId === tabId);
 
   const config = {
     detectorTypes: 'all',
@@ -54,9 +56,6 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
               onNavigationStateChange={(navState) => {
                 const currentNavState = navState;
                 setBrowserTabs((previous) => {
-                  const tabIndex = previous.tabs.findIndex(
-                    (tab) => tab.tabId === tabId,
-                  );
                   previous.tabs[tabIndex].tabUriValue = currentNavState.url;
                   previous.tabs[tabIndex].tabTitle = currentNavState.title;
                   return {

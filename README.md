@@ -83,7 +83,7 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 #### Settings
 
 - [ ] Persistence
-- [ ] Search engine
+- [ ] Search engines
 - [ ] Clear history
 - [ ] Clear website data
 - [ ] Ad blocker
@@ -94,6 +94,7 @@ Currently, the browser is very **very** (*very*?) rudimentary, but will support 
 - [x] Dark/light mode
 - [x] Pull to refresh
 - [x] Landscape mode
+- [ ] Animations
 
 
 #### Platforms

@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { useTheme } from 'styled-components/native';
 
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import Share from 'react-native-share';
+
+import { browserGlobalState, tabsState } from 'src/store';
 
 import { IsDarkMode } from 'src/utils/appearance';
 import { upgradeUrl } from 'src/utils/url';
 
 import IconShare from 'src/assets/icons/icon-share.svg';
-import { useRecoilState } from 'recoil';
 
-import { browserTabsState } from 'src/store';
+import { useDeviceOrientation } from 'src/hooks/useOrientation';
 
-// import { getIndexByTabId } from 'src/utils/tabs';
+interface AddressBarContainerProps {
+  orientation: any;
+}
 
-const AddressTextInput = () => {
+export const AddressBar = () => {
   const theme = useTheme();
-  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
+  const orientation = useDeviceOrientation();
+
+  const [browserTabs, setBrowserTabs] = useRecoilState(tabsState);
+  const setBrowserState = useSetRecoilState(browserGlobalState);
   const [shareVisible, shareVisibility] = useState(true);
 
   const shareCurrentUri = () => {
@@ -39,9 +46,38 @@ const AddressTextInput = () => {
     }
   };
 
+  const onFocus = () => {
+    shareVisibility(false);
+    setBrowserState((previous) => {
+      return {
+        ...previous,
+        addressBar: {
+          focused: true,
+        },
+      };
+    });
+  };
+
+  const onBlur = () => {
+    // TODO - Re-instate previous URL on before onSubmitEditing
+    shareVisibility(true);
+    setBrowserState((previous) => {
+      return {
+        ...previous,
+        addressBar: {
+          focused: false,
+        },
+      };
+    });
+  };
+
+  useEffect(() => {
+    console.log('Orientation', orientation);
+  }, [orientation]);
+
   return (
-    <AddressBar>
-      <URLSearchInput
+    <AddressBarContainer orientation={orientation}>
+      <AddressBarTextInput
         value={
           browserTabs.activeTab.index !== null
             ? browserTabs.tabs[browserTabs.activeTab.index].tabUriValue
@@ -71,13 +107,8 @@ const AddressTextInput = () => {
             };
           });
         }}
-        onFocus={() => {
-          shareVisibility(false);
-        }}
-        onBlur={() => {
-          // TODO - Re-instate previous URL on before onSubmitEditing
-          shareVisibility(true);
-        }}
+        onFocus={onFocus}
+        onBlur={onBlur}
         autoCapitalize="none"
         autoCompleteType="off"
         autoCorrect={false}
@@ -95,19 +126,26 @@ const AddressTextInput = () => {
           <IconShare height={24} width={40} fill={theme.ui.icon} />
         </Icon>
       )}
-    </AddressBar>
+    </AddressBarContainer>
   );
 };
 
-const AddressBar = styled.View`
+const AddressBarContainer = styled.View<AddressBarContainerProps>`
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 6px;
   background-color: ${(props) => props.theme.addressBar.background};
+  ${(props) =>
+    props.orientation === 'landscape' &&
+    `
+    width: 60%;
+    margin-left: 0;
+    margin-right: 0;
+  `}
 `;
-const URLSearchInput = styled.TextInput`
+const AddressBarTextInput = styled.TextInput`
   font-size: 18px;
   text-align: left;
   padding: 10px;
@@ -126,5 +164,3 @@ const Icon = styled.Pressable.attrs({
   margin-left: 8px;
   color: ${(props) => props.theme.addressBar.color};
 `;
-
-export default AddressTextInput;

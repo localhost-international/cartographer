@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 
-import { browserTabsState } from 'src/store';
+import { tabsState } from 'src/store';
 
 import { newTab } from 'src/utils/tabs';
 
@@ -16,10 +16,17 @@ import IconAddTab from 'src/assets/icons/icon-add-document.svg';
 
 import { ButtonIcon } from 'src/components/ButtonIcon';
 
+import { useDeviceOrientation } from 'src/hooks/useOrientation';
+
+interface NavigationButtonContainerProps {
+  orientation: any;
+}
+
 const NavigationButtons = () => {
   const screenNavigation = useNavigation();
+  const orientation = useDeviceOrientation();
 
-  const [browserTabs, setBrowserTabs] = useRecoilState(browserTabsState);
+  const [browserTabs, setBrowserTabs] = useRecoilState(tabsState);
 
   const hasTabs =
     browserTabs.tabs.length >= 1 && browserTabs.activeTab.index !== null;
@@ -87,7 +94,7 @@ const NavigationButtons = () => {
   ];
 
   return (
-    <View>
+    <View orientation={orientation}>
       {navigationButtons.map((button) => {
         const { type, iconImage, accessibilityLabel, onPress } = button;
         return (
@@ -104,13 +111,21 @@ const NavigationButtons = () => {
   );
 };
 
-const View = styled.View`
+const View = styled.View<NavigationButtonContainerProps>`
   margin-left: 16px;
   margin-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
   flex-direction: row;
   justify-content: space-between;
+
+  ${(props) =>
+    props.orientation === 'landscape' &&
+    `
+    width: 38%;
+    padding-top: 14px;
+    justify-content: flex-start;
+  `}
 `;
 
 export default NavigationButtons;

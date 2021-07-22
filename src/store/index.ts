@@ -3,6 +3,21 @@ import { atom } from 'recoil';
 import type { BigNumber } from 'ethers';
 import type { WebView } from 'react-native-webview';
 
+export type BrowserGlobalState = {
+	addressBar: {
+		focused: boolean;
+	};
+};
+
+export const browserGlobalState = atom({
+	key: 'browserGlobalState',
+	default: <BrowserGlobalState>{
+		addressBar: {
+			focused: false,
+		},
+	},
+});
+
 export type EthereumState = {
 	ethWalletAddress: BigNumber | string | null;
 	ethWalletHex: string | null;
@@ -34,19 +49,20 @@ export const settingsState = atom({
 type WebViewUrl = { uri: string };
 type WebViewHtml = { html: string };
 
-export type BrowserTabState = {
+export type TabState = {
 	tabRef?: React.RefObject<WebView> | null;
 	tabActive: boolean;
 	tabId: string;
 	tabTitle: string | null;
-	tabUriValue: string;
+	tabUriValue: string | undefined;
 	tabUriCurrent: WebViewUrl | WebViewHtml;
 	// tabMounted: boolean;
 	// tabThumbnail: string | null;
 	// tabLastActive: Date | null;
 };
-export type BrowserTabsState = {
-	tabs: BrowserTabState[];
+
+export type TabsState = {
+	tabs: TabState[];
 	activeTab: {
 		id: null | string;
 		index: null | number;
@@ -56,9 +72,10 @@ export type BrowserTabsState = {
 		index: null | number;
 	};
 };
-export const browserTabsState = atom({
-	key: 'browserTabsState',
-	default: <BrowserTabsState>{
+
+export const tabsState = atom({
+	key: 'tabsState',
+	default: <TabsState>{
 		tabs: [],
 		activeTab: {
 			id: null,

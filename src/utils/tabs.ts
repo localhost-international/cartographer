@@ -1,19 +1,16 @@
 import React from 'react';
-import type { BrowserTabsState, BrowserTabState } from 'src/store';
+import type { TabsState, TabState } from 'src/store';
 import uuid from 'src/utils/uuid';
 
 export const getIndexByTabId = (
 	tabId: string,
-	browserTabsState: BrowserTabState[],
+	tabsState: TabState[],
 ): number => {
-	return browserTabsState.findIndex((tab) => tab.tabId === tabId);
+	return tabsState.findIndex((tab) => tab.tabId === tabId);
 };
 
-export const newTab = (
-	newTabUri: string,
-	browserTabsState: BrowserTabsState,
-): BrowserTabsState => {
-	const newBrowserTabObj: BrowserTabState = {
+export const newTab = (newTabUri: string, tabsState: TabsState): TabsState => {
+	const newBrowserTabObj: TabState = {
 		tabRef: React.createRef(),
 		tabActive: true,
 		tabId: `browser-tab-id-${uuid.chars12()}-${uuid.timestamp()}`,
@@ -23,34 +20,31 @@ export const newTab = (
 			uri: newTabUri,
 		},
 	};
-	browserTabsState.tabs.map((tab) => {
+	tabsState.tabs.map((tab) => {
 		return { ...tab, tabActive: false };
 	});
-	const newBrowserTabs = [...browserTabsState.tabs, newBrowserTabObj];
+	const newBrowserTabs = [...tabsState.tabs, newBrowserTabObj];
 	const newActiveTab = {
 		id: newBrowserTabObj.tabId,
 		index: getIndexByTabId(newBrowserTabObj.tabId, newBrowserTabs),
 	};
 	const newPreviousTab = {
-		id: browserTabsState.activeTab.id,
-		index: browserTabsState.activeTab.index,
+		id: tabsState.activeTab.id,
+		index: tabsState.activeTab.index,
 	};
 	return {
-		...browserTabsState,
+		...tabsState,
 		tabs: newBrowserTabs,
 		activeTab: newActiveTab,
 		previousTab: newPreviousTab,
 	};
 };
 
-export const removeTab = (
-	tabId: string,
-	browserTabsState: BrowserTabsState,
-): BrowserTabsState => {
-	const removeTabIndex = getIndexByTabId(tabId, browserTabsState.tabs);
+export const removeTab = (tabId: string, tabsState: TabsState): TabsState => {
+	const removeTabIndex = getIndexByTabId(tabId, tabsState.tabs);
 	const newBrowserTabs = [
-		...browserTabsState.tabs.slice(0, removeTabIndex),
-		...browserTabsState.tabs.slice(removeTabIndex + 1),
+		...tabsState.tabs.slice(0, removeTabIndex),
+		...tabsState.tabs.slice(removeTabIndex + 1),
 	];
 	newBrowserTabs.map((tab) => {
 		return { ...tab, tabActive: false };
@@ -59,7 +53,7 @@ export const removeTab = (
 		newBrowserTabs[0].tabActive = true;
 	}
 	return {
-		...browserTabsState,
+		...tabsState,
 		tabs: !newBrowserTabs.length ? [] : newBrowserTabs,
 		activeTab: !newBrowserTabs.length
 			? { id: null, index: null }
@@ -74,17 +68,14 @@ export const removeTab = (
 	};
 };
 
-export const switchTab = (
-	tabId: string,
-	browserTabsState: BrowserTabsState,
-) => {
-	const switchTabIndex = getIndexByTabId(tabId, browserTabsState.tabs);
-	const newTabs = browserTabsState.tabs.map((tab) => {
+export const switchTab = (tabId: string, tabsState: TabsState) => {
+	const switchTabIndex = getIndexByTabId(tabId, tabsState.tabs);
+	const newTabs = tabsState.tabs.map((tab) => {
 		return { ...tab, tabActive: false };
 	});
 	newTabs[switchTabIndex].tabActive = true;
 	return {
-		...browserTabsState,
+		...tabsState,
 		tabs: [...newTabs],
 		activeTab: {
 			id: newTabs[switchTabIndex].tabId,
@@ -93,15 +84,13 @@ export const switchTab = (
 	};
 };
 
-export const closeAllTabs = (
-	browserTabsState: BrowserTabsState,
-): BrowserTabsState => {
+export const closeAllTabs = (tabsState: TabsState): TabsState => {
 	return {
 		tabs: [],
 		activeTab: {
 			id: null,
 			index: null,
 		},
-		previousTab: browserTabsState.activeTab,
+		previousTab: tabsState.activeTab,
 	};
 };

@@ -1,13 +1,14 @@
 export function randomSite(): string {
 	const sites = [
 		'https://duckduckgo.com/',
-		'https://bing.com/',
 		'https://mozilla.org/',
 		'https://youtube.com/',
 		'https://status.im/',
 		'https://beta.catalog.works/',
 		'https://web3summit.com/',
 		'https://www.tg4.ie/ga/',
+		'https://decrypt.co/',
+		// 'https://bing.com/',
 		// 'https://yahoo.co.jp/',
 		// 'https://aparat.com/',
 		// 'https://yandex.ru/',
