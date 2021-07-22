@@ -14,6 +14,7 @@ import { useDeviceOrientation } from 'src/hooks/useOrientation';
 interface NavigationContainerProps {
   isKeyboardOpen?: boolean;
   orientation: any;
+  hasTabs: boolean;
 }
 
 export default function Navigation() {
@@ -29,6 +30,7 @@ export default function Navigation() {
       <NavigationContainer
         isKeyboardOpen={isKeyboardOpen}
         orientation={orientation}
+        hasTabs={hasTabs}
         edges={
           browserState.addressBar.focused
             ? ['right', 'left']
@@ -50,6 +52,7 @@ const NavigationContainer = styled(SafeAreaView).attrs(
   background: ${(props) => props.theme.colors.background};
   ${(props) =>
     props.orientation === 'landscape' &&
+    props.hasTabs &&
     `
     flex-direction: row;
   `}

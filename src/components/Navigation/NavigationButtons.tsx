@@ -20,6 +20,7 @@ import { useDeviceOrientation } from 'src/hooks/useOrientation';
 
 interface NavigationButtonContainerProps {
   orientation: any;
+  hasTabs: boolean;
 }
 
 const NavigationButtons = () => {
@@ -94,7 +95,7 @@ const NavigationButtons = () => {
   ];
 
   return (
-    <View orientation={orientation}>
+    <View orientation={orientation} hasTabs={browserTabs.tabs.length >= 1}>
       {navigationButtons.map((button) => {
         const { type, iconImage, accessibilityLabel, onPress } = button;
         return (
@@ -121,6 +122,7 @@ const View = styled.View<NavigationButtonContainerProps>`
 
   ${(props) =>
     props.orientation === 'landscape' &&
+    props.hasTabs &&
     `
     width: 38%;
     padding-top: 14px;
