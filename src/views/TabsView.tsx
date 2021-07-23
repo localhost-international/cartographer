@@ -42,15 +42,16 @@ export default function Tabs() {
           setBrowserTabs(switchTab(tabId, browserTabs));
           goBack();
         }}>
-        <TabListItemTitle>
-          {tabTitle ? tabTitle : '[No title]'}
-        </TabListItemTitle>
+        <TabListItemTitle>{tabTitle ? tabTitle : tabUriValue}</TabListItemTitle>
         <TabListItemUrl>{tabUriValue}</TabListItemUrl>
         <TabListItemDebug>{tabId}</TabListItemDebug>
         <TabCloseButton
           accessibilityLabel={'Close this tab'}
           onPress={() => {
             setBrowserTabs(removeTab(tabId, browserTabs));
+            if (browserTabs.tabs.length === 1) {
+              goBack();
+            }
           }}>
           <TabCloseIcon />
         </TabCloseButton>
@@ -251,8 +252,9 @@ const TabListItem = styled.Pressable`
 `;
 const TabListItemTitle = styled.Text`
   color: ${(props) => props.theme.colors.title};
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
+  margin-right: 40px;
   padding-bottom: 10px;
 `;
 const TabListItemUrl = styled.Text`

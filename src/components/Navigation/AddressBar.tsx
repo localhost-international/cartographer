@@ -12,9 +12,10 @@ import { upgradeUrl } from 'src/utils/url';
 import IconShare from 'src/assets/icons/icon-share.svg';
 
 import { useDeviceOrientation } from 'src/hooks/useOrientation';
+import type { ORIENTATION } from 'src/hooks/useOrientation';
 
 interface AddressBarContainerProps {
-  orientation: any;
+  orientation: ORIENTATION;
 }
 
 export const AddressBar = () => {

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Dimensions } from 'react-native';
 
-export const ORIENTATION = {
-	LANDSCAPE: 'landscape',
-	PORTRAIT: 'portrait',
-};
+export enum ORIENTATION {
+	LANDSCAPE = 'landscape',
+	PORTRAIT = 'portrait',
+}
 
 export const getWindowOrientation = () => {
 	const { width, height } = Dimensions.get('window');

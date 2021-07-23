@@ -10,10 +10,11 @@ import NavigationButtons from 'src/components/Navigation/NavigationButtons';
 
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { useDeviceOrientation } from 'src/hooks/useOrientation';
+import type { ORIENTATION } from 'src/hooks/useOrientation';
 
 interface NavigationContainerProps {
   isKeyboardOpen?: boolean;
-  orientation: any;
+  orientation: ORIENTATION;
   hasTabs: boolean;
 }
 

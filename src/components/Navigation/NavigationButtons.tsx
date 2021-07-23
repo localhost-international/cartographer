@@ -17,9 +17,10 @@ import IconAddTab from 'src/assets/icons/icon-add-document.svg';
 import { ButtonIcon } from 'src/components/ButtonIcon';
 
 import { useDeviceOrientation } from 'src/hooks/useOrientation';
+import type { ORIENTATION } from 'src/hooks/useOrientation';
 
 interface NavigationButtonContainerProps {
-  orientation: any;
+  orientation: ORIENTATION;
   hasTabs: boolean;
 }
 
