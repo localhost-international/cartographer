@@ -1,5 +1,5 @@
 import React from 'react';
-import type { TabsState, TabState } from 'src/store';
+import type { TabsState, TabState, WebViewAddress } from 'src/store';
 import uuid from 'src/utils/uuid';
 
 export const getIndexByTabId = (
@@ -9,16 +9,17 @@ export const getIndexByTabId = (
 	return tabsState.findIndex((tab) => tab.tabId === tabId);
 };
 
-export const newTab = (newTabUri: string, tabsState: TabsState): TabsState => {
+export const newTab = (
+	newTabUri: WebViewAddress,
+	tabsState: TabsState,
+): TabsState => {
 	const newBrowserTabObj: TabState = {
 		tabRef: React.createRef(),
 		tabActive: true,
 		tabId: `browser-tab-id-${uuid.chars12()}-${uuid.timestamp()}`,
 		tabTitle: null,
 		tabUriValue: '',
-		tabUriCurrent: {
-			uri: newTabUri,
-		},
+		tabUriCurrent: <WebViewAddress>newTabUri,
 	};
 	tabsState.tabs.map((tab) => {
 		return { ...tab, tabActive: false };

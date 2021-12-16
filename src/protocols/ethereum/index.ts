@@ -3,12 +3,12 @@ import '@ethersproject/shims';
 import { ethers } from 'ethers';
 import type { BigNumber, Wallet } from 'ethers';
 
-import { env } from 'environments/.env.development';
+import { env } from 'environments/.env';
 
 /**
  * TODO
  * - Change network (from mainnet to testnets)
- * - Connect to custom/local EVM blockchain (e.g. dev.local, Lukso, etc)
+ * - Connect to custom/local EVM blockchain (e.g. dev.local, Polygon, Lukso, etc)
  */
 
 const provider = new ethers.providers.FallbackProvider([

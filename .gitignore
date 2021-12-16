@@ -40,6 +40,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
 
 # node.js
 #
@@ -72,3 +73,4 @@ buck-out/
 
 # Jest
 .jest/
+coverage/

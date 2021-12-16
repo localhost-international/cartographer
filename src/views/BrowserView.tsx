@@ -1,25 +1,36 @@
-import React, { useEffect } from 'react';
+import { env } from 'environments/.env';
+
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRecoilValue } from 'recoil';
+import {
+  // useRecoilValue,
+  useRecoilState,
+} from 'recoil';
 
 import { tabsState } from 'src/store';
+import { newTab } from 'src/utils/tabs';
 
 import Navigation from 'src/components/Navigation';
 import BrowserTab from 'src/components/BrowserTab';
 
+// import { developerTemplate } from 'src/data/internal/page-templates/developer.template';
+
+
 export default function Browser() {
-  const browserTabs = useRecoilValue(tabsState);
+  // const browserTabs = useRecoilValue(tabsState);
+  const [browserTabs, setBrowserTabs] = useRecoilState(tabsState);
+  const firstLoad = useRef<boolean>(false);
 
   useEffect(() => {
-    console.log(Array(10).join('\n'));
-    console.log('Browser Tabs', browserTabs, null, 2);
-    console.log(Array(10).join('\n'));
-
-    return () => {
-      console.log('Browser unmounted!');
-    };
-  }, [browserTabs, browserTabs.tabs.length]);
+    if (!firstLoad.current && env.ENVIRONMENT === 'development') {
+      // setBrowserTabs(newTab({ html: developerTemplate() }, browserTabs));
+      setBrowserTabs(
+        newTab({ uri: 'https://metamask.github.io/test-dapp/' }, browserTabs),
+      );
+      firstLoad.current = true;
+    }
+  }, [browserTabs, setBrowserTabs]);
 
   return (
     <>

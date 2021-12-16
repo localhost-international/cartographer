@@ -26,7 +26,7 @@ If you haven't already, [install React Native and it's dependencies](https://rea
 2. `cd cartographer`
 3. `yarn`
 
-Now, make a copy of `./environments/.env.example.ts` to a new file named `./environments/.env.development.ts`.
+Now, make a copy of `./environments/.env.example.ts` to a new file named `./environments/.env..ts`.
 
 1. Create a new [Etherscan API key](https://etherscan.io/apis)
 2. Add the above as the key value of `ETHERSCAN_API_KEY` in the newly created `.env.development.ts`

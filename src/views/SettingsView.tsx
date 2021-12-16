@@ -11,6 +11,7 @@ import { useTheme } from 'styled-components/native';
 import IconCurrencyEthereum from 'src/assets/icons/currencies/currency-ethereum.svg';
 import { ethereumState } from 'src/store';
 
+
 export default function Settings() {
   const theme = useTheme();
 
@@ -64,6 +65,7 @@ export default function Settings() {
     </>
   );
 }
+
 
 const BlurViewContainer = styled(BlurView)`
   position: absolute;

@@ -1,62 +1,38 @@
 {
   "images" : [
     {
-      "filename" : "cartographer-icon-1-9.png",
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "20x20"
+      "size" : "29x29",
+      "scale" : "2x"
     },
     {
-      "filename" : "cartographer-icon-1-8.png",
       "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "20x20"
+      "size" : "29x29",
+      "scale" : "3x"
     },
     {
-      "filename" : "cartographer-icon-1-7.png",
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "29x29"
+      "size" : "40x40",
+      "scale" : "2x"
     },
     {
-      "filename" : "cartographer-icon-1-5.png",
       "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "29x29"
+      "size" : "40x40",
+      "scale" : "3x"
     },
     {
-      "filename" : "cartographer-icon-1-6.png",
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "40x40"
+      "size" : "60x60",
+      "scale" : "2x"
     },
     {
-      "filename" : "cartographer-icon-1-10.png",
       "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "40x40"
-    },
-    {
-      "filename" : "cartographer-icon-1-4.png",
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "60x60"
-    },
-    {
-      "filename" : "cartographer-icon-1-1.png",
-      "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "60x60"
-    },
-    {
-      "filename" : "cartographer-icon-1.png",
-      "idiom" : "ios-marketing",
-      "scale" : "1x",
-      "size" : "1024x1024"
+      "size" : "60x60",
+      "scale" : "3x"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import type { ReactElement } from 'react';
 import styled, { useTheme } from 'styled-components/native';
 
 import { useRecoilState, useSetRecoilState } from 'recoil';
@@ -7,7 +8,7 @@ import Share from 'react-native-share';
 import { browserGlobalState, tabsState } from 'src/store';
 
 import { IsDarkMode } from 'src/utils/appearance';
-import { upgradeUrl } from 'src/utils/url';
+import { upgradeUri } from 'src/utils/uri';
 
 import IconShare from 'src/assets/icons/icon-share.svg';
 
@@ -18,7 +19,7 @@ interface AddressBarContainerProps {
   orientation: ORIENTATION;
 }
 
-export const AddressBar = () => {
+export const AddressBar = (): ReactElement => {
   const theme = useTheme();
   const orientation = useDeviceOrientation();
 
@@ -72,10 +73,6 @@ export const AddressBar = () => {
     });
   };
 
-  useEffect(() => {
-    console.log('Orientation', orientation);
-  }, [orientation]);
-
   return (
     <AddressBarContainer orientation={orientation}>
       <AddressBarTextInput
@@ -95,7 +92,7 @@ export const AddressBar = () => {
           });
         }}
         onSubmitEditing={(event) => {
-          const urlCurrent = upgradeUrl(event.nativeEvent.text);
+          const urlCurrent = upgradeUri(event.nativeEvent.text);
           setBrowserTabs((previous) => {
             if (previous.activeTab.index !== null) {
               previous.tabs[previous.activeTab.index].tabUriValue = urlCurrent;

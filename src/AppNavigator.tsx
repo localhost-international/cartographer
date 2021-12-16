@@ -1,4 +1,7 @@
+import { env } from 'environments/.env';
+
 import React, { useEffect } from 'react';
+import type { ReactElement } from 'react';
 import { useSetRecoilState } from 'recoil';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -6,8 +9,6 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from '@react-navigation/stack';
-
-import { env } from 'environments/.env.development';
 
 import { ethereumState } from 'src/store';
 
@@ -17,9 +18,11 @@ import Browser from 'src/views/BrowserView';
 import Tabs from 'src/views/TabsView';
 import Settings from 'src/views/SettingsView';
 
+
 const Stack = createStackNavigator();
 
-export default function AppNavigator() {
+
+export default function AppNavigator(): ReactElement {
   const setEthereumState = useSetRecoilState(ethereumState);
 
   useEffect(() => {
@@ -45,6 +48,8 @@ export default function AppNavigator() {
       <Stack.Navigator
         initialRouteName="Browser"
         screenOptions={{
+          headerMode: 'screen',
+          presentation: 'modal',
           cardStyle: {
             backgroundColor: 'transparent',
           },
@@ -54,8 +59,7 @@ export default function AppNavigator() {
           animationEnabled: true,
           ...TransitionPresets.ModalPresentationIOS,
         }}
-        mode="modal"
-        headerMode="screen">
+      >
         <Stack.Screen
           name="Browser"
           component={Browser}

@@ -3,6 +3,18 @@ import { atom } from 'recoil';
 import type { BigNumber } from 'ethers';
 import type { WebView } from 'react-native-webview';
 
+export type BrowserInitialConfig = {
+	userAgent: string;
+};
+
+export const browserInitialConfig = atom({
+	key: 'browserInitialConfig',
+	default: <BrowserInitialConfig>{
+		userAgent:
+			'Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)',
+	},
+});
+
 export type BrowserGlobalState = {
 	addressBar: {
 		focused: boolean;
@@ -46,8 +58,9 @@ export const settingsState = atom({
 	},
 });
 
-type WebViewUrl = { uri: string };
-type WebViewHtml = { html: string };
+export type WebViewUrl = { uri: string };
+export type WebViewHtml = { html: string };
+export type WebViewAddress = WebViewUrl | WebViewHtml;
 
 export type TabState = {
 	tabRef?: React.RefObject<WebView> | null;
@@ -55,7 +68,7 @@ export type TabState = {
 	tabId: string;
 	tabTitle: string | null;
 	tabUriValue: string | undefined;
-	tabUriCurrent: WebViewUrl | WebViewHtml;
+	tabUriCurrent: WebViewAddress;
 	// tabMounted: boolean;
 	// tabThumbnail: string | null;
 	// tabLastActive: Date | null;
