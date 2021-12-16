@@ -19,12 +19,14 @@ import { ButtonIcon } from 'src/components/ButtonIcon';
 import { useDeviceOrientation } from 'src/hooks/useOrientation';
 import type { ORIENTATION } from 'src/hooks/useOrientation';
 
+import { homepageTemplate } from 'src/data/internal/page-templates/homepage.template';
+
 interface NavigationButtonContainerProps {
   orientation: ORIENTATION;
   hasTabs: boolean;
 }
 
-const NavigationButtons = () => {
+export const NavigationButtons = () => {
   const screenNavigation = useNavigation();
   const orientation = useDeviceOrientation();
 
@@ -76,7 +78,7 @@ const NavigationButtons = () => {
     {
       type: 'add-tabs',
       onPress: () => {
-        setBrowserTabs(newTab('https://cartographers.surge.sh/', browserTabs));
+        setBrowserTabs(newTab({ html: homepageTemplate() }, browserTabs));
       },
       iconImage: IconAddTab,
       accessibilityLabel: 'Add a new tab',
@@ -120,7 +122,6 @@ const View = styled.View<NavigationButtonContainerProps>`
   padding-bottom: 8px;
   flex-direction: row;
   justify-content: space-between;
-
   ${(props) =>
     props.orientation === 'landscape' &&
     props.hasTabs &&
@@ -130,5 +131,3 @@ const View = styled.View<NavigationButtonContainerProps>`
     justify-content: flex-start;
   `}
 `;
-
-export default NavigationButtons;

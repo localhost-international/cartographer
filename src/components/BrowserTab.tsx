@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
+import type { ReactElement } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { WebView } from 'react-native-webview';
 import styled from 'styled-components/native';
 
-import { tabsState } from 'src/store';
+import { browserInitialConfig, tabsState } from 'src/store';
 import type { TabState } from 'src/store';
+
+import { injectedJS } from 'src/utils/injected/debug.injected';
 
 interface BrowserTabProps {
   tabState: TabState;
 }
 
-export default function BrowserTab({ tabState }: BrowserTabProps) {
+
+export default function BrowserTab({
+  tabState,
+}: BrowserTabProps): ReactElement {
   const [browserTabs, setBrowserTabs] = useRecoilState(tabsState);
+  const { userAgent } = useRecoilValue(browserInitialConfig);
   const [refreshing, setRefreshing] = useState(false);
 
   const { tabRef, tabId, tabActive, tabUriCurrent } = tabState;
@@ -31,9 +38,11 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
 
   const webViewReload = () => {
     setRefreshing(true);
-    if (tabRef) {
-      tabRef.current?.reload();
-    }
+    if (tabRef) tabRef.current?.reload();
+  };
+
+  const onMessage = (payload: { nativeEvent: { data: string } }) => {
+    console.log('onMessage', JSON.parse(payload.nativeEvent.data));
   };
 
   return (
@@ -48,13 +57,22 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
           <SafeAreaViewContainer>
             <WebViewContainer
               ref={tabRef}
-              userAgent="Cartographer v0.1.0; Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)"
+              // TODO - "Compatibility" mode, removing Cartographer userAgent
+              userAgent={userAgent}
               applicationNameForUserAgent="Cartographer"
               originWhitelist={['*']}
               source={tabUriCurrent}
-              onLoadStart={() => {}}
+              onFileDownload={(syntheticEvent) => {
+                const { nativeEvent } = syntheticEvent;
+                console.log('onFileDownload', nativeEvent);
+              }}
+              onLoadStart={(event) => {
+                const { nativeEvent } = event;
+                console.log('onLoadStart', nativeEvent.url);
+              }}
               onNavigationStateChange={(navState) => {
                 const currentNavState = navState;
+                console.log('onNavigationStateChange', navState);
                 setBrowserTabs((previous) => {
                   previous.tabs[tabIndex].tabUriValue = currentNavState.url;
                   previous.tabs[tabIndex].tabTitle = currentNavState.title;
@@ -75,13 +93,19 @@ export default function BrowserTab({ tabState }: BrowserTabProps) {
                 );
                 webViewReload();
               }}
-              startInLoadingState
               domStorageEnabled={config.allowStorage}
               javaScriptEnabled={config.allowJavascript}
               decelerationRate={0.998}
               allowsBackForwardNavigationGestures
               allowsInlineMediaPlayback={true}
-              allowsFullscreenVideo={false}
+              allowsFullscreenVideo={true}
+              injectedJavaScript={injectedJS}
+              onMessage={onMessage}
+              // injectedJavaScriptBeforeContentLoaded={injectedJS}
+              // onMessage={() => { }}
+              automaticallyAdjustContentInsets={true}
+              automaticallyAdjustsScrollIndicatorInsets={true}
+              startInLoadingState={true}
             />
           </SafeAreaViewContainer>
         </ScrollView>
@@ -121,4 +145,5 @@ const SafeAreaViewContainer = styled(SafeAreaView).attrs(() => ({
 
 const WebViewContainer = styled(WebView)`
   flex: 1;
+  /* background-color: transparent; */
 `;

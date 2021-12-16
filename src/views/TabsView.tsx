@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { Alert, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
@@ -9,17 +9,21 @@ import { BlurView } from '@react-native-community/blur';
 import { IsDarkMode } from 'src/utils/appearance';
 
 import { tabsState } from 'src/store';
-import type { TabState } from 'src/store';
+import type { TabState, WebViewAddress } from 'src/store';
 
 import { newTab, switchTab, removeTab, closeAllTabs } from 'src/utils/tabs';
 import { randomSite } from 'src/utils/debug';
 
+import { homepageTemplate } from 'src/data/internal/page-templates/homepage.template';
+
 import IconClose from 'src/assets/icons/icon-close-filled.svg';
 import IconAdd from 'src/assets/icons/icon-add.svg';
+
 
 interface TabListItemProps {
   noTabs?: boolean;
 }
+
 
 export default function Tabs() {
   const theme = useTheme();
@@ -30,6 +34,8 @@ export default function Tabs() {
     browserTabs.tabs,
   );
   const [searchTabs, setSearchTabs] = useState<string>('');
+
+  const tabListRef = useRef<FlatList>(null);
 
   const goBack = () => screenNavigation.goBack();
 
@@ -103,6 +109,13 @@ export default function Tabs() {
     }
   };
 
+  const addNewTab = (uriSource: WebViewAddress) => {
+    setBrowserTabs(newTab(uriSource, browserTabs));
+    setTimeout(() => {
+      tabListRef?.current?.scrollToEnd({ animated: true });
+    }, 100);
+  };
+
   useEffect(() => {
     setFilteredBrowserTabs(browserTabs.tabs);
   }, [browserTabs.tabs]);
@@ -138,9 +151,11 @@ export default function Tabs() {
           />
           {browserTabs.tabs.length ? (
             <TabList
+              ref={tabListRef}
               data={filteredBrowserTabs}
               renderItem={_renderItem}
               keyExtractor={(item, index) => index.toString()}
+              onContentSizeChange={() => {}}
             />
           ) : (
             <TabListItem noTabs>
@@ -150,25 +165,14 @@ export default function Tabs() {
         </Body>
         <FooterContainer>
           <Footer>
-            <ButtonContainer
-              onPress={() => {
-                closeTabs();
-              }}>
+            <ButtonContainer onPress={() => closeTabs()}>
               <ButtonText>Close All</ButtonText>
             </ButtonContainer>
             <ButtonContainer
-              onPress={() => {
-                setBrowserTabs(
-                  newTab('https://cartographers.surge.sh/', browserTabs),
-                );
-              }}>
+              onPress={() => addNewTab({ html: homepageTemplate() })}>
               <IconAdd height={30} width={30} fill={theme.ui.icon} />
             </ButtonContainer>
-            <ButtonContainer
-              onPress={() => {
-                const randomUri = randomSite();
-                setBrowserTabs(newTab(randomUri, browserTabs));
-              }}>
+            <ButtonContainer onPress={() => addNewTab({ uri: randomSite() })}>
               <ButtonText>Random</ButtonText>
             </ButtonContainer>
           </Footer>
@@ -256,6 +260,8 @@ const TabListItemTitle = styled.Text`
   font-weight: 600;
   margin-right: 40px;
   padding-bottom: 10px;
+  min-height: 60px;
+  max-height: 60px;
 `;
 const TabListItemUrl = styled.Text`
   color: ${(props) => props.theme.colors.text};

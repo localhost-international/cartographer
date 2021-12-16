@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 import { browserGlobalState, tabsState } from 'src/store';
 
 import { AddressBar } from 'src/components/Navigation/AddressBar';
-import NavigationButtons from 'src/components/Navigation/NavigationButtons';
+import { NavigationButtons } from 'src/components/Navigation/NavigationButtons';
 
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { useDeviceOrientation } from 'src/hooks/useOrientation';
@@ -47,9 +47,14 @@ export default function Navigation() {
   );
 }
 
-const NavigationContainer = styled(SafeAreaView).attrs(
-  () => ({}),
-)<NavigationContainerProps>`
+const NavigationContainer = styled(SafeAreaView)<NavigationContainerProps>`
+  /* Debug Floating UI */
+  /* opacity: .5;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  left: 20px; */
+
   background: ${(props) => props.theme.colors.background};
   ${(props) =>
     props.orientation === 'landscape' &&
